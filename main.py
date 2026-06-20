@@ -7,20 +7,19 @@ from datetime import datetime as dt
 app = FastAPI()
 
 
-class RestockRequest(BaseModel):
+class TaskRequest(BaseModel):
     item_url: str
     assigned_to: str
     quantity: int
+    action: str
 
 
-@app.post("/to_restock/", status_code=status.HTTP_201_CREATED)
-async def restock(request: RestockRequest):
+@app.post("/log_task/", status_code=status.HTTP_201_CREATED)
+async def restock(request: TaskRequest):
     try:
-        # Here you can add your logic to process the restock request.
-        # For demonstration, we'll just return the received data.
         response_data = {
             "status": "success",
-            "message": "Restock task added.",
+            "message": "Task added.",
             "task_timestamp": dt.now().strftime("%Y-%m-%d %H:%M:%S"),
             "data": request.model_dump(),
         }
@@ -28,6 +27,6 @@ async def restock(request: RestockRequest):
     except Exception as e:
         error_response = {
             "status": "error",
-            "message": f"An error occurred while processing the restock task: {str(e)}",
+            "message": f"An error occurred while processing the task: {str(e)}",
         }
         return JSONResponse(status_code=500, content=error_response)
