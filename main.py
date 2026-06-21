@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from starlette import status
 from datetime import datetime as dt
-import item_scraper
+import fetch_item_info
 
 app = FastAPI()
 
@@ -22,10 +22,10 @@ async def log_task(request: TaskRequest):
             "status": "success",
             "message": "Task added.",
             "task_timestamp": dt.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "data": request.model_dump(),
         }
         item_url = request.model_dump()["item_url"]
-        item_info = item_scraper.test(item_url)
+        item_info = fetch_item_info.fetch(item_url)
+        response_data.update(**item_info)
         return JSONResponse(status_code=200, content=response_data)
     except Exception as e:
         error_response = {
