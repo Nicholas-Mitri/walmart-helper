@@ -58,4 +58,4 @@ def fetch(url):
         upc = data[0]["hasVariant"][0]["gtin13"]
         sku = data[0]["hasVariant"][0]["sku"]
 
-    return name, upc, sku
+    return {"product_name": name, "UPC": upc, "SKU": sku}
