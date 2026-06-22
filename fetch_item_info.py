@@ -1,11 +1,19 @@
+from math import ceil
 import pyautogui
 import time
 import subprocess
-import json
+import json, random
 from bs4 import BeautifulSoup
 
 
+# Function to send a hotkey combination using AppleScript and subprocess
 def send_hotkey(key, modifier="command down"):
+    """
+    Sends the specified hotkey using AppleScript via subprocess.
+    Args:
+        key (str): The key to be pressed.
+        modifier (str): The key modifier (default is command down).
+    """
     script = f"""
     tell application "System Events"
         keystroke "{key}" using {{{modifier}}}
@@ -14,48 +22,161 @@ def send_hotkey(key, modifier="command down"):
     subprocess.run(["osascript", "-e", script])
 
 
-def fetch(url):
+# Function to fetch the HTML source of a given URL by simulating GUI keypresses and clipboard copying
+def fetch_html(url):
+    """
+    Opens a new tab, pastes the URL prepended with 'view-source:',
+    copies all page content, closes the tab, and returns the HTML from the clipboard.
+    Args:
+        url (str): The URL of the product to fetch HTML for.
+    Returns:
+        str: The raw HTML content of the page.
+    """
     subprocess.run(
-        ["bash", "-c", f"printf %s {json.dumps("view-source:"+url)} | pbcopy"]
+        ["bash", "-c", f"printf %s {json.dumps('view-source:'+url)} | pbcopy"]
     )
     time.sleep(1)
 
-    # Open the URL in your default browser
-    subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
+    # send_hotkey("esc", modifier="")
+    send_hotkey("t")  # Open new tab
     time.sleep(0.3)
-    send_hotkey("esc", modifier="")
-    send_hotkey("t")
+    send_hotkey("v")  # Paste URL
     time.sleep(0.3)
-    send_hotkey("v")
-    time.sleep(0.3)
-    pyautogui.press("enter")
+    pyautogui.press("enter")  # Go to URL
     time.sleep(2)
-    send_hotkey("a")
-    send_hotkey("c")
-    send_hotkey("w")
+    send_hotkey("a")  # Select all
+    send_hotkey("c")  # Copy
+    send_hotkey("w")  # Close tab
     time.sleep(0.05)
 
-    html = subprocess.run(["pbpaste"], capture_output=True, text=True).stdout
+    return subprocess.run(["pbpaste"], capture_output=True, text=True).stdout
 
+
+# Function to extract product info in dictionary format from a Walmart view-source HTML string
+def extract_product_info(html: str) -> dict:
+    """
+    Parses the given HTML content using BeautifulSoup, searches for structured JSON-LD blocks,
+    extracts and returns relevant product metadata.
+    Args:
+        html (str): The HTML string of the product page.
+    Returns:
+        dict: Dictionary containing extracted product information.
+    """
     soup = BeautifulSoup(html, "html.parser")
 
-    # Find the product schema specifically (not the breadcrumb JSON-LD)
-    script = soup.find(
-        "script", {"type": "application/ld+json", "data-seo-id": "schema-org-product"}
-    )
-    data = json.loads(script.string)
+    # --- JSON-LD blocks ---
+    ld_scripts = soup.find_all("script", type="application/ld+json")
+    product_data = {}
+    breadcrumb_data = {}
 
-    if isinstance(data, dict):
-        # Single product page (like this ground beef example)
-        name = data["name"]
-        upc = data["gtin13"]
-        sku = data["sku"]
+    for script in ld_scripts:
+        try:
+            data = json.loads(script.string)
+            if isinstance(data, list):
+                data = data[0]
+        except (json.JSONDecodeError, TypeError):
+            continue
 
-    elif isinstance(data, list):
-        # Multi-variant page (like the Wrangler pants example)
-        name = data[0]["hasVariant"][0]["name"]
-        # Find the variant that matches the SKU in the URL
-        upc = data[0]["hasVariant"][0]["gtin13"]
-        sku = data[0]["hasVariant"][0]["sku"]
+        if data.get("@type") == "Product":
+            product_data = data
+        if data.get("@type") == "ProductGroup":  # product with variants
+            product_data = data["hasVariant"][0]
+        elif data.get("@type") == "BreadcrumbList":
+            breadcrumb_data = data
 
-    return {"product_name": name, "UPC": upc, "SKU": sku}
+    if not product_data:
+        return {}
+
+    # --- Breadcrumb path ---
+    breadcrumb = [
+        item["item"]["name"]
+        for item in breadcrumb_data.get("itemListElement", [])
+        if "item" in item
+    ]
+    # --- Offer ---
+    offers = product_data.get("offers", [{}])
+    offer = offers[0] if isinstance(offers, list) else offers
+
+    # --- Additional properties ---
+    extra = {p["name"]: p["value"] for p in product_data.get("additionalProperty", [])}
+
+    return {
+        "name": product_data.get("name"),
+        "brand": product_data.get("brand", {}).get("name"),
+        "sku": product_data.get("sku"),
+        "UPC": product_data.get("gtin13"),
+        "description": product_data.get("description"),
+        "model": product_data.get("model"),
+        "image_url": product_data.get("image"),
+        # "price": offer.get("price"),
+        # "currency": offer.get("priceCurrency"),
+        # "availability": offer.get("availability"),
+        # "condition": offer.get("itemCondition"),
+        "url": offer.get("url"),
+        # "delivery_method": offer.get("availableDeliveryMethod"),
+        # "avg_rating": agg.get("ratingValue"),
+        # "review_count": agg.get("reviewCount"),
+        # "best_rating": agg.get("bestRating"),
+        "breadcrumb": breadcrumb,
+        "food_condition": extra.get("Food Condition"),
+        # "reviews": reviews,
+    }
+
+
+# Function to populate or update the Walmart meats database JSON file using scraped URLs
+def populate_walmart_db(batch_size=5):
+    """
+    Reads the list of scraped URLs and the current local JSON database.
+    Randomizes the URLs, then for each URL not already in the DB,
+    fetches and extracts product data, and appends it to the DB file.
+    Args:
+        batch_size (int): The number of records to add in this run.
+    """
+    try:
+        with open("walmart_meats_db.json", "r") as f:
+            walmart_meats_db = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        walmart_meats_db = []
+
+    # Get URLs from file and randomize the order
+    scraped_urls = [
+        url.strip() for url in open("scraped_urls.txt").readlines() if url.strip()
+    ]
+    random.shuffle(scraped_urls)
+
+    print(f"Number of URLs scraped: {len(scraped_urls)}")
+    n_records = len(walmart_meats_db)
+    print(f"Walmart meats DB currently has {n_records} products.")
+
+    print(f"Number of records remaining to populate: {len(scraped_urls)-n_records}")
+    print(f"Attempting to add {batch_size} records...")
+
+    subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
+
+    for url in scraped_urls[:batch_size]:
+        sku = url.split("/")[-1]
+        # Search walmart_meats_db for an existing entry with the same SKU
+        existing = next(
+            (item for item in walmart_meats_db if item.get("sku") == sku), None
+        )
+        if existing:
+            print(f"SKU {sku} already exists in DB, skipping URL: {url}")
+            continue
+
+        product_html = fetch_html(url)
+        product_info = extract_product_info(product_html)
+        if not product_info.get("UPC"):
+            print(f"Scraping failed, skipping URL: {url}")
+            continue
+        walmart_meats_db.append(product_info)
+        print(f"Added SKU {sku} to DB.")
+        time.sleep(5)
+
+    print(f"Number of records added in this run: {len(walmart_meats_db) - n_records}")
+
+    with open("walmart_meats_db.json", "w") as f:
+        json.dump(walmart_meats_db, f, indent=2)
+
+
+if __name__ == "__main__":
+    populate_walmart_db()
