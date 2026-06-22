@@ -124,7 +124,7 @@ def extract_product_info(html: str) -> dict:
 
 
 # Function to populate or update the Walmart meats database JSON file using scraped URLs
-def populate_walmart_db(batch_size=5):
+def populate_walmart_db(batch_size=5, url_file="unprocessed_scraped_urls.txt"):
     """
     Reads the list of scraped URLs and the current local JSON database.
     Randomizes the URLs, then for each URL not already in the DB,
@@ -139,16 +139,15 @@ def populate_walmart_db(batch_size=5):
         walmart_meats_db = []
 
     # Get URLs from file and randomize the order
-    scraped_urls = [
-        url.strip() for url in open("scraped_urls.txt").readlines() if url.strip()
-    ]
+    with open(url_file, "r") as f:
+        scraped_urls = [url.strip() for url in f.readlines()]
     random.shuffle(scraped_urls)
 
-    print(f"Number of URLs scraped: {len(scraped_urls)}")
+    print(f"Number of URLs to scrape: {len(scraped_urls)}")
     n_records = len(walmart_meats_db)
     print(f"Walmart meats DB currently has {n_records} products.")
 
-    print(f"Number of records remaining to populate: {len(scraped_urls)-n_records}")
+    print(f"Number of records remaining to populate: {328-n_records}")
     print(f"Attempting to add {batch_size} records...")
 
     subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
@@ -183,27 +182,33 @@ def filter_unprocessed_urls():
         walmart_meats_db = json.load(f)
     with open("scraped_urls.txt", "r") as f:
         detected_urls = f.readlines()
-
+    processed_count = 0
     unprocess_urls = []
     for url in detected_urls:
         processed = False
-        sku = detected_urls.strip().split("/")[-1]
+        sku = url.strip().split("/")[-1]
+
         for item in walmart_meats_db:
             if item.get("sku") == sku:
                 processed = True
+                processed_count += 1
                 break
         if not processed:
-            unprocess_urls.apppend(url)
+            print("sku", sku)
+            unprocess_urls.append(url.strip())
 
     with open("unprocessed_scraped_urls.txt", "w") as f:
         f.write("\n".join(unprocess_urls))
 
+    print(f"Walmart meats DB currently has {len(walmart_meats_db)} products.")
     print(f"Number of detected_urls: {len(detected_urls)}")
+    print(f"Number of processed: {processed_count}")
     print(f"Number of unprocessed: {len(unprocess_urls)}")
 
 
 if __name__ == "__main__":
-    # for _ in range(50):
-    #     populate_walmart_db()
-    #     time.sleep(60)
+
     filter_unprocessed_urls()
+    for _ in range(1):
+        populate_walmart_db(batch_size=10)
+        time.sleep(30)
