@@ -178,5 +178,32 @@ def populate_walmart_db(batch_size=5):
         json.dump(walmart_meats_db, f, indent=2)
 
 
+def filter_unprocessed_urls():
+    with open("walmart_meats_db.json", "r") as f:
+        walmart_meats_db = json.load(f)
+    with open("scraped_urls.txt", "r") as f:
+        detected_urls = f.readlines()
+
+    unprocess_urls = []
+    for url in detected_urls:
+        processed = False
+        sku = detected_urls.strip().split("/")[-1]
+        for item in walmart_meats_db:
+            if item.get("sku") == sku:
+                processed = True
+                break
+        if not processed:
+            unprocess_urls.apppend(url)
+
+    with open("unprocessed_scraped_urls.txt", "w") as f:
+        f.write("\n".join(unprocess_urls))
+
+    print(f"Number of detected_urls: {len(detected_urls)}")
+    print(f"Number of unprocessed: {len(unprocess_urls)}")
+
+
 if __name__ == "__main__":
-    populate_walmart_db()
+    # for _ in range(50):
+    #     populate_walmart_db()
+    #     time.sleep(60)
+    filter_unprocessed_urls()
