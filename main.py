@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from models import Base
-from database import engine_sqlite
+from database import engine_sql
 from routers import activity_log, pick_list, product_catalog
 
 app = FastAPI()
 
-Base.metadata.create_all(bind=engine_sqlite)
+Base.metadata.create_all(bind=engine_sql)
 
 
 @app.get("/healthy")
