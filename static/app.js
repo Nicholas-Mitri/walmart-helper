@@ -18,7 +18,10 @@ let _partialContext = null; // { pickId, sku, productId }
 // ─── Init ─────────────────────────────────────────────────────────────────────
 
 function init() {
-  PICKS_DATA.forEach((p) => picksMap.set(p.id, p));
+  PICKS_DATA.forEach((p) => {
+    const info = PRODUCTS_MAP[p.sku] || {};
+    picksMap.set(p.id, { ...p, upc: info.upc || "" });
+  });
 
   updatePickBadge();
   setupNavTabs();
@@ -234,6 +237,7 @@ async function addPick(productId, sku, qty, triggerBtn) {
       name: productInfo.name || sku,
       brand: productInfo.brand || "",
       image_url: productInfo.image_url || "",
+      upc: productInfo.upc || "",
       quantity: data.quantity,
     });
 
@@ -293,6 +297,7 @@ function renderPicksView() {
         <div class="flex-1 min-w-0">
           <p class="text-white text-sm font-semibold leading-snug line-clamp-2">${escHtml(pick.name)}</p>
           <p class="text-muted text-xs">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
+          ${pick.upc ? `<p class="text-muted text-xs">UPC: ${escHtml(pick.upc)}</p>` : ""}
         </div>
       </div>
       <div class="grid grid-cols-3 gap-1.5">
@@ -869,9 +874,69 @@ function closeScanner() {
 }
 
 document.getElementById("scan-btn").addEventListener("click", openScanner);
-document
-  .getElementById("scanner-close")
-  .addEventListener("click", closeScanner);
+document.getElementById("scanner-close").addEventListener("click", closeScanner);
+
+// ─── Pick list scanner ────────────────────────────────────────────────────────
+
+const _pickDetectionCounts = {};
+let _pickScannerRunning = false;
+
+function openPickScanner() {
+  document.getElementById("pick-scanner-overlay").style.display = "flex";
+  document.getElementById("pick-scanner-overlay").style.flexDirection = "column";
+  document.getElementById("pick-scanner-status").textContent = "Point camera at item barcode…";
+  _pickScannerRunning = true;
+
+  Quagga.init({
+    inputStream: {
+      type: "LiveStream",
+      target: document.getElementById("pick-scanner-video"),
+      constraints: { facingMode: "environment" },
+    },
+    decoder: { readers: ["upc_reader", "code_128_reader"] },
+  }, (err) => {
+    if (err) {
+      document.getElementById("pick-scanner-status").textContent = "Camera error: " + err.message;
+      return;
+    }
+    Quagga.start();
+  });
+
+  Quagga.onDetected((data) => {
+    if (!_pickScannerRunning) return;
+    const raw = data.codeResult.code.replace(/^0/, "");
+    _pickDetectionCounts[raw] = (_pickDetectionCounts[raw] || 0) + 1;
+    if (_pickDetectionCounts[raw] >= 3) {
+      _pickScannerRunning = false;
+      closePickScanner();
+      showPickScanResult(raw);
+    }
+  });
+}
+
+function closePickScanner() {
+  Quagga.stop();
+  Object.keys(_pickDetectionCounts).forEach((k) => delete _pickDetectionCounts[k]);
+  document.getElementById("pick-scanner-overlay").style.display = "none";
+}
+
+function showPickScanResult(upc) {
+  const match = [...picksMap.values()].find((p) => p.upc && p.upc.replace(/^0/, "") === upc);
+  const toast = document.getElementById("pick-scan-toast");
+  document.getElementById("pick-scan-verdict").textContent = match ? "✓ Pick this item" : "✗ Do not pick";
+  document.getElementById("pick-scan-product-name").textContent = match ? match.name : "Not on pick list";
+  document.getElementById("pick-scan-upc").textContent = "UPC: " + upc;
+  toast.style.backgroundColor = match ? "#16a34a" : "#dc2626";
+  toast.style.display = "block";
+  toast.style.opacity = "1";
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    setTimeout(() => { toast.style.display = "none"; }, 300);
+  }, 3000);
+}
+
+document.getElementById("pick-scan-btn").addEventListener("click", openPickScanner);
+document.getElementById("pick-scanner-close").addEventListener("click", closePickScanner);
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 

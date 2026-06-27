@@ -75,10 +75,11 @@
       color: #004c91 !important;
     }
     /* Contain Quagga's injected video/canvas inside the scanner div */
-    #scanner-video { position: relative; overflow: hidden; }
-    #scanner-video video,
-    #scanner-video canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
-    #scanner-video canvas.drawingBuffer { display: none; }
+    #scanner-video, #pick-scanner-video { position: relative; overflow: hidden; }
+    #scanner-video video, #scanner-video canvas,
+    #pick-scanner-video video, #pick-scanner-video canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
+    #scanner-video canvas.drawingBuffer,
+    #pick-scanner-video canvas.drawingBuffer { display: none; }
     /* Hide scrollbar for filter tabs */
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -149,7 +150,7 @@
     </div>
     <div id="header-picks" class="hidden pb-3 flex items-center justify-between">
       <h1 class="text-white font-semibold text-base">Pick List</h1>
-      <button class="text-muted" aria-label="Scan barcode (coming soon)" disabled>
+      <button id="pick-scan-btn" class="text-accent" aria-label="Scan item barcode">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
           <line x1="7" y1="12" x2="17" y2="12"/>
@@ -339,6 +340,28 @@
       </div>
     </div>
     <p id="scanner-status" class="text-center text-muted text-sm py-3">Point camera at a barcode…</p>
+  </div>
+
+  <!-- ── PICK SCANNER RESULT TOAST ────────────────────────────────────────── -->
+  <div id="pick-scan-toast" class="fixed inset-x-4 z-[110] rounded-2xl p-5 shadow-2xl text-center transition-opacity duration-300" style="display:none; bottom: 5rem;">
+    <p id="pick-scan-verdict" class="text-white font-bold text-lg mb-0.5"></p>
+    <p id="pick-scan-product-name" class="text-white text-sm font-medium truncate"></p>
+    <p id="pick-scan-upc" class="text-white/70 text-xs mt-0.5"></p>
+  </div>
+
+  <!-- ── PICK SCANNER OVERLAY ───────────────────────────────────────────────── -->
+  <div id="pick-scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
+    <div class="flex items-center justify-between px-4 py-3">
+      <p class="text-white font-semibold">Scan Item</p>
+      <button id="pick-scanner-close" class="text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div class="flex-1 relative">
+      <div id="pick-scanner-video" class="w-full h-full"></div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
+      </div>
+    </div>
+    <p id="pick-scanner-status" class="text-center text-muted text-sm py-3">Point camera at item barcode…</p>
   </div>
 
   <script src="/static/app.js"></script>

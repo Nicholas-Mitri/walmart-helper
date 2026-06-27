@@ -88,6 +88,7 @@
     name: {{ product.name | tojson | safe }},
     brand: {{ (product.brand or '') | tojson | safe }},
     image_url: {{ (product.image_url or '') | tojson | safe }},
+    upc: {{ (product.upc or '') | tojson | safe }},
   };
   {% endfor %}
 
