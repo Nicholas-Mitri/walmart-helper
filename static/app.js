@@ -7,6 +7,7 @@ let pickModalQty = 1;
 let pressTimer = null;
 let activeCategory = "All";
 let activeTab = "catalog";
+let _activePickCategory = null;
 
 // picksMap: Map<pickId, {id, product_id, sku, name, brand, image_url, quantity}>
 const picksMap = new Map();
@@ -20,7 +21,11 @@ let _partialContext = null; // { pickId, sku, productId }
 function init() {
   PICKS_DATA.forEach((p) => {
     const info = PRODUCTS_MAP[p.sku] || {};
-    picksMap.set(p.id, { ...p, upc: info.upc || "", category: info.category || "Other" });
+    picksMap.set(p.id, {
+      ...p,
+      upc: info.upc || "",
+      category: info.category || "Other",
+    });
   });
 
   updatePickBadge();
@@ -278,8 +283,13 @@ async function removePick(pickId, sku) {
 
 // Category display order
 const CATEGORY_ORDER = [
-  "Raw Beef", "Raw Pork", "Raw Chicken", "Raw Poultry",
-  "Raw Fish", "Ready to eat", "Other",
+  "Raw Beef",
+  "Raw Pork",
+  "Raw Chicken",
+  "Raw Poultry",
+  "Raw Fish",
+  "Ready to eat",
+  "Other",
 ];
 
 const CATEGORY_LABELS = {
@@ -289,7 +299,7 @@ const CATEGORY_LABELS = {
   "Raw Poultry": "Poultry",
   "Raw Fish": "Fish",
   "Ready to eat": "Ready to Eat",
-  "Other": "Other",
+  Other: "Other",
 };
 
 function renderPicksView() {
@@ -311,7 +321,9 @@ function renderPicksView() {
 
   // Render in defined order, then any remaining
   const ordered = CATEGORY_ORDER.filter((c) => groups.has(c));
-  groups.forEach((_, c) => { if (!ordered.includes(c)) ordered.push(c); });
+  groups.forEach((_, c) => {
+    if (!ordered.includes(c)) ordered.push(c);
+  });
 
   ordered.forEach((cat) => {
     const picks = groups.get(cat);
@@ -342,9 +354,11 @@ function renderPicksView() {
       div.className = "bg-card rounded-xl border border-border p-3";
       div.innerHTML = `
         <div class="flex items-center gap-3 mb-3">
-          ${pick.image_url
-            ? `<img src="${escHtml(pick.image_url)}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy">`
-            : `<div class="w-12 h-12 rounded-lg bg-border flex-shrink-0"></div>`}
+          ${
+            pick.image_url
+              ? `<img src="${escHtml(pick.image_url)}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy">`
+              : `<div class="w-12 h-12 rounded-lg bg-border flex-shrink-0"></div>`
+          }
           <div class="flex-1 min-w-0">
             <p class="text-white text-sm font-semibold leading-snug line-clamp-2">${escHtml(pick.name)}</p>
             <p class="text-muted text-xs">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
@@ -367,12 +381,19 @@ function renderPicksView() {
         </div>
       `;
 
-      div.querySelector(".picked-btn").addEventListener("click", () =>
-        openPickedSheet(pick.id, pick.sku, pick.product_id, pick.name));
-      div.querySelector(".failed-btn").addEventListener("click", () =>
-        handleFailedPick(pick.id, pick.sku, pick.product_id));
-      div.querySelector(".remove-btn").addEventListener("click", () =>
-        removePick(pick.id, pick.sku));
+      div
+        .querySelector(".picked-btn")
+        .addEventListener("click", () =>
+          openPickedSheet(pick.id, pick.sku, pick.product_id, pick.name),
+        );
+      div
+        .querySelector(".failed-btn")
+        .addEventListener("click", () =>
+          handleFailedPick(pick.id, pick.sku, pick.product_id),
+        );
+      div
+        .querySelector(".remove-btn")
+        .addEventListener("click", () => removePick(pick.id, pick.sku));
 
       body.appendChild(div);
     });
@@ -383,13 +404,18 @@ function renderPicksView() {
 
     header.addEventListener("click", () => {
       const isCollapsed = body.classList.contains("hidden");
-      // Collapse all sections first
-      container.querySelectorAll(".pick-section-body").forEach((b) => b.classList.add("hidden"));
-      container.querySelectorAll(".chevron").forEach((c) => { c.style.transform = "rotate(-90deg)"; });
-      // Open this one if it was collapsed
+      container
+        .querySelectorAll(".pick-section-body")
+        .forEach((b) => b.classList.add("hidden"));
+      container.querySelectorAll(".chevron").forEach((c) => {
+        c.style.transform = "rotate(-90deg)";
+      });
       if (isCollapsed) {
         body.classList.remove("hidden");
         header.querySelector(".chevron").style.transform = "";
+        _activePickCategory = cat;
+      } else {
+        _activePickCategory = null;
       }
     });
 
@@ -397,6 +423,16 @@ function renderPicksView() {
     section.appendChild(body);
     container.appendChild(section);
   });
+  if (_activePickCategory) {
+    const sections = [...container.querySelectorAll(".pick-section-body")];
+    const headers = [...container.querySelectorAll("button")];
+    ordered.forEach((c, i) => {
+      if (c === _activePickCategory) {
+        sections[i].classList.remove("hidden");
+        headers[i].querySelector(".chevron").style.transform = "";
+      }
+    });
+  }
 }
 
 async function handleFailedPick(pickId, sku, productId) {
@@ -927,7 +963,9 @@ function closeScanner() {
 }
 
 document.getElementById("scan-btn").addEventListener("click", openScanner);
-document.getElementById("scanner-close").addEventListener("click", closeScanner);
+document
+  .getElementById("scanner-close")
+  .addEventListener("click", closeScanner);
 
 // ─── Pick list scanner ────────────────────────────────────────────────────────
 
@@ -936,24 +974,30 @@ let _pickScannerRunning = false;
 
 function openPickScanner() {
   document.getElementById("pick-scanner-overlay").style.display = "flex";
-  document.getElementById("pick-scanner-overlay").style.flexDirection = "column";
-  document.getElementById("pick-scanner-status").textContent = "Point camera at item barcode…";
+  document.getElementById("pick-scanner-overlay").style.flexDirection =
+    "column";
+  document.getElementById("pick-scanner-status").textContent =
+    "Point camera at item barcode…";
   _pickScannerRunning = true;
 
-  Quagga.init({
-    inputStream: {
-      type: "LiveStream",
-      target: document.getElementById("pick-scanner-video"),
-      constraints: { facingMode: "environment" },
+  Quagga.init(
+    {
+      inputStream: {
+        type: "LiveStream",
+        target: document.getElementById("pick-scanner-video"),
+        constraints: { facingMode: "environment" },
+      },
+      decoder: { readers: ["upc_reader", "code_128_reader"] },
     },
-    decoder: { readers: ["upc_reader", "code_128_reader"] },
-  }, (err) => {
-    if (err) {
-      document.getElementById("pick-scanner-status").textContent = "Camera error: " + err.message;
-      return;
-    }
-    Quagga.start();
-  });
+    (err) => {
+      if (err) {
+        document.getElementById("pick-scanner-status").textContent =
+          "Camera error: " + err.message;
+        return;
+      }
+      Quagga.start();
+    },
+  );
 
   Quagga.onDetected((data) => {
     if (!_pickScannerRunning) return;
@@ -969,27 +1013,41 @@ function openPickScanner() {
 
 function closePickScanner() {
   Quagga.stop();
-  Object.keys(_pickDetectionCounts).forEach((k) => delete _pickDetectionCounts[k]);
+  Object.keys(_pickDetectionCounts).forEach(
+    (k) => delete _pickDetectionCounts[k],
+  );
   document.getElementById("pick-scanner-overlay").style.display = "none";
 }
 
 function showPickScanResult(upc) {
-  const match = [...picksMap.values()].find((p) => p.upc && p.upc.replace(/^0/, "") === upc);
+  const match = [...picksMap.values()].find(
+    (p) => p.upc && p.upc.replace(/^0/, "") === upc,
+  );
   const toast = document.getElementById("pick-scan-toast");
-  document.getElementById("pick-scan-verdict").textContent = match ? "✓ Pick this item" : "✗ Do not pick";
-  document.getElementById("pick-scan-product-name").textContent = match ? match.name : "Not on pick list";
+  document.getElementById("pick-scan-verdict").textContent = match
+    ? "✓ Pick this item"
+    : "✗ Do not pick";
+  document.getElementById("pick-scan-product-name").textContent = match
+    ? match.name
+    : "Not on pick list";
   document.getElementById("pick-scan-upc").textContent = "UPC: " + upc;
   toast.style.backgroundColor = match ? "#16a34a" : "#dc2626";
   toast.style.display = "block";
   toast.style.opacity = "1";
   setTimeout(() => {
     toast.style.opacity = "0";
-    setTimeout(() => { toast.style.display = "none"; }, 300);
+    setTimeout(() => {
+      toast.style.display = "none";
+    }, 300);
   }, 3000);
 }
 
-document.getElementById("pick-scan-btn").addEventListener("click", openPickScanner);
-document.getElementById("pick-scanner-close").addEventListener("click", closePickScanner);
+document
+  .getElementById("pick-scan-btn")
+  .addEventListener("click", openPickScanner);
+document
+  .getElementById("pick-scanner-close")
+  .addEventListener("click", closePickScanner);
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
