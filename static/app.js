@@ -20,7 +20,7 @@ let _partialContext = null; // { pickId, sku, productId }
 function init() {
   PICKS_DATA.forEach((p) => {
     const info = PRODUCTS_MAP[p.sku] || {};
-    picksMap.set(p.id, { ...p, upc: info.upc || "" });
+    picksMap.set(p.id, { ...p, upc: info.upc || "", category: info.category || "Other" });
   });
 
   updatePickBadge();
@@ -238,6 +238,7 @@ async function addPick(productId, sku, qty, triggerBtn) {
       brand: productInfo.brand || "",
       image_url: productInfo.image_url || "",
       upc: productInfo.upc || "",
+      category: productInfo.category || "Other",
       quantity: data.quantity,
     });
 
@@ -275,6 +276,22 @@ async function removePick(pickId, sku) {
 
 // ─── Pick List view ───────────────────────────────────────────────────────────
 
+// Category display order
+const CATEGORY_ORDER = [
+  "Raw Beef", "Raw Pork", "Raw Chicken", "Raw Poultry",
+  "Raw Fish", "Ready to eat", "Other",
+];
+
+const CATEGORY_LABELS = {
+  "Raw Beef": "Beef",
+  "Raw Pork": "Pork",
+  "Raw Chicken": "Poultry",
+  "Raw Poultry": "Poultry",
+  "Raw Fish": "Fish",
+  "Ready to eat": "Ready to Eat",
+  "Other": "Other",
+};
+
 function renderPicksView() {
   const container = document.getElementById("view-picks");
   container.innerHTML = "";
@@ -284,65 +301,101 @@ function renderPicksView() {
     return;
   }
 
+  // Group picks by category
+  const groups = new Map();
   picksMap.forEach((pick) => {
-    const div = document.createElement("div");
-    div.className = "bg-card rounded-xl border border-border p-3";
-    div.innerHTML = `
-      <div class="flex items-center gap-3 mb-3">
-        ${
-          pick.image_url
-            ? `<img src="${escHtml(pick.image_url)}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy">`
-            : `<div class="w-12 h-12 rounded-lg bg-border flex-shrink-0"></div>`
-        }
-        <div class="flex-1 min-w-0">
-          <p class="text-white text-sm font-semibold leading-snug line-clamp-2">${escHtml(pick.name)}</p>
-          <p class="text-muted text-xs">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
-          ${pick.upc ? `<p class="text-muted text-xs">UPC: ${escHtml(pick.upc)}</p>` : ""}
-        </div>
+    const cat = pick.category || "Other";
+    if (!groups.has(cat)) groups.set(cat, []);
+    groups.get(cat).push(pick);
+  });
+
+  // Render in defined order, then any remaining
+  const ordered = CATEGORY_ORDER.filter((c) => groups.has(c));
+  groups.forEach((_, c) => { if (!ordered.includes(c)) ordered.push(c); });
+
+  ordered.forEach((cat) => {
+    const picks = groups.get(cat);
+    const label = CATEGORY_LABELS[cat] || cat;
+    const count = picks.length;
+
+    const section = document.createElement("div");
+    section.className = "mb-2";
+
+    // Header row
+    const header = document.createElement("button");
+    header.className = "w-full flex items-center justify-between px-1 py-2";
+    header.innerHTML = `
+      <div class="flex-1 flex items-center justify-center gap-2">
+        <span class="text-white font-bold text-base">${escHtml(label)}</span>
+        <span class="bg-accent text-surface text-sm font-bold rounded-full px-2.5 py-0.5">${count}</span>
       </div>
-      <div class="grid grid-cols-3 gap-1.5">
-        <button class="picked-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
-          data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}" data-name="${escHtml(pick.name)}">
-          Picked ✓
-        </button>
-        <button class="failed-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
-          data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}">
-          Failed ✗
-        </button>
-        <button class="remove-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
-          data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}">
-          Remove
-        </button>
-      </div>
+      <svg class="chevron w-4 h-4 text-muted transition-transform flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M19 9l-7 7-7-7"/>
+      </svg>
     `;
-    container.appendChild(div);
-  });
 
-  container.querySelectorAll(".picked-btn").forEach((btn) => {
-    btn.addEventListener("click", () =>
-      openPickedSheet(
-        parseInt(btn.dataset.pickId),
-        btn.dataset.sku,
-        parseInt(btn.dataset.productId),
-        btn.dataset.name,
-      ),
-    );
-  });
+    const body = document.createElement("div");
+    body.className = "pick-section-body space-y-2";
 
-  container.querySelectorAll(".failed-btn").forEach((btn) => {
-    btn.addEventListener("click", () =>
-      handleFailedPick(
-        parseInt(btn.dataset.pickId),
-        btn.dataset.sku,
-        parseInt(btn.dataset.productId),
-      ),
-    );
-  });
+    picks.forEach((pick) => {
+      const div = document.createElement("div");
+      div.className = "bg-card rounded-xl border border-border p-3";
+      div.innerHTML = `
+        <div class="flex items-center gap-3 mb-3">
+          ${pick.image_url
+            ? `<img src="${escHtml(pick.image_url)}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy">`
+            : `<div class="w-12 h-12 rounded-lg bg-border flex-shrink-0"></div>`}
+          <div class="flex-1 min-w-0">
+            <p class="text-white text-sm font-semibold leading-snug line-clamp-2">${escHtml(pick.name)}</p>
+            <p class="text-muted text-xs">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
+            ${pick.upc ? `<p class="text-muted text-xs">UPC: ${escHtml(pick.upc)}</p>` : ""}
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-1.5">
+          <button class="picked-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
+            data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}" data-name="${escHtml(pick.name)}">
+            Picked ✓
+          </button>
+          <button class="failed-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
+            data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}">
+            Failed ✗
+          </button>
+          <button class="remove-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
+            data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}">
+            Remove
+          </button>
+        </div>
+      `;
 
-  container.querySelectorAll(".remove-btn").forEach((btn) => {
-    btn.addEventListener("click", () =>
-      removePick(parseInt(btn.dataset.pickId), btn.dataset.sku),
-    );
+      div.querySelector(".picked-btn").addEventListener("click", () =>
+        openPickedSheet(pick.id, pick.sku, pick.product_id, pick.name));
+      div.querySelector(".failed-btn").addEventListener("click", () =>
+        handleFailedPick(pick.id, pick.sku, pick.product_id));
+      div.querySelector(".remove-btn").addEventListener("click", () =>
+        removePick(pick.id, pick.sku));
+
+      body.appendChild(div);
+    });
+
+    // Start collapsed
+    body.classList.add("hidden");
+    header.querySelector(".chevron").style.transform = "rotate(-90deg)";
+
+    header.addEventListener("click", () => {
+      const isCollapsed = body.classList.contains("hidden");
+      // Collapse all sections first
+      container.querySelectorAll(".pick-section-body").forEach((b) => b.classList.add("hidden"));
+      container.querySelectorAll(".chevron").forEach((c) => { c.style.transform = "rotate(-90deg)"; });
+      // Open this one if it was collapsed
+      if (isCollapsed) {
+        body.classList.remove("hidden");
+        header.querySelector(".chevron").style.transform = "";
+      }
+    });
+
+    section.appendChild(header);
+    section.appendChild(body);
+    container.appendChild(section);
   });
 }
 

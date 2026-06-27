@@ -89,6 +89,7 @@
     brand: {{ (product.brand or '') | tojson | safe }},
     image_url: {{ (product.image_url or '') | tojson | safe }},
     upc: {{ (product.upc or '') | tojson | safe }},
+    category: {{ (product.category or '') | tojson | safe }},
   };
   {% endfor %}
 
