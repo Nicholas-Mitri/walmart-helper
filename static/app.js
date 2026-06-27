@@ -259,20 +259,19 @@ async function addPick(productId, sku, qty, triggerBtn) {
 }
 
 async function removePick(pickId, sku) {
+  if (!picksMap.has(pickId)) return;
+  picksMap.delete(pickId);
+  PICKED_SKUS.delete(sku);
+  const cardBtn = document.querySelector(`.pick-btn[data-sku="${sku}"]`);
+  if (cardBtn) setBookmarkOutline(cardBtn);
+  updatePickBadge();
+  if (activeTab === "picks") renderPicksView();
+
   try {
     const res = await fetch(`/picks_list/unmark_for_pick/${pickId}`, {
       method: "DELETE",
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    picksMap.delete(pickId);
-    PICKED_SKUS.delete(sku);
-
-    const cardBtn = document.querySelector(`.pick-btn[data-sku="${sku}"]`);
-    if (cardBtn) setBookmarkOutline(cardBtn);
-
-    updatePickBadge();
-    if (activeTab === "picks") renderPicksView();
   } catch (err) {
     console.error("Failed to remove pick:", err);
     showToast("Failed to remove pick");
