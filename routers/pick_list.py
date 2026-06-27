@@ -47,10 +47,11 @@ class PickRequest(BaseModel):
 # Route for creating a new pick item.
 @router.post("/mark-for-pick", status_code=status.HTTP_201_CREATED)
 async def create_pick(db: db_dependency, pick_request: PickRequest):
-    # Convert the incoming Pydantic model to a SQLAlchemy model.
     pick_model = models.Pick(**pick_request.model_dump())
     db.add(pick_model)
     db.commit()
+    db.refresh(pick_model)
+    return {"id": pick_model.id, "product_id": pick_model.product_id, "quantity": pick_model.quantity}
 
 
 @router.delete("/unmark_for_pick/{pick_id}", status_code=status.HTTP_204_NO_CONTENT)
