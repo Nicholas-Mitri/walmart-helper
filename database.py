@@ -7,6 +7,15 @@ import os
 load_dotenv()
 Base = declarative_base()
 
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 

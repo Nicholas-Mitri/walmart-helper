@@ -8,6 +8,7 @@ from sqlalchemy import (
     ForeignKey,
     Float,
     DateTime,
+    text,
 )
 from sqlalchemy.orm import relationship
 
@@ -76,6 +77,7 @@ class ActivityLog(Base):
     cases_qty = Column(Integer, nullable=True)
     units_qty = Column(Integer, nullable=True)
     notes = Column(String, nullable=True)
+    logged_at = Column(DateTime, nullable=True, server_default=text("CURRENT_TIMESTAMP"))
 
     user = relationship("User")
     product = relationship("Product")
