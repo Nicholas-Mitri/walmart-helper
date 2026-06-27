@@ -2,7 +2,8 @@ from fastapi import APIRouter, HTTPException, Path, Query
 import models
 from database import SessionLocal
 from sqlalchemy.orm import Session
-from sqlalchemy import select
+from sqlalchemy import select, func
+from datetime import date
 from typing import Annotated
 from fastapi import Depends
 from starlette import status
@@ -86,3 +87,28 @@ async def delete_todo(db: db_dependency, activity_id: int = Path(gt=0)):
         raise HTTPException(status_code=404, detail="Requested pick not found")
     db.delete(log)
     db.commit()
+
+
+@router.get("/feed", status_code=status.HTTP_200_OK)
+async def get_feed(db: db_dependency):
+    today = date.today()
+    stmt = (
+        select(models.ActivityLog)
+        .where(func.date(models.ActivityLog.logged_at) == today)
+        .order_by(models.ActivityLog.logged_at.asc(), models.ActivityLog.id.asc())
+        .limit(200)
+    )
+    result = db.execute(stmt)
+    logs = result.scalars().all()
+    return [
+        {
+            "id": log.id,
+            "action": log.action,
+            "product_name": log.product.name if log.product else None,
+            "cases_qty": log.cases_qty,
+            "units_qty": log.units_qty,
+            "notes": log.notes,
+            "logged_at": log.logged_at.isoformat() if log.logged_at else None,
+        }
+        for log in logs
+    ]
