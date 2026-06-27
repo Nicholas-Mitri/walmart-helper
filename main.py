@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from models import Base
 from database import engine_sql
 from routers import activity_log, pick_list, product_catalog
+from fastapi.staticfiles import StaticFiles
+from routers import pages
 
 app = FastAPI()
 
@@ -16,3 +18,9 @@ async def root():
 app.include_router(product_catalog.router)
 app.include_router(pick_list.router)
 app.include_router(activity_log.router)
+# Serve static files (app.js, any future CSS/images)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Routers
+app.include_router(pages.router)
+# app.include_router(your_existing_api_router, prefix="/api")
