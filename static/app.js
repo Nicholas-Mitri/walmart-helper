@@ -249,6 +249,7 @@ async function addPick(productId, sku, qty, triggerBtn) {
     });
 
     updatePickBadge();
+    if (activeTab === "picks") renderPicksView();
     showToast("Added to picks");
   } catch (err) {
     // Revert optimistic update
@@ -550,6 +551,7 @@ function setupLongPress() {
               card.dataset.productId,
               card.dataset.displayName,
               PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
+              PRODUCTS_MAP[card.dataset.sku]?.upc || "",
             ),
           500,
         );
@@ -568,6 +570,7 @@ function setupLongPress() {
             card.dataset.productId,
             card.dataset.displayName,
             PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
+            PRODUCTS_MAP[card.dataset.sku]?.upc || "",
           ),
         600,
       );
@@ -577,7 +580,7 @@ function setupLongPress() {
   });
 }
 
-function openActionSheet(productId, name, imageUrl = "") {
+function openActionSheet(productId, name, imageUrl = "", upc = "") {
   selectedAction = null;
   actionSheetQty = 1;
   document.getElementById("qty-display").textContent = "1";
@@ -589,6 +592,7 @@ function openActionSheet(productId, name, imageUrl = "") {
   noteInput.value = "";
   document.getElementById("action-product-id").value = productId;
   document.getElementById("action-product-name").textContent = name;
+  document.getElementById("action-product-upc").textContent = upc ? "UPC: " + upc : "";
 
   const wrap = document.getElementById("action-product-image-wrap");
   const img = document.getElementById("action-product-image");
@@ -918,11 +922,13 @@ function escHtml(str) {
 function showOverlay(id) {
   const el = document.getElementById(id);
   el.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }
 
 function hideOverlay(id) {
   const el = document.getElementById(id);
   el.style.display = "none";
+  document.body.style.overflow = "";
 }
 
 // ─── Barcode scanner ──────────────────────────────────────────────────────────
@@ -977,6 +983,7 @@ function openScanner() {
           card.dataset.productId,
           card.dataset.displayName,
           PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
+          PRODUCTS_MAP[card.dataset.sku]?.upc || "",
         );
       }
     }
@@ -1157,17 +1164,16 @@ function closePickAddScanner() {
   document.getElementById("pick-add-scanner-overlay").style.display = "none";
 }
 
-async function handlePickAddScan(upc) {
+function handlePickAddScan(upc) {
   const productEntry = Object.entries(PRODUCTS_MAP).find(
     ([, info]) => info.upc && info.upc.replace(/^0/, "") === upc,
   );
 
-  const toast = document.getElementById("pick-add-scan-toast");
-  document.getElementById("pick-add-scan-upc").textContent = "UPC: " + upc;
-
   if (!productEntry) {
+    const toast = document.getElementById("pick-add-scan-toast");
     document.getElementById("pick-add-scan-verdict").textContent = "✗ Product not found";
     document.getElementById("pick-add-scan-product-name").textContent = "No matching product in catalog";
+    document.getElementById("pick-add-scan-upc").textContent = "UPC: " + upc;
     toast.style.backgroundColor = "#dc2626";
     toast.style.display = "block";
     toast.style.opacity = "1";
@@ -1179,11 +1185,12 @@ async function handlePickAddScan(upc) {
   }
 
   const [sku, productInfo] = productEntry;
-  const productId = productInfo.id;
 
   if (PICKED_SKUS.has(sku)) {
+    const toast = document.getElementById("pick-add-scan-toast");
     document.getElementById("pick-add-scan-verdict").textContent = "Already on pick list";
     document.getElementById("pick-add-scan-product-name").textContent = productInfo.name;
+    document.getElementById("pick-add-scan-upc").textContent = "UPC: " + upc;
     toast.style.backgroundColor = "#d97706";
     toast.style.display = "block";
     toast.style.opacity = "1";
@@ -1194,47 +1201,8 @@ async function handlePickAddScan(upc) {
     return;
   }
 
-  try {
-    const res = await fetch("/picks_list/mark-for-pick", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ product_id: productId, quantity: 1, user_id: 1 }),
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    const data = await res.json();
-    PICKED_SKUS.add(sku);
-    picksMap.set(data.id, {
-      id: data.id,
-      product_id: productId,
-      sku,
-      name: productInfo.name || sku,
-      brand: productInfo.brand || "",
-      image_url: productInfo.image_url || "",
-      upc: productInfo.upc || "",
-      category: productInfo.category || "Other",
-      quantity: data.quantity,
-    });
-
-    updatePickBadge();
-    if (activeTab === "picks") renderPicksView();
-
-    document.getElementById("pick-add-scan-verdict").textContent = "✓ Added to pick list";
-    document.getElementById("pick-add-scan-product-name").textContent = productInfo.name;
-    toast.style.backgroundColor = "#16a34a";
-  } catch (err) {
-    console.error("Failed to add pick via scan:", err);
-    document.getElementById("pick-add-scan-verdict").textContent = "✗ Failed to add";
-    document.getElementById("pick-add-scan-product-name").textContent = productInfo.name;
-    toast.style.backgroundColor = "#dc2626";
-  }
-
-  toast.style.display = "block";
-  toast.style.opacity = "1";
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    setTimeout(() => { toast.style.display = "none"; }, 300);
-  }, 3000);
+  closePickAddScanner();
+  openPickModal(productInfo.id, productInfo.name, sku, null);
 }
 
 document
