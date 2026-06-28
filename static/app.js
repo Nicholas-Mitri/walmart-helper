@@ -1242,7 +1242,11 @@ document.getElementById("unknown-upc-submit").addEventListener("click", async ()
   const upc = _unknownUpc;
   closeUnknownUpcModal();
   try {
-    const res = await fetch(`/products/submit_upc?upc=${encodeURIComponent(upc)}`, { method: "POST" });
+    const res = await fetch("/products/submit_upc", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ upc }),
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     showToast("UPC submitted for review");
   } catch (err) {
