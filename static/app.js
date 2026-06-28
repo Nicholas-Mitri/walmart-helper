@@ -928,6 +928,7 @@ function hideOverlay(id) {
 // ─── Barcode scanner ──────────────────────────────────────────────────────────
 
 const _detectionCounts = {};
+let _scannerDetectedHandler = null;
 
 function openScanner() {
   document.getElementById("scanner-overlay").style.display = "flex";
@@ -956,7 +957,7 @@ function openScanner() {
     },
   );
 
-  Quagga.onDetected((data) => {
+  _scannerDetectedHandler = (data) => {
     if (data.codeResult.startInfo.error > 0.1) return;
     const upc = data.codeResult.code.replace(/^0/, "");
     _detectionCounts[upc] = (_detectionCounts[upc] || 0) + 1;
@@ -979,10 +980,15 @@ function openScanner() {
         );
       }
     }
-  });
+  };
+  Quagga.onDetected(_scannerDetectedHandler);
 }
 
 function closeScanner() {
+  if (_scannerDetectedHandler) {
+    Quagga.offDetected(_scannerDetectedHandler);
+    _scannerDetectedHandler = null;
+  }
   Quagga.stop();
   Object.keys(_detectionCounts).forEach((k) => delete _detectionCounts[k]);
   document.getElementById("scanner-overlay").style.display = "none";
@@ -997,6 +1003,7 @@ document
 
 const _pickDetectionCounts = {};
 let _pickScannerRunning = false;
+let _pickScannerDetectedHandler = null;
 
 function openPickScanner() {
   document.getElementById("pick-scanner-overlay").style.display = "flex";
@@ -1025,7 +1032,7 @@ function openPickScanner() {
     },
   );
 
-  Quagga.onDetected((data) => {
+  _pickScannerDetectedHandler = (data) => {
     if (!_pickScannerRunning || _pickScanCooldown) return;
     const raw = data.codeResult.code.replace(/^0/, "");
     _pickDetectionCounts[raw] = (_pickDetectionCounts[raw] || 0) + 1;
@@ -1037,12 +1044,17 @@ function openPickScanner() {
       showPickScanResult(raw);
       setTimeout(() => {
         _pickScanCooldown = false;
-      }, 5000); // match your toast duration
+      }, 5000);
     }
-  });
+  };
+  Quagga.onDetected(_pickScannerDetectedHandler);
 }
 
 function closePickScanner() {
+  if (_pickScannerDetectedHandler) {
+    Quagga.offDetected(_pickScannerDetectedHandler);
+    _pickScannerDetectedHandler = null;
+  }
   Quagga.stop();
   _pickScanCooldown = false;
   Object.keys(_pickDetectionCounts).forEach(
@@ -1086,6 +1098,7 @@ document
 const _pickAddDetectionCounts = {};
 let _pickAddScannerRunning = false;
 let _pickAddScanCooldown = false;
+let _pickAddScannerDetectedHandler = null;
 
 function openPickAddScanner() {
   document.getElementById("pick-add-scanner-overlay").style.display = "flex";
@@ -1112,7 +1125,7 @@ function openPickAddScanner() {
     },
   );
 
-  Quagga.onDetected((data) => {
+  _pickAddScannerDetectedHandler = (data) => {
     if (!_pickAddScannerRunning || _pickAddScanCooldown) return;
     const raw = data.codeResult.code.replace(/^0/, "");
     _pickAddDetectionCounts[raw] = (_pickAddDetectionCounts[raw] || 0) + 1;
@@ -1126,10 +1139,15 @@ function openPickAddScanner() {
         _pickAddScanCooldown = false;
       }, 5000);
     }
-  });
+  };
+  Quagga.onDetected(_pickAddScannerDetectedHandler);
 }
 
 function closePickAddScanner() {
+  if (_pickAddScannerDetectedHandler) {
+    Quagga.offDetected(_pickAddScannerDetectedHandler);
+    _pickAddScannerDetectedHandler = null;
+  }
   Quagga.stop();
   _pickAddScannerRunning = false;
   _pickAddScanCooldown = false;
