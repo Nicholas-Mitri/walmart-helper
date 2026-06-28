@@ -4424,5 +4424,21 @@
       "Pre-cooked Meats"
     ],
     "food_condition": "Refrigerate"
+  },
+  {
+    "name": "Great Value Chipotle Mango Pork Back Ribs",
+    "brand": "Great Value",
+    "sku": "1MMQY3LP8E98",
+    "UPC": "627735284040",
+    "description": "Walmart\u2019s Great Value brand provides Canadian families with everyday value that does not compromise on quality. All Great Value products come with a 100% satisfaction guarantee, or your money back. With Great Value, you can feel confident that you are making a great choice!<br><br>Any night can be BBQ night with Great Value\u2122 Chipotle Mango Pork Back Ribs. Our sweet and spicy pork ribs have just the right amount of bite, thanks to a luscious molasses-and-mango-spiked sauce. These tender, slow-cooked ribs take 15 minutes to heat on the BBQ: just enough time to whip up a salad, plate some sides and gather the fam for dinner!<br><br>The Ingredient Wise\u2122 symbol appears on products made without these ingredients: synthetic colours, artificial flavours and sweeteners, hydrogenated vegetable oil, monosodium glutamate.",
+    "model": null,
+    "image_url": "https://i5.walmartimages.ca/images/Enlarge/804/399/6000209804399.jpg",
+    "url": "https://www.walmart.ca/en/ip/great-value-chipotle-mango-pork-back-ribs/1MMQY3LP8E98",
+    "breadcrumb": [
+      "Grocery",
+      "Ingredient Wise",
+      "Deli & Fresh Prepared Meals"
+    ],
+    "food_condition": "Refrigerate"
   }
 ]

@@ -42,13 +42,43 @@ def fetch_html(url):
     send_hotkey("v")  # Paste URL
     time.sleep(0.3)
     pyautogui.press("enter")  # Go to URL
-    time.sleep(2)
+    time.sleep(3)
     send_hotkey("a")  # Select all
     send_hotkey("c")  # Copy
     send_hotkey("w")  # Close tab
     time.sleep(0.05)
 
     return subprocess.run(["pbpaste"], capture_output=True, text=True).stdout
+
+
+def extract_product_sku(html: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+    tile = soup.find("div", attrs={"data-dca-id": True})
+    return tile["data-dca-id"]
+
+
+def upc_to_url():
+    with open("./scraper/newly_scanned_upcs.txt", "r") as f:
+        upc_list = [line.strip() for line in f.readlines()]
+
+    if not upc_list:
+        print("No newly scanned upcs to process. Exiting...")
+        return
+
+    newly_scanned_urls = []
+    subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
+
+    for upc in upc_list:
+        url = f"https://www.walmart.ca/en/search?q={upc}"
+        html = fetch_html(url)
+        sku = extract_product_sku(html)
+        if sku:
+            newly_scanned_urls.append(f"https://www.walmart.ca/ip/{sku}" + "\n")
+        time.sleep(20)
+
+    # Write the converted URLs into newly_scanned_urls.txt
+    with open("./scraper/newly_scanned_urls.txt", "a") as f:
+        f.writelines(newly_scanned_urls)
 
 
 # Function to extract product info in dictionary format from a Walmart view-source HTML string
@@ -160,7 +190,7 @@ def add_newly_scanned_urls():
     # Add new URLs to the scraped URLs file
     with open(scraped_urls_path, "a") as f:
         for url in sorted(urls_to_add):
-            f.write("\n" + url)
+            f.write(url + "\n")
 
     print(f"Added {len(urls_to_add)} new URLs to {scraped_urls_path}.")
 
@@ -267,6 +297,8 @@ def populate_walmart_db(batch_size=5, url_file="./scraper/unprocessed_urls.txt")
 
 
 if __name__ == "__main__":
+
+    upc_to_url()
     add_newly_scanned_urls()
     filter_unprocessed_urls()
     for _ in range(1):
