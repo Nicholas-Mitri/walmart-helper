@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Path
+from fastapi import APIRouter, HTTPException, Path, Query
 import models
 from database import SessionLocal
 from sqlalchemy.orm import Session
@@ -73,3 +73,27 @@ async def filter_products(
     result = db.execute(stmt)
     products = result.scalars().all()
     return products
+
+
+@router.post("/submit_upc", status_code=status.HTTP_201_CREATED)
+async def submit_upc(
+    upc: str = Query(
+        ...,
+        title="UPC",
+        description="The Universal Product Code to append, as scanned. One UPC per POST. Accepts query or form value.",
+        min_length=1,
+        example="627735275987",
+    )
+):
+    """
+    Appends the given UPC to 'newly_scanned_upcs.txt'.
+    Ensures one UPC per line. Accepts UPC as a query or form parameter.
+    """
+    upc = upc.strip()
+    if not upc:
+        return {"detail": "UPC cannot be empty."}
+    filepath = "./scraper/newly_scanned_upcs.txt"
+    # Append the UPC to the file
+    with open(filepath, "a") as f:
+        f.write(upc + "\n")
+    return {"detail": f"UPC {upc} appended."}
