@@ -380,28 +380,26 @@ function renderPicksView() {
         </div>
       `;
 
-      div
-        .querySelector(".picked-btn")
-        .addEventListener("click", async () => {
-          try {
-            const res = await fetch("/activity_log/log-activity", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                product_id: pick.product_id,
-                action: "restock",
-                units_qty: 1,
-                user_id: 1,
-              }),
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            await removePick(pick.id, pick.sku);
-            showToast("Picked & logged ✓");
-          } catch (err) {
-            console.error(err);
-            showToast("Error logging pick");
-          }
-        });
+      div.querySelector(".picked-btn").addEventListener("click", async () => {
+        try {
+          const res = await fetch("/activity_log/log-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              product_id: pick.product_id,
+              action: "restock",
+              units_qty: 1,
+              user_id: 1,
+            }),
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          await removePick(pick.id, pick.sku);
+          showToast("Picked & logged ✓");
+        } catch (err) {
+          console.error(err);
+          showToast("Error logging pick");
+        }
+      });
       div
         .querySelector(".failed-btn")
         .addEventListener("click", () =>
@@ -967,7 +965,18 @@ function openScanner() {
       input.value = upc;
       document.getElementById("search-clear").classList.remove("hidden");
       applyFilters();
+      const visibleCards = [
+        ...document.querySelectorAll(".product-card"),
+      ].filter((card) => card.style.display !== "none");
       showToast(`Scanned: ${upc}`);
+      if (visibleCards.length === 1) {
+        const card = visibleCards[0];
+        openActionSheet(
+          card.dataset.productId,
+          card.dataset.displayName,
+          PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
+        );
+      }
     }
   });
 }
