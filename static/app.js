@@ -382,9 +382,26 @@ function renderPicksView() {
 
       div
         .querySelector(".picked-btn")
-        .addEventListener("click", () =>
-          openPickedSheet(pick.id, pick.sku, pick.product_id, pick.name),
-        );
+        .addEventListener("click", async () => {
+          try {
+            const res = await fetch("/activity_log/log-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                product_id: pick.product_id,
+                action: "restock",
+                units_qty: 1,
+                user_id: 1,
+              }),
+            });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            await removePick(pick.id, pick.sku);
+            showToast("Picked & logged ✓");
+          } catch (err) {
+            console.error(err);
+            showToast("Error logging pick");
+          }
+        });
       div
         .querySelector(".failed-btn")
         .addEventListener("click", () =>
@@ -761,7 +778,7 @@ async function renderLogView() {
           <div class="flex-1 min-w-0">
             <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-1" style="background:${color.bg};color:${color.text}">${escHtml(label)}</span>
             ${log.product_name ? `<p class="text-white text-sm font-medium leading-snug line-clamp-2">${escHtml(log.product_name)}</p>` : ""}
-            ${qtyStr ? `<p class="text-muted text-xs mt-0.5">${escHtml(qtyStr)}</p>` : ""}
+            ${qtyStr && log.action !== "restock" ? `<p class="text-muted text-xs mt-0.5">${escHtml(qtyStr)}</p>` : ""}
             ${log.notes ? `<p class="text-muted text-xs mt-0.5 italic">${escHtml(log.notes)}</p>` : ""}
           </div>
           <p class="text-muted text-xs flex-shrink-0 mt-0.5">${escHtml(timeStr)}</p>
