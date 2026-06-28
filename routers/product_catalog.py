@@ -75,21 +75,23 @@ async def filter_products(
     return products
 
 
-@router.post("/submit_upc", status_code=status.HTTP_201_CREATED)
-async def submit_upc(
-    upc: str = Query(
+class SubmitUPCRequest(BaseModel):
+    upc: str = Field(
         ...,
         title="UPC",
-        description="The Universal Product Code to append, as scanned. One UPC per POST. Accepts query or form value.",
+        description="The Universal Product Code to append, as scanned. One UPC per POST.",
         min_length=1,
         example="627735275987",
     )
-):
+
+
+@router.post("/submit_upc", status_code=status.HTTP_201_CREATED)
+async def submit_upc(request: SubmitUPCRequest):
     """
     Appends the given UPC to 'newly_scanned_upcs.txt'.
-    Ensures one UPC per line. Accepts UPC as a query or form parameter.
+    Ensures one UPC per line. Accepts UPC in POST body as JSON.
     """
-    upc = upc.strip()
+    upc = request.upc.strip()
     if not upc:
         return {"detail": "UPC cannot be empty."}
     filepath = "./scraper/newly_scanned_upcs.txt"
