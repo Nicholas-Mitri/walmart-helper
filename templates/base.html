@@ -247,7 +247,7 @@
 
   <!-- ── ACTION SHEET (long-press log) ────────────────────────────────────── -->
   <div id="action-sheet" class="fixed inset-0 z-50 hidden flex flex-col" style="display:none">    <!-- floats above the sheet -->
-    <div id="sheet-backdrop" class="absolute inset-0 bg-black/80"></div>
+    <div id="sheet-backdrop" class="absolute inset-0 bg-black/80 z-0"></div>
     <div
     id="action-product-image-wrap"
     class="relative z-10 hidden flex-1 min-h-0 w-full flex items-center justify-center px-4 py-4 cursor-pointer"
@@ -259,7 +259,7 @@
         class="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl"
         >
     </div>
-    <div class="relative w-full flex-shrink-0 bg-card rounded-t-2xl p-5 shadow-2xl">
+    <div class="relative z-10 w-full flex-shrink-0 bg-card rounded-t-2xl p-5 shadow-2xl">
       <input type="hidden" id="action-product-id">
       <p id="action-product-name" class="text-sm font-semibold mb-4 truncate" style="color:#1a2233;">Product Name</p>
       <div class="grid grid-cols-5 gap-2 mb-5">
