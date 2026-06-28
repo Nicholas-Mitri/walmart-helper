@@ -399,6 +399,20 @@
     <p id="pick-add-scanner-status" class="text-center text-muted text-sm py-3">Scan barcode to add to pick list…</p>
   </div>
 
+  <!-- ── UNKNOWN UPC MODAL ─────────────────────────────────────────────────── -->
+  <div id="unknown-upc-modal" class="fixed inset-0 z-[120] hidden items-end" style="display:none">
+    <div class="absolute inset-0 bg-black/60" id="unknown-upc-backdrop"></div>
+    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
+      <p class="text-sm font-semibold mb-1" style="color:#1a2233;">Unknown Barcode</p>
+      <p id="unknown-upc-value" class="text-xs mb-1" style="color:#7b8ba5;"></p>
+      <p class="text-xs mb-5" style="color:#7b8ba5;">No product matched this UPC. Submit it for review?</p>
+      <div class="flex gap-3">
+        <button id="unknown-upc-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="unknown-upc-submit" class="flex-1 py-3 rounded-xl bg-accent font-semibold text-sm" style="color:#004c91;">Submit UPC</button>
+      </div>
+    </div>
+  </div>
+
   <script src="/static/app.js"></script>
 </body>
 </html>

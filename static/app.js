@@ -976,15 +976,19 @@ function openScanner() {
       const visibleCards = [
         ...document.querySelectorAll(".product-card"),
       ].filter((card) => card.style.display !== "none");
-      showToast(`Scanned: ${upc}`);
-      if (visibleCards.length === 1) {
-        const card = visibleCards[0];
-        openActionSheet(
-          card.dataset.productId,
-          card.dataset.displayName,
-          PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
-          PRODUCTS_MAP[card.dataset.sku]?.upc || "",
-        );
+      if (visibleCards.length === 0) {
+        openUnknownUpcModal(upc);
+      } else {
+        showToast(`Scanned: ${upc}`);
+        if (visibleCards.length === 1) {
+          const card = visibleCards[0];
+          openActionSheet(
+            card.dataset.productId,
+            card.dataset.displayName,
+            PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
+            PRODUCTS_MAP[card.dataset.sku]?.upc || "",
+          );
+        }
       }
     }
   };
@@ -1211,6 +1215,40 @@ document
 document
   .getElementById("pick-add-scanner-close")
   .addEventListener("click", closePickAddScanner);
+
+// ─── Unknown UPC modal ────────────────────────────────────────────────────────
+
+let _unknownUpc = null;
+
+function openUnknownUpcModal(upc) {
+  _unknownUpc = upc;
+  document.getElementById("unknown-upc-value").textContent = "UPC: " + upc;
+  const el = document.getElementById("unknown-upc-modal");
+  el.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeUnknownUpcModal() {
+  document.getElementById("unknown-upc-modal").style.display = "none";
+  document.body.style.overflow = "";
+  _unknownUpc = null;
+}
+
+document.getElementById("unknown-upc-backdrop").addEventListener("click", closeUnknownUpcModal);
+document.getElementById("unknown-upc-cancel").addEventListener("click", closeUnknownUpcModal);
+document.getElementById("unknown-upc-submit").addEventListener("click", async () => {
+  if (!_unknownUpc) return;
+  const upc = _unknownUpc;
+  closeUnknownUpcModal();
+  try {
+    const res = await fetch(`/products/submit_upc?upc=${encodeURIComponent(upc)}`, { method: "POST" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    showToast("UPC submitted for review");
+  } catch (err) {
+    console.error("Failed to submit UPC:", err);
+    showToast("Failed to submit UPC");
+  }
+});
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
