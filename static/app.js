@@ -8,6 +8,7 @@ let pressTimer = null;
 let activeCategory = "All";
 let activeTab = "catalog";
 let _activePickCategory = null;
+let _pickScanCooldown = false;
 
 // picksMap: Map<pickId, {id, product_id, sku, name, brand, image_url, quantity}>
 const picksMap = new Map();
@@ -1025,19 +1026,25 @@ function openPickScanner() {
   );
 
   Quagga.onDetected((data) => {
-    if (!_pickScannerRunning) return;
+    if (!_pickScannerRunning || _pickScanCooldown) return;
     const raw = data.codeResult.code.replace(/^0/, "");
     _pickDetectionCounts[raw] = (_pickDetectionCounts[raw] || 0) + 1;
     if (_pickDetectionCounts[raw] >= 3) {
-      _pickScannerRunning = false;
-      closePickScanner();
+      _pickScanCooldown = true;
+      Object.keys(_pickDetectionCounts).forEach(
+        (k) => delete _pickDetectionCounts[k],
+      );
       showPickScanResult(raw);
+      setTimeout(() => {
+        _pickScanCooldown = false;
+      }, 5000); // match your toast duration
     }
   });
 }
 
 function closePickScanner() {
   Quagga.stop();
+  _pickScanCooldown = false;
   Object.keys(_pickDetectionCounts).forEach(
     (k) => delete _pickDetectionCounts[k],
   );
