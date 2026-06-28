@@ -109,6 +109,10 @@
     .floor-btn[data-action="recovery"].selected { background-color: #92400e !important; color: #fff !important; }
     .floor-btn[data-action="general_note"]  { background-color: rgba(249,115,22,0.18) !important; color: #c2410c !important; }
     .floor-btn[data-action="general_note"].selected { background-color: #ea580c !important; color: #fff !important; }
+    @keyframes slideDown {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
 <body class="min-h-screen font-sans pb-16">
@@ -133,10 +137,10 @@
           >
           <button
             id="search-clear"
-            class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-muted hover:text-[color:#1a2233]"
+            class="hidden absolute right-1 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-[color:#1a2233]"
             aria-label="Clear search"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
@@ -196,6 +200,11 @@
   </header>
 
   {% block content %}{% endblock %}
+
+  <!-- Safety Sweeps Banner -->
+  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-2 font-semibold shadow-lg" style="display:none; bottom:60px; animation: slideDown 0.4s ease-out;">
+    Safety Sweeps due!
+  </div>
 
   <!-- Bottom Navigation Bar -->
   <nav class="fixed bottom-0 inset-x-0 z-30 bg-surface border-t border-border flex">

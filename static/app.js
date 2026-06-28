@@ -39,6 +39,7 @@ function init() {
   setupActionSheet();
   setupPartialSheet();
   setupFloorSheet();
+  setupSafetyBanner();
 }
 
 document.addEventListener("DOMContentLoaded", init);
@@ -1249,6 +1250,36 @@ document.getElementById("unknown-upc-submit").addEventListener("click", async ()
     showToast("Failed to submit UPC");
   }
 });
+
+// ─── Safety Sweeps banner ─────────────────────────────────────────────────────
+
+const SAFETY_SWEEP_WINDOWS = [
+  { start: 11 * 60, end: 11 * 60 + 30 },      // 11:00 AM - 11:30 AM
+  { start: 14 * 60, end: 14 * 60 + 30 },      // 2:00 PM - 2:30 PM
+  { start: 17 * 60, end: 17 * 60 + 30 },      // 5:00 PM - 5:30 PM
+  { start: 19 * 60 + 30, end: 20 * 60 },      // 7:30 PM - 8:00 PM
+  { start: 22 * 60 + 30, end: 23 * 60 },      // 10:30 PM - 11:00 PM
+];
+
+function isSafetySweepTime() {
+  const now = new Date();
+  const minutes = now.getHours() * 60 + now.getMinutes();
+  return SAFETY_SWEEP_WINDOWS.some(w => minutes >= w.start && minutes < w.end);
+}
+
+function updateSafetyBanner() {
+  const banner = document.getElementById("safety-banner");
+  if (isSafetySweepTime()) {
+    banner.style.display = "block";
+  } else {
+    banner.style.display = "none";
+  }
+}
+
+function setupSafetyBanner() {
+  updateSafetyBanner();
+  setInterval(updateSafetyBanner, 60000);
+}
 
 // ─── Toast ────────────────────────────────────────────────────────────────────
 
