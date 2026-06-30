@@ -14,9 +14,10 @@ CLEAN_JSON_PATH = os.path.join("data", "walmart_meats_clean_final.json")
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": os.environ.get("DB_PASSWORD", "your_password"),
+    "password": os.environ.get("DB_PASSWORD_CONNECTOR", "your_password"),
     "database": "walmart_meats",
 }
+print(DB_CONFIG)
 
 
 def seed_products_table():
@@ -49,6 +50,7 @@ def seed_products_table():
             ON DUPLICATE KEY UPDATE
                 name = VALUES(name),
                 brand = VALUES(brand),
+                upc = VALUES(upc),
                 description = VALUES(description),
                 image_url = VALUES(image_url),
                 url = VALUES(url),
