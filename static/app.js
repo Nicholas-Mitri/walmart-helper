@@ -354,6 +354,7 @@ function renderPicksView() {
     picks.forEach((pick) => {
       const div = document.createElement("div");
       div.className = "bg-card rounded-xl border border-border p-3";
+      div.style.userSelect = "none";
       div.innerHTML = `
         <div class="flex items-center gap-3 mb-3">
           ${
@@ -411,6 +412,12 @@ function renderPicksView() {
       div
         .querySelector(".remove-btn")
         .addEventListener("click", () => removePick(pick.id, pick.sku));
+
+      const img = div.querySelector("img");
+      if (img) {
+        img.style.cursor = "pointer";
+        img.addEventListener("click", () => openPickItemPreview(pick));
+      }
 
       body.appendChild(div);
     });
@@ -593,7 +600,9 @@ function openActionSheet(productId, name, imageUrl = "", upc = "") {
   noteInput.value = "";
   document.getElementById("action-product-id").value = productId;
   document.getElementById("action-product-name").textContent = name;
-  document.getElementById("action-product-upc").textContent = upc ? "UPC: " + upc : "";
+  document.getElementById("action-product-upc").textContent = upc
+    ? "UPC: " + upc
+    : "";
 
   const wrap = document.getElementById("action-product-image-wrap");
   const img = document.getElementById("action-product-image");
@@ -932,6 +941,23 @@ function hideOverlay(id) {
   document.body.style.overflow = "";
 }
 
+// ─── UPC matching (shared across scanners) ────────────────────────────────────
+
+function findProductByUpc(upc) {
+  const entry = Object.entries(PRODUCTS_MAP).find(
+    ([, info]) => info.upc && info.upc.replace(/^0/, "") === upc,
+  );
+  return entry || null;
+}
+
+function findPickByUpc(upc) {
+  return (
+    [...picksMap.values()].find(
+      (p) => p.upc && p.upc.replace(/^0/, "") === upc,
+    ) || null
+  );
+}
+
 // ─── Barcode scanner ──────────────────────────────────────────────────────────
 
 const _detectionCounts = {};
@@ -1076,9 +1102,7 @@ function closePickScanner() {
 }
 
 function showPickScanResult(upc) {
-  const match = [...picksMap.values()].find(
-    (p) => p.upc && p.upc.replace(/^0/, "") === upc,
-  );
+  const match = findPickByUpc(upc);
   const toast = document.getElementById("pick-scan-toast");
   document.getElementById("pick-scan-verdict").textContent = match
     ? "✓ Pick this item"
@@ -1114,8 +1138,10 @@ let _pickAddScannerDetectedHandler = null;
 
 function openPickAddScanner() {
   document.getElementById("pick-add-scanner-overlay").style.display = "flex";
-  document.getElementById("pick-add-scanner-overlay").style.flexDirection = "column";
-  document.getElementById("pick-add-scanner-status").textContent = "Scan barcode to add to pick list…";
+  document.getElementById("pick-add-scanner-overlay").style.flexDirection =
+    "column";
+  document.getElementById("pick-add-scanner-status").textContent =
+    "Scan barcode to add to pick list…";
   _pickAddScannerRunning = true;
 
   Quagga.init(
@@ -1170,22 +1196,11 @@ function closePickAddScanner() {
 }
 
 function handlePickAddScan(upc) {
-  const productEntry = Object.entries(PRODUCTS_MAP).find(
-    ([, info]) => info.upc && info.upc.replace(/^0/, "") === upc,
-  );
+  const productEntry = findProductByUpc(upc);
 
   if (!productEntry) {
-    const toast = document.getElementById("pick-add-scan-toast");
-    document.getElementById("pick-add-scan-verdict").textContent = "✗ Product not found";
-    document.getElementById("pick-add-scan-product-name").textContent = "No matching product in catalog";
-    document.getElementById("pick-add-scan-upc").textContent = "UPC: " + upc;
-    toast.style.backgroundColor = "#dc2626";
-    toast.style.display = "block";
-    toast.style.opacity = "1";
-    setTimeout(() => {
-      toast.style.opacity = "0";
-      setTimeout(() => { toast.style.display = "none"; }, 300);
-    }, 3000);
+    closePickAddScanner();
+    openUnknownUpcModal(upc);
     return;
   }
 
@@ -1193,15 +1208,19 @@ function handlePickAddScan(upc) {
 
   if (PICKED_SKUS.has(sku)) {
     const toast = document.getElementById("pick-add-scan-toast");
-    document.getElementById("pick-add-scan-verdict").textContent = "Already on pick list";
-    document.getElementById("pick-add-scan-product-name").textContent = productInfo.name;
+    document.getElementById("pick-add-scan-verdict").textContent =
+      "Already on pick list";
+    document.getElementById("pick-add-scan-product-name").textContent =
+      productInfo.name;
     document.getElementById("pick-add-scan-upc").textContent = "UPC: " + upc;
     toast.style.backgroundColor = "#d97706";
     toast.style.display = "block";
     toast.style.opacity = "1";
     setTimeout(() => {
       toast.style.opacity = "0";
-      setTimeout(() => { toast.style.display = "none"; }, 300);
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 300);
     }, 3000);
     return;
   }
@@ -1235,40 +1254,70 @@ function closeUnknownUpcModal() {
   _unknownUpc = null;
 }
 
-document.getElementById("unknown-upc-backdrop").addEventListener("click", closeUnknownUpcModal);
-document.getElementById("unknown-upc-cancel").addEventListener("click", closeUnknownUpcModal);
-document.getElementById("unknown-upc-submit").addEventListener("click", async () => {
-  if (!_unknownUpc) return;
-  const upc = _unknownUpc;
-  closeUnknownUpcModal();
-  try {
-    const res = await fetch("/products/submit_upc", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ upc }),
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    showToast("UPC submitted for review");
-  } catch (err) {
-    console.error("Failed to submit UPC:", err);
-    showToast("Failed to submit UPC");
-  }
-});
+document
+  .getElementById("unknown-upc-backdrop")
+  .addEventListener("click", closeUnknownUpcModal);
+document
+  .getElementById("unknown-upc-cancel")
+  .addEventListener("click", closeUnknownUpcModal);
+document
+  .getElementById("unknown-upc-submit")
+  .addEventListener("click", async () => {
+    if (!_unknownUpc) return;
+    const upc = _unknownUpc;
+    closeUnknownUpcModal();
+    try {
+      const res = await fetch("/products/submit_upc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ upc }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      showToast("UPC submitted for review");
+    } catch (err) {
+      console.error("Failed to submit UPC:", err);
+      showToast("Failed to submit UPC");
+    }
+  });
+
+// ─── Pick item preview modal ──────────────────────────────────────────────────
+
+function openPickItemPreview(pick) {
+  document.getElementById("pick-preview-image").src = pick.image_url || "";
+  document.getElementById("pick-preview-name").textContent = pick.name;
+  document.getElementById("pick-preview-upc").textContent = pick.upc
+    ? "UPC: " + pick.upc
+    : "";
+  const el = document.getElementById("pick-item-preview");
+  el.style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closePickItemPreview() {
+  document.getElementById("pick-item-preview").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+document
+  .getElementById("pick-preview-backdrop")
+  .addEventListener("click", closePickItemPreview);
 
 // ─── Safety Sweeps banner ─────────────────────────────────────────────────────
 
 const SAFETY_SWEEP_WINDOWS = [
-  { start: 11 * 60, end: 11 * 60 + 30 },      // 11:00 AM - 11:30 AM
-  { start: 14 * 60, end: 14 * 60 + 30 },      // 2:00 PM - 2:30 PM
-  { start: 17 * 60, end: 17 * 60 + 30 },      // 5:00 PM - 5:30 PM
-  { start: 19 * 60 + 30, end: 20 * 60 },      // 7:30 PM - 8:00 PM
-  { start: 22 * 60 + 30, end: 23 * 60 },      // 10:30 PM - 11:00 PM
+  { start: 11 * 60, end: 11 * 60 + 30 }, // 11:00 AM - 11:30 AM
+  { start: 14 * 60, end: 14 * 60 + 30 }, // 2:00 PM - 2:30 PM
+  { start: 17 * 60, end: 17 * 60 + 30 }, // 5:00 PM - 5:30 PM
+  { start: 19 * 60 + 30, end: 20 * 60 }, // 7:30 PM - 8:00 PM
+  { start: 22 * 60 + 30, end: 23 * 60 }, // 10:30 PM - 11:00 PM
 ];
 
 function isSafetySweepTime() {
   const now = new Date();
   const minutes = now.getHours() * 60 + now.getMinutes();
-  return SAFETY_SWEEP_WINDOWS.some(w => minutes >= w.start && minutes < w.end);
+  return SAFETY_SWEEP_WINDOWS.some(
+    (w) => minutes >= w.start && minutes < w.end,
+  );
 }
 
 function updateSafetyBanner() {
