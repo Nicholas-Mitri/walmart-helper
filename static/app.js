@@ -943,17 +943,24 @@ function hideOverlay(id) {
 
 // ─── UPC matching (shared across scanners) ────────────────────────────────────
 
+function normalizeUpc(upc) {
+  const stripped = upc.replace(/^0/, "");
+  return stripped[0] === "2" ? stripped.substring(0, 6) : stripped;
+}
+
 function findProductByUpc(upc) {
+  const normalized = normalizeUpc(upc);
   const entry = Object.entries(PRODUCTS_MAP).find(
-    ([, info]) => info.upc && info.upc.replace(/^0/, "") === upc,
+    ([, info]) => info.upc && normalizeUpc(info.upc) === normalized,
   );
   return entry || null;
 }
 
 function findPickByUpc(upc) {
+  const normalized = normalizeUpc(upc);
   return (
     [...picksMap.values()].find(
-      (p) => p.upc && p.upc.replace(/^0/, "") === upc,
+      (p) => p.upc && normalizeUpc(p.upc) === normalized,
     ) || null
   );
 }
