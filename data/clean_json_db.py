@@ -114,6 +114,7 @@ subcategory_tags = {
         "meatball",
         "salami",
         "pepperoni",
+        "bologna",
     ],
 }
 
@@ -164,8 +165,8 @@ import json
 import os, re
 
 # Define file paths
-RAW_JSON_PATH = os.path.join("data", "walmart_meats_db_pruned.json")
-CLEAN_JSON_PATH = os.path.join("data", "walmart_meats_clean.json")
+RAW_JSON_PATH = os.path.join("./data", "diff_walmart_meats_db.json")
+CLEAN_JSON_PATH = os.path.join("./data", "walmart_meats_clean.json")
 
 
 def clean_brand(brand_raw):

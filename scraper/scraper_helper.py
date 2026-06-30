@@ -57,7 +57,7 @@ def extract_product_sku(html: str) -> str:
     return tile["data-dca-id"]
 
 
-def upc_to_url():
+def upc_to_url(start_index=0, n_scrapes=10):
     with open("./scraper/newly_scanned_upcs.txt", "r") as f:
         upc_list = [line.strip() for line in f.readlines()]
 
@@ -68,17 +68,27 @@ def upc_to_url():
     newly_scanned_urls = []
     subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
 
-    for upc in upc_list:
-        url = f"https://www.walmart.ca/en/search?q={upc}"
-        html = fetch_html(url)
-        sku = extract_product_sku(html)
-        if sku:
-            newly_scanned_urls.append(f"https://www.walmart.ca/ip/{sku}" + "\n")
-        time.sleep(20)
+    try:
+        for i in range(start_index, start_index + n_scrapes):
+            upc = upc_list[i]
+            url = f"https://www.walmart.ca/en/search?q={upc}"
+            print(f"Retreiving url: {url}")
+            html = fetch_html(url)
+            sku = extract_product_sku(html)
+            if sku:
+                newly_scanned_urls.append(f"https://www.walmart.ca/ip/{sku}" + "\n")
+            time.sleep(10)
+
+        print(
+            f"Scraping complete! Retrieved {n_scrapes} urls. Starting index can be incremented by {n_scrapes}."
+        )
+
+    except Exception as e:
+        print(f"Something went wrong. Error: {e} \n Restart next scrape at {i}.")
 
     # Write the converted URLs into newly_scanned_urls.txt
     with open("./scraper/newly_scanned_urls.txt", "a") as f:
-        f.writelines(newly_scanned_urls)
+        f.writelines(newly_scanned_urls[: i - start_index])
 
 
 # Function to extract product info in dictionary format from a Walmart view-source HTML string
@@ -298,9 +308,9 @@ def populate_walmart_db(batch_size=5, url_file="./scraper/unprocessed_urls.txt")
 
 if __name__ == "__main__":
 
-    upc_to_url()
-    add_newly_scanned_urls()
-    filter_unprocessed_urls()
-    for _ in range(1):
+    # upc_to_url(start_index=104, n_scrapes=7)
+    # add_newly_scanned_urls()
+    # filter_unprocessed_urls()
+    for _ in range(10):
         populate_walmart_db(batch_size=5)
         time.sleep(30)
