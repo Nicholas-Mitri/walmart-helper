@@ -32,7 +32,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/296/300/6000204296300.jpg",
     "url": "https://www.walmart.ca/en/ip/butterball-applewood-smoked-turkey-bacon/6000200225310",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Poultry",
     "subcategory": "bacon"
   },
   {
@@ -44,7 +44,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/779/104/6000203779104.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-all-beef-wieners/6000202619444",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog;wiener"
   },
   {
@@ -80,7 +80,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/370/778/6000198370778.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-red-hots-original-hot-dogs/6000197818681",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -116,7 +116,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/018/394/6310018394.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-all-beef-hot-dogs/6000191268863",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -128,7 +128,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/455/6000206501455.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-original-hot-dogs/6000197818639",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -176,7 +176,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/688/150/6000207688150.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-double-smoked-thick-cut-bacon/6000207549590",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -236,7 +236,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/735/610/6000205735610.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-bbq-hot-dogs/6000199367105",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -249,7 +249,7 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-mild-italian-ground-sausage-meat/6000198391269",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "ground;sausage;meatball"
+    "subcategory": "ground;sausage"
   },
   {
     "sku": "6000208910453",
@@ -320,20 +320,8 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/482/614/6000209482614.jpg",
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-sojuk-mild/450246JOOIO0",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog;sojuk"
-  },
-  {
-    "sku": "41DCQ2LHS0MX",
-    "upc": "840472031269",
-    "name": "Sliced Lamb Rolls, Net Weight 340g",
-    "brand": "master wang",
-    "description": "Sliced lamb rolls for hot pot, pan fry and barbecue.",
-    "image_url": "https://i5.walmartimages.com/asr/ed85e1c0-5cf6-4224-8923-02d67ba6da41.8087c4ac66f39c35cf0dcd9bf34e05ea.jpeg",
-    "url": "https://www.walmart.ca/en/ip/Sliced-Lamb-Rolls/41DCQ2LHS0MX",
-    "food_condition": "Frozen",
-    "category": "Raw Beef",
-    "subcategory": "lamb;steak"
   },
   {
     "sku": "6000200218916",
@@ -344,7 +332,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/990/057/6000202990057.jpg",
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-spicy-supreme-chicken-frankfurters/6000200218916",
     "food_condition": "Frozen",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "frankfurters"
   },
   {
@@ -464,7 +452,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/496/6000206501496.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-red-hots-original-hot-dogs-party-size/6000197817763",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -524,8 +512,8 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/965/223/6000199965223.jpg",
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-original-chicken-wieners/10211078",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
-    "subcategory": "hot dog;wiener"
+    "category": "Ready to eat",
+    "subcategory": "wiener"
   },
   {
     "sku": "5ZNK7UZUJBXG",
@@ -596,7 +584,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/577/449/6000206577449.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-boneless-pork-chops-center-and-rib-end/6000206120119",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak"
   },
   {
@@ -704,7 +692,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/965/474/6000199965474.jpg",
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-juicy-supreme-frankfurters/6000197829469",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "frankfurters"
   },
   {
@@ -728,7 +716,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/923/945/6000207923945.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-chicken-wieners-value-size/6000207312855",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "wiener"
   },
   {
@@ -800,7 +788,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/110/389/6000198110389.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-hickory-smoked-classic-cut-bacon/6000193606707",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -932,7 +920,7 @@
     "image_url": "https://i5.walmartimages.com/asr/34b618b7-a791-4fb8-9ded-de28ba59aa23.a8d8333154e382fe5ccd468f7f51519c.jpeg",
     "url": "https://www.walmart.ca/en/ip/Schneiders-Hot-Rod-Sausage-Snacks-Original-Flavour-8-Gram-Stics/10065487",
     "food_condition": null,
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "sausage"
   },
   {
@@ -944,7 +932,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/577/458/6000206577458.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-fast-fry-pork-chops-raised-without-antibiotics/6000206120975",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak"
   },
   {
@@ -1052,7 +1040,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/577/476/6000206577476.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-bone-in-pork-chops-and-center-combo-raised-without-antibiotics/6000206120144",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak"
   },
   {
@@ -1172,20 +1160,8 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/207/694/6000200207694.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-lodge-farms-ultimate-chicken-frankfurters/10211987",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "frankfurters"
-  },
-  {
-    "sku": "6000202800068",
-    "upc": "627907100055",
-    "name": "Marcangelo Pork Sausages With Rapini and Parmigiano Reggiano Cheese, 678 g",
-    "brand": "marcangelo",
-    "description": "Load up on Marcangelo Pork Sausages With Rapini and Parmigiano Reggiano Cheese for fast and delicious meals any night of the week. Toss ’em on the grill or fry ’em on the stove. Try them in casseroles, pastas and sheet pan dishes, too.",
-    "image_url": "https://i5.walmartimages.com/asr/6399f310-a70a-4f40-9fc3-dde55248fdf7.89eda314f318b9c42df76065a1f0bea4.jpeg",
-    "url": "https://www.walmart.ca/en/ip/Marcangelo-Pork-Sausages-With-Rapini-and-Parmigiano-Reggiano-Cheese/6000202800068",
-    "food_condition": "Frozen",
-    "category": "Raw Pork",
-    "subcategory": "sausage"
   },
   {
     "sku": "6000199125461",
@@ -1280,7 +1256,7 @@
     "image_url": "https://i5.walmartimages.com/asr/410aa7bc-5e7c-4ab2-a946-e3c55ce3e223.8a66c5db9013120f4086570365b27697.jpeg",
     "url": "https://www.walmart.ca/en/ip/Great-Value-Real-Bacon-Crumble/6000197398943",
     "food_condition": "Shelf-Stable",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "bacon"
   },
   {
@@ -1292,7 +1268,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/800/663/6000201800663.jpg",
     "url": "https://www.walmart.ca/en/ip/butchers-selection-stampede-hotdog/6000201648566",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -1316,7 +1292,7 @@
     "image_url": "https://i5.walmartimages.com/asr/45ec91bb-c62d-4288-b389-2d5cb8fd96bf.22724a8a39fa492dcfe92813562eaa9a.jpeg",
     "url": "https://www.walmart.ca/en/ip/Siwin-Frozen-Taiwanese-Style-Garlic-Pork-Sausage/61DNATKQJBTS",
     "food_condition": null,
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "sausage"
   },
   {
@@ -1388,7 +1364,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/290/870/6000204290870.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-reduced-sodium-naturally-smoked-bacon/6000191272199",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -1424,7 +1400,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/182/878/6000204182878.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-applewood-flavoured-naturally-smoked-bacon/6000197917343",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -1480,7 +1456,7 @@
     "upc": "627735014241",
     "name": "Ground Beef and Pork Lean Tube, Your Fresh Market, 454 g",
     "brand": "your fresh market",
-    "description": "The perfect blend of Canadian lean ground beef and Canadian pork, Your Fresh Market meats are always fresh&nbsp;and never frozen. A unique mixture lending a firm yet juicy result to popular dishes with two delicious meats in one package. This beef and pork blend is ready to be used in all your burger recipes and is a delicious protein for hearty chili dishes and a flavorful blend for meatloaf that won't dry out after generous cooking times. Grab today and start cooking!",
+    "description": "The perfect blend of Canadian lean ground beef and Canadian pork, Your Fresh Market meats are always fresh and never frozen. A unique mixture lending a firm yet juicy result to popular dishes with two delicious meats in one package. This beef and pork blend is ready to be used in all your burger recipes and is a delicious protein for hearty chili dishes and a flavorful blend for meatloaf that won't dry out after generous cooking times. Grab today and start cooking!",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/069/863/6000202069863.jpg",
     "url": "https://www.walmart.ca/en/ip/ground-beef-and-pork-lean-tube-your-fresh-market/6000201895457",
     "food_condition": "Refrigerate",
@@ -1508,7 +1484,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/500/6000206501500.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-hickory-smoked-50-less-salt-bacon/6000199127143",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -1628,7 +1604,7 @@
     "image_url": "https://i5.walmartimages.ca/asr/365415b4-ba8d-4155-949c-4a0ffe61cde4.1c3b9a83b79af018cd79a3b4c06a301e.jpeg",
     "url": "https://www.walmart.ca/en/ip/Schneiders-Juicy-Jumbos-Loaded-Cheddar-Hot-Dogs/3QMM67EFBA6F",
     "food_condition": "Refrigerated",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -1676,7 +1652,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/011/585/6310011585.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-all-beef-hot-dogs/6000191268858",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -1700,7 +1676,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/577/473/6000206577473.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-bone-in-pork-chops-and-center-combo/6000206120176",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak"
   },
   {
@@ -1748,7 +1724,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/218/903/6000204218903.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-thick-sliced-naturally-smoked-bacon/6000192233216",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -1814,7 +1790,7 @@
   {
     "sku": "4Y65LMMGKHNQ",
     "upc": "627907121692",
-    "name": "BLACK RIVER Pork Carnita Pork Shoulder Portion&nbsp;, 2pieces x 600g=1.2kg per unit, frozen box, 6 units in a case, 1.2kg / 2 x 600g / 6 count",
+    "name": "BLACK RIVER Pork Carnita Pork Shoulder Portion, 2pieces x 600g=1.2kg per unit, frozen box, 6 units in a case, 1.2kg / 2 x 600g / 6 count",
     "brand": "black river",
     "description": "Juicy pork chops coated in a smoky BBQ seasoning that delivers bold, crowd-pleasing flavor with minimal effort. Ready for grill, pan, or oven, they cook up tender and savory with that classic barbecue finish everyone loves",
     "image_url": "https://i5.walmartimages.com/asr/2041c2fd-1cb7-429d-bcd4-77222d9d9696.493cf13ffb76d28b2c2b36ebccdada9c.jpeg",
@@ -1952,7 +1928,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/481/6000206501481.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-original-hot-dogs/6000191270025",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -2084,7 +2060,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/020/785/627735020785.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-original-wieners/6000202626227",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog;wiener"
   },
   {
@@ -2120,7 +2096,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/020/471/627735020471.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-chicken-wieners/6000202626224",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "wiener"
   },
   {
@@ -2136,30 +2112,6 @@
     "subcategory": "marinated;kebab;whole"
   },
   {
-    "sku": "1ISG5NVNNL8S",
-    "upc": "627735258409",
-    "name": "Great Value Barbecue Pork Back Ribs, 680 g",
-    "brand": "great value",
-    "description": "Get luscious, mouthwatering ribs onto your dinner plate in under 20 minutes! You can do it, with Great Value Barbecue Pork Back Ribs. Once thawed, our pre-seasoned, pre-cooked ribs need just 15 minutes on the grill to bring out their smoky BBQ flavour and fall-off-the-bone tenderness. Pair ’em with classic sides like coleslaw, potatoes and corn on the cob for an easy weeknight meal the whole gang will love. <br><br>The Great Value brand strives to provide Canadian families everyday value that does not compromise on quality. All of our Great Value products come with a 100% satisfaction guarantee, or your money back. With Great Value, you can feel confident that you are making a great choice!",
-    "image_url": "https://i5.walmartimages.com/asr/82f95915-84cb-4f70-85d8-c39e7efed5e4.ada487d7c3f1f5404fb800c16d21f940.jpeg",
-    "url": "https://www.walmart.ca/en/ip/Great-Value-Barbecue-Pork-Back-Ribs/1ISG5NVNNL8S",
-    "food_condition": "Frozen",
-    "category": "Raw Pork",
-    "subcategory": "rib"
-  },
-  {
-    "sku": "6000206759133",
-    "upc": "628347901387",
-    "name": "Siwin Taiwanese Style Pork Sausage, Taiwanese Sausage",
-    "brand": "siwin",
-    "description": "Taiwanese sausage is one of the most popular foods in Taiwan. Siwin Taiwanese Sausages are fully cooked. They are made in Canada while maintaining the authenticity. The sausages contain chunks of pork, which makes them even more chewy. They are juicier and have a sweeter taste than other sausages. Siwin Taiwanese Sausage is perfect for grilling, sautéing vegetables or rice, or many other occasions.",
-    "image_url": "https://i5.walmartimages.com/asr/c7d13e6d-84a6-4b40-a88e-88144594ac05.6be45fba4e83a8fb663fcce76478eeb4.jpeg",
-    "url": "https://www.walmart.ca/en/ip/Siwin-Taiwanese-Style-Pork-Sausage/6000206759133",
-    "food_condition": "Frozen",
-    "category": "Raw Pork",
-    "subcategory": "sausage"
-  },
-  {
     "sku": "6000197396710",
     "upc": "628915408898",
     "name": "Great Value Real Bacon Crumble",
@@ -2168,7 +2120,7 @@
     "image_url": "https://i5.walmartimages.com/asr/f25e3c05-5b72-4ed1-a96d-bce306f19275.fa7242cf89241d71db2358529ffb33a3.jpeg",
     "url": "https://www.walmart.ca/en/ip/Great-Value-Real-Bacon-Crumble/6000197396710",
     "food_condition": "Shelf-Stable",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "bacon"
   },
   {
@@ -2492,7 +2444,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/329/304/6000209329304.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-raised-without-antibiotics-boneless-pork-loin-centre-and-rib-chops/5A7MOHMX3VKP",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak;loin"
   },
   {
@@ -2500,7 +2452,7 @@
     "upc": "37600312295",
     "name": "Hormel Real Bacon Crumble",
     "brand": "hormel",
-    "description": "<p>Hormel bacon crumble 567g</p>",
+    "description": "Hormel bacon crumble 567g",
     "image_url": "https://i5.walmartimages.com/asr/74e42d52-0173-4de7-aa63-d004c66842f3.a195f4eca8a1730810af75c16a0daf40.jpeg",
     "url": "https://www.walmart.ca/en/ip/Hormel-Real-Bacon-Crumble/10243761",
     "food_condition": "Shelf-Stable",
@@ -2528,7 +2480,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/442/6000206501442.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-original-hot-dogs-family-size/10243898",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dogs"
   },
   {
@@ -2552,7 +2504,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/750/462/6000200750462.jpg",
     "url": "https://www.walmart.ca/en/ip/deli-express-bacon-pak-of-3/6000197178564",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -2588,7 +2540,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/423/158/6000203423158.jpg",
     "url": "https://www.walmart.ca/en/ip/spicy-ultimate-chicken-frankfurters/6000203323344",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "frankfurters"
   },
   {
@@ -2624,7 +2576,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/328/853/6000209328853.jpg",
     "url": "https://www.walmart.ca/en/ip/maple-leaf-boneless-pork-loin-centre-and-rib-chops/47O4DQO61CPA",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "steak;loin"
   },
   {
@@ -2636,7 +2588,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/020/808/627735020808.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-original-wieners/6000202618655",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "wiener"
   },
   {
@@ -2674,18 +2626,6 @@
     "food_condition": "Shelf",
     "category": "Raw Beef",
     "subcategory": "steak"
-  },
-  {
-    "sku": "6000201287706",
-    "upc": "627907093982",
-    "name": "Marcangelo Sweet Italian Style Pork Sausages, 675 g",
-    "brand": "marcangelo",
-    "description": "Made with the leanest cuts of meats, Marcangelo Sweet Italian Sausages are flavoured with the perfect blend of spices for the most&nbsp;authentic Italian taste.&nbsp;Certified gluten-free, these delicious sausages are the perfect addition to your favourite grilling&nbsp;meals. Pair with a side, enjoy on a bun or add to an Italian style pasta dish, these sausages pack&nbsp;24 grams of protein and are versatile, juicy and tasty. Add these sweet Italian Sausages&nbsp;to your go-to recipes.",
-    "image_url": "https://i5.walmartimages.com/asr/4062f9ba-f7f8-43c8-9e75-8534cbfdd57f.f8349cc8a799ea755eeffd34ca5038d3.jpeg",
-    "url": "https://www.walmart.ca/en/ip/Marcangelo-Sweet-Italian-Style-Pork-Sausages/6000201287706",
-    "food_condition": "Frozen",
-    "category": "Raw Pork",
-    "subcategory": "sausage"
   },
   {
     "sku": "6000199159740",
@@ -2780,7 +2720,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/182/876/6000204182876.jpg",
     "url": "https://www.walmart.ca/en/ip/great-value-naturally-smoked-bacon/6000191272205",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Pork",
     "subcategory": "bacon"
   },
   {
@@ -2804,7 +2744,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/501/487/6000206501487.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-original-hot-dogs-family-pack/6000196684910",
     "food_condition": "Refrigerate",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -2876,7 +2816,7 @@
     "image_url": "https://i5.walmartimages.com/asr/b0fa239e-9c10-4805-a4ca-861e26aff0d6.2c0c00343ecb0ccbf48b656fcba397bc.jpeg",
     "url": "https://www.walmart.ca/en/ip/Schneiders-Juicy-Jumbos-Loaded-Bacon-Cheddar-Hot-Dogs/4S9J3JZBLCWX",
     "food_condition": null,
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "bacon;hot dog"
   },
   {
@@ -2948,7 +2888,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/482/469/6000209482469.jpg",
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-sojuk-hot/64MUOBWFO7T0",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog;sojuk"
   },
   {
@@ -2960,7 +2900,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/110/376/6000198110376.jpg",
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-all-beef-hot-dogs-family-pack/6000197817566",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Ready to eat",
     "subcategory": "hot dog"
   },
   {
@@ -3476,7 +3416,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/033/702/6000200033702.jpg",
     "url": "https://www.walmart.ca/en/ip/stewing-beef-cubes-your-fresh-market/6000193605427",
     "food_condition": "Refrigerate",
-    "category": "Ready to eat",
+    "category": "Raw Beef",
     "subcategory": "Other"
   },
   {
@@ -3644,7 +3584,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/830/048/6000209830048.jpg",
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-chicken-tikka-masala-with-rice/61B374HUPILF",
     "food_condition": "Refrigerate",
-    "category": "Raw Poultry",
+    "category": "Ready to eat",
     "subcategory": "Other"
   },
   {
