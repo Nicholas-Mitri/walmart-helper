@@ -944,12 +944,21 @@ function hideOverlay(id) {
 // ─── UPC matching (shared across scanners) ────────────────────────────────────
 
 function normalizeUpc(upc) {
-  const stripped = upc.replace(/^0/, "");
+  const stripped = upc.replace(/^1/, "").replace(/^0/, "").slice(0, -1);
   return stripped[0] === "2" ? stripped.substring(0, 6) : stripped;
 }
 
 function findProductByUpc(upc) {
   const normalized = normalizeUpc(upc);
+  console.log("Looking for:", normalized);
+  console.log(
+    "Map entries:",
+    Object.entries(PRODUCTS_MAP).map(([k, v]) => ({
+      sku: k,
+      raw: v.upc,
+      normalized: v.upc ? normalizeUpc(v.upc) : null,
+    })),
+  );
   const entry = Object.entries(PRODUCTS_MAP).find(
     ([, info]) => info.upc && normalizeUpc(info.upc) === normalized,
   );
@@ -983,7 +992,12 @@ function openScanner() {
         constraints: { facingMode: "environment" },
       },
       decoder: {
-        readers: ["upc_reader", "code_128_reader"],
+        readers: [
+          "upc_reader",
+          "code_128_reader",
+          "i2of5_reader",
+          "ean_reader",
+        ],
       },
     },
     (err) => {
@@ -999,30 +1013,27 @@ function openScanner() {
 
   _scannerDetectedHandler = (data) => {
     if (data.codeResult.startInfo.error > 0.1) return;
-    const upc = data.codeResult.code.replace(/^0/, "");
-    _detectionCounts[upc] = (_detectionCounts[upc] || 0) + 1;
-    if (_detectionCounts[upc] >= 3) {
+    const raw = data.codeResult.code;
+    _detectionCounts[raw] = (_detectionCounts[raw] || 0) + 1;
+    if (_detectionCounts[raw] >= 3) {
+      const upc = normalizeUpc(raw);
       closeScanner();
-      const input = document.getElementById("search-input");
-      input.value = upc;
-      document.getElementById("search-clear").classList.remove("hidden");
-      applyFilters();
-      const visibleCards = [
-        ...document.querySelectorAll(".product-card"),
-      ].filter((card) => card.style.display !== "none");
-      if (visibleCards.length === 0) {
+      const productEntry = findProductByUpc(raw);
+      if (!productEntry) {
         openUnknownUpcModal(upc);
       } else {
+        const [, productInfo] = productEntry;
+        const input = document.getElementById("search-input");
+        input.value = upc;
+        document.getElementById("search-clear").classList.remove("hidden");
+        applyFilters();
         showToast(`Scanned: ${upc}`);
-        if (visibleCards.length === 1) {
-          const card = visibleCards[0];
-          openActionSheet(
-            card.dataset.productId,
-            card.dataset.displayName,
-            PRODUCTS_MAP[card.dataset.sku]?.image_url || "",
-            PRODUCTS_MAP[card.dataset.sku]?.upc || "",
-          );
-        }
+        openActionSheet(
+          productInfo.id,
+          productInfo.name,
+          productInfo.image_url || "",
+          productInfo.upc || "",
+        );
       }
     }
   };
@@ -1065,7 +1076,7 @@ function openPickScanner() {
         target: document.getElementById("pick-scanner-video"),
         constraints: { facingMode: "environment" },
       },
-      decoder: { readers: ["upc_reader", "code_128_reader"] },
+      decoder: { readers: ["upc_reader", "code_128_reader", "i2of5_reader"] },
     },
     (err) => {
       if (err) {
@@ -1079,7 +1090,7 @@ function openPickScanner() {
 
   _pickScannerDetectedHandler = (data) => {
     if (!_pickScannerRunning || _pickScanCooldown) return;
-    const raw = data.codeResult.code.replace(/^0/, "");
+    const raw = data.codeResult.code;
     _pickDetectionCounts[raw] = (_pickDetectionCounts[raw] || 0) + 1;
     if (_pickDetectionCounts[raw] >= 3) {
       _pickScanCooldown = true;
@@ -1158,7 +1169,7 @@ function openPickAddScanner() {
         target: document.getElementById("pick-add-scanner-video"),
         constraints: { facingMode: "environment" },
       },
-      decoder: { readers: ["upc_reader", "code_128_reader"] },
+      decoder: { readers: ["upc_reader", "code_128_reader", "i2of5_reader"] },
     },
     (err) => {
       if (err) {
@@ -1172,7 +1183,7 @@ function openPickAddScanner() {
 
   _pickAddScannerDetectedHandler = (data) => {
     if (!_pickAddScannerRunning || _pickAddScanCooldown) return;
-    const raw = data.codeResult.code.replace(/^0/, "");
+    const raw = data.codeResult.code;
     _pickAddDetectionCounts[raw] = (_pickAddDetectionCounts[raw] || 0) + 1;
     if (_pickAddDetectionCounts[raw] >= 3) {
       _pickAddScanCooldown = true;
