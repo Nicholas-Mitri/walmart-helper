@@ -945,9 +945,11 @@ function hideOverlay(id) {
 // ─── UPC matching (shared across scanners) ────────────────────────────────────
 
 function normalizeUpc(upc) {
-  if (upc.startsWith("400")) return upc.slice(3, -1); // WIN code, return without the 400
-  const stripped = upc.replace(/^1/, "").replace(/^0/, "").slice(0, -1);
-  return stripped[0] === "2" ? stripped.substring(0, 6) : stripped;
+  // Handles certain UPC formats (including WIN codes, or possibly for codes starting with 7)
+  if (upc.startsWith("400")) return upc.slice(3, 10); // Remove 400 prefix and final check digit
+  if (upc.startsWith("6") || upc.startsWith("7")) return upc.slice(0, 11); // Remove last digit for '6' or '7' prefixed codes
+  if (upc.startsWith("2")) return upc.slice(0, 6);
+  return upc.replace(/^1/, "").replace(/^0/, "").substring(0, 11);
 }
 
 function findProductByUpc(upc) {
@@ -1024,7 +1026,7 @@ function openScanner() {
       } else {
         const [, productInfo] = productEntry;
         const input = document.getElementById("search-input");
-        input.value = upc;
+        input.value = normalizeUpc(upc);
         document.getElementById("search-clear").classList.remove("hidden");
         applyFilters();
         showToast(`Scanned: ${upc}`);
