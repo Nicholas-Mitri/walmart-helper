@@ -139,6 +139,7 @@ function applyFilters() {
       !query ||
       card.dataset.name.toLowerCase().includes(query) ||
       card.dataset.upc.toLowerCase().includes(query) ||
+      card.dataset.win.toLowerCase().includes(query) ||
       card.dataset.brand.toLowerCase().includes(query);
     const show = matchCategory && matchSearch;
     card.style.display = show ? "" : "none";
@@ -944,23 +945,25 @@ function hideOverlay(id) {
 // ─── UPC matching (shared across scanners) ────────────────────────────────────
 
 function normalizeUpc(upc) {
+  if (upc.startsWith("400")) return upc.slice(3, -1); // WIN code, return without the 400
   const stripped = upc.replace(/^1/, "").replace(/^0/, "").slice(0, -1);
   return stripped[0] === "2" ? stripped.substring(0, 6) : stripped;
 }
 
 function findProductByUpc(upc) {
   const normalized = normalizeUpc(upc);
-  console.log("Looking for:", normalized);
-  console.log(
-    "Map entries:",
-    Object.entries(PRODUCTS_MAP).map(([k, v]) => ({
-      sku: k,
-      raw: v.upc,
-      normalized: v.upc ? normalizeUpc(v.upc) : null,
-    })),
-  );
+  console.log("Looking UPC for:", upc, normalized);
   const entry = Object.entries(PRODUCTS_MAP).find(
     ([, info]) => info.upc && normalizeUpc(info.upc) === normalized,
+  );
+  return entry || null;
+}
+
+function findProductByWin(upc) {
+  const normalized = normalizeUpc(upc);
+  console.log("Looking WIN for:", upc, normalized);
+  const entry = Object.entries(PRODUCTS_MAP).find(
+    ([, info]) => info.win && info.win === normalized,
   );
   return entry || null;
 }
@@ -992,12 +995,7 @@ function openScanner() {
         constraints: { facingMode: "environment" },
       },
       decoder: {
-        readers: [
-          "upc_reader",
-          "code_128_reader",
-          "i2of5_reader",
-          "ean_reader",
-        ],
+        readers: ["upc_reader", "code_128_reader"],
       },
     },
     (err) => {
@@ -1016,9 +1014,11 @@ function openScanner() {
     const raw = data.codeResult.code;
     _detectionCounts[raw] = (_detectionCounts[raw] || 0) + 1;
     if (_detectionCounts[raw] >= 3) {
-      const upc = normalizeUpc(raw);
+      const upc = raw;
       closeScanner();
-      const productEntry = findProductByUpc(raw);
+      const productEntry = raw.startsWith("400")
+        ? findProductByWin(raw)
+        : findProductByUpc(raw);
       if (!productEntry) {
         openUnknownUpcModal(upc);
       } else {
@@ -1076,7 +1076,7 @@ function openPickScanner() {
         target: document.getElementById("pick-scanner-video"),
         constraints: { facingMode: "environment" },
       },
-      decoder: { readers: ["upc_reader", "code_128_reader", "i2of5_reader"] },
+      decoder: { readers: ["upc_reader", "code_128_reader"] },
     },
     (err) => {
       if (err) {
@@ -1169,7 +1169,7 @@ function openPickAddScanner() {
         target: document.getElementById("pick-add-scanner-video"),
         constraints: { facingMode: "environment" },
       },
-      decoder: { readers: ["upc_reader", "code_128_reader", "i2of5_reader"] },
+      decoder: { readers: ["upc_reader", "code_128_reader"] },
     },
     (err) => {
       if (err) {

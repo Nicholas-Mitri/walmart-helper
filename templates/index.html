@@ -13,6 +13,7 @@
       data-brand="{{ product.brand }}"
       data-product-id="{{ product.id }}"
       data-upc="{{ product.upc or '' }}"
+      data-win="{{ product.win or '' }}"
       data-name="{{ product.name | lower }}"
       data-category="{{ product.category or 'All' }}"
       data-display-name="{{ product.name }}"
@@ -90,6 +91,7 @@
     image_url: {{ (product.image_url or '') | tojson | safe }},
     upc: {{ (product.upc or '') | tojson | safe }},
     category: {{ (product.category or '') | tojson | safe }},
+    win: {{ (product.win or '') | tojson | safe }},
   };
   {% endfor %}
 

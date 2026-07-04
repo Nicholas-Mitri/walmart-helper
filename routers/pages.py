@@ -25,6 +25,7 @@ def index(request: Request, db: Session = Depends(get_db)):
             "id": p.id,
             "product_id": p.product_id,
             "sku": p.product.sku,
+            "win": p.product.win,
             "name": p.product.name,
             "brand": p.product.brand or "",
             "image_url": p.product.image_url or "",
