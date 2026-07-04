@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-CLEAN_JSON_PATH = os.path.join("data", "walmart_meats_clean_final.json")
+CLEAN_JSON_PATH = os.path.join("data", "walmart_meats_clean_final_w_WIN.json")
 
 # Database Configuration
 # Swap these placeholders out with your local environment credentials
@@ -42,10 +42,10 @@ def seed_products_table():
         insert_query = """
             INSERT INTO products (
                 sku, upc, name, brand, description,
-                image_url, url, food_condition, category, subcategory
+                image_url, url, food_condition, category, subcategory, win
             ) VALUES (
                 %(sku)s, %(upc)s, %(name)s, %(brand)s, %(description)s,
-                %(image_url)s, %(url)s, %(food_condition)s, %(category)s, %(subcategory)s
+                %(image_url)s, %(url)s, %(food_condition)s, %(category)s, %(subcategory)s, %(win)s
             )
             ON DUPLICATE KEY UPDATE
                 name = VALUES(name),
@@ -56,7 +56,8 @@ def seed_products_table():
                 url = VALUES(url),
                 food_condition = VALUES(food_condition),
                 category = VALUES(category),
-                subcategory = VALUES(subcategory)
+                subcategory = VALUES(subcategory),
+                win = VALUES(win)
         """
 
         # 4. Execute bulk operation safely inside a transaction

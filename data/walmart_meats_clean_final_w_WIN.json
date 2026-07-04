@@ -9,7 +9,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-less-salt-bacon/6000187092299",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30897891"
   },
   {
     "sku": "6000200224642",
@@ -21,7 +22,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-chicken-leg-quarters/6000200224642",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "leg"
+    "subcategory": "leg",
+    "win": "30148922"
   },
   {
     "sku": "6000200225310",
@@ -33,7 +35,8 @@
     "url": "https://www.walmart.ca/en/ip/butterball-applewood-smoked-turkey-bacon/6000200225310",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30146493"
   },
   {
     "sku": "6000202619444",
@@ -45,7 +48,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-all-beef-wieners/6000202619444",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog;wiener"
+    "subcategory": "hot dog;wiener",
+    "win": "30807644"
   },
   {
     "sku": "22JL85P9SNDT",
@@ -57,7 +61,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-kansas-city-style-bbq-chicken-breast-portions/22JL85P9SNDT",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;kebab"
+    "subcategory": "marinated;breast;kebab",
+    "win": "50984247"
   },
   {
     "sku": "6000203880047",
@@ -69,7 +74,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-tilapia-fillets/6000203880047",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "tilapia;salmon"
+    "subcategory": "tilapia;salmon",
+    "win": "31237984"
   },
   {
     "sku": "6000197818681",
@@ -81,7 +87,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-red-hots-original-hot-dogs/6000197818681",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "31495504"
   },
   {
     "sku": "6000198390476",
@@ -93,7 +100,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-maple-breakfast-sausage-links/6000198390476",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31556376"
   },
   {
     "sku": "6000196142944",
@@ -105,7 +113,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-extra-thick-cut-bacon/6000196142944",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30262857"
   },
   {
     "sku": "6000191268863",
@@ -117,7 +126,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-all-beef-hot-dogs/6000191268863",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "30294236"
   },
   {
     "sku": "6000197818639",
@@ -129,7 +139,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-original-hot-dogs/6000197818639",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "31495501"
   },
   {
     "sku": "10243782",
@@ -141,7 +152,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-extra-lean-ground-chicken-raised-without-antibiotics/10243782",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground"
+    "subcategory": "ground",
+    "win": "30361316"
   },
   {
     "sku": "6000200219175",
@@ -153,7 +165,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-chicken-drumsticks/6000200219175",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "drumstick"
+    "subcategory": "drumstick",
+    "win": "30096145"
   },
   {
     "sku": "6000200224402",
@@ -165,7 +178,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-chicken-thighs-value-pack/6000200224402",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "thigh"
+    "subcategory": "thigh",
+    "win": "30148919"
   },
   {
     "sku": "6000207549590",
@@ -177,7 +191,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-double-smoked-thick-cut-bacon/6000207549590",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "50440997"
   },
   {
     "sku": "6000196028054",
@@ -189,7 +204,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-bone-in-chicken-thighs-raised-without-antibiotics/6000196028054",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "31081254"
   },
   {
     "sku": "6000203879906",
@@ -201,7 +217,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-rainbow-trout-fillet/6000203879906",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "trout"
+    "subcategory": "trout",
+    "win": "31237972"
   },
   {
     "sku": "6000191272122",
@@ -213,7 +230,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-lean-ground-chicken/6000191272122",
     "food_condition": "Refrigerate",
     "category": "Raw Chicken",
-    "subcategory": "ground"
+    "subcategory": "ground",
+    "win": "30648493"
   },
   {
     "sku": "6000197506370",
@@ -225,7 +243,8 @@
     "url": "https://www.walmart.ca/en/ip/inside-blade-beef-roast-your-fresh-market/6000197506370",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast"
+    "subcategory": "roast",
+    "win": "30512735"
   },
   {
     "sku": "6000199367105",
@@ -237,7 +256,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-bbq-hot-dogs/6000199367105",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "30688686"
   },
   {
     "sku": "6000198391269",
@@ -249,7 +269,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-mild-italian-ground-sausage-meat/6000198391269",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "ground;sausage"
+    "subcategory": "ground;sausage",
+    "win": "31556378"
   },
   {
     "sku": "6000208910453",
@@ -261,19 +282,21 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-kansas-city-style-bbq-chicken-breast-skewers/6000208910453",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast;skewer"
+    "subcategory": "breast;skewer",
+    "win": "50712263"
   },
   {
     "sku": "6OW2Z7V81QAT",
     "upc": "69401000125",
     "name": "Grillwurst Sausage, High Protein, Wood‑Smoked Pork Sausage",
     "brand": "piller's",
-    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—ncluding sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Savour the hearty, smoky flavour of Piller's Grillwurst Sausages—crafted for those who appreciate a classic sausage with a satisfying bite. Each bun‑length sausage is naturally wood‑smoked to enhance its rich, savoury notes, making it an ideal choice for grilling season or everyday meals. High in protein and free from all major food allergens, they are gluten‑free and MSG‑free, offering a bold, flavour‑packed option everyone can enjoy.",
+    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—including sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Savour the hearty, smoky flavour of Piller's Grillwurst Sausages—crafted for those who appreciate a classic sausage with a satisfying bite. Each bun‑length sausage is naturally wood‑smoked to enhance its rich, savoury notes, making it an ideal choice for grilling season or everyday meals. High in protein and free from all major food allergens, they are gluten‑free and MSG‑free, offering a bold, flavour‑packed option everyone can enjoy.",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/707/862/6000209707862.jpg",
     "url": "https://www.walmart.ca/en/ip/grillwurst-sausage-high-protein/6OW2Z7V81QAT",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50842591"
   },
   {
     "sku": "6000197471947",
@@ -285,7 +308,8 @@
     "url": "https://www.walmart.ca/en/ip/fletchers-fresh-pork-split-side-ribs/6000197471947",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "30794606"
   },
   {
     "sku": "6000208678165",
@@ -297,7 +321,8 @@
     "url": "https://www.walmart.ca/en/ip/extra-lean-ground-chicken-raised-on-canadian-farms/6000208678165",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground"
+    "subcategory": "ground",
+    "win": "50659810"
   },
   {
     "sku": "1PD18NR9W84X",
@@ -309,7 +334,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-barbecue-chicken-breast-skewers/1PD18NR9W84X",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;kebab;skewer"
+    "subcategory": "marinated;breast;kebab;skewer",
+    "win": "51018162"
   },
   {
     "sku": "450246JOOIO0",
@@ -321,7 +347,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-sojuk-mild/450246JOOIO0",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog;sojuk"
+    "subcategory": "hot dog;sojuk",
+    "win": "50850276"
   },
   {
     "sku": "6000200218916",
@@ -333,7 +360,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-spicy-supreme-chicken-frankfurters/6000200218916",
     "food_condition": "Frozen",
     "category": "Ready to eat",
-    "subcategory": "frankfurters"
+    "subcategory": "frankfurters",
+    "win": "30123425"
   },
   {
     "sku": "6000203875297",
@@ -345,7 +373,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-atlantic-salmon-portion/6000203875297",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;atlantic"
+    "subcategory": "salmon;atlantic",
+    "win": "31236718"
   },
   {
     "sku": "6000197178248",
@@ -357,7 +386,8 @@
     "url": "https://www.walmart.ca/en/ip/grimms-sizzlin-naturally-smoked-all-beef-smokies/6000197178248",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31394012"
   },
   {
     "sku": "6QHJ762VQ9VM",
@@ -369,7 +399,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-butter-chicken-marinated-fresh-meat/6QHJ762VQ9VM",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "51028583"
   },
   {
     "sku": "21NOV4K7LECN",
@@ -381,7 +412,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-split-chicken-wings/21NOV4K7LECN",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "51004545"
   },
   {
     "sku": "6000208252814",
@@ -393,7 +425,8 @@
     "url": "https://www.walmart.ca/en/ip/coho-salmon-portions-your-fresh-market/6000208252814",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;coho"
+    "subcategory": "salmon;coho",
+    "win": "50571637"
   },
   {
     "sku": "6000208909998",
@@ -405,7 +438,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-lemon-herb-coho-salmon-portions/6000208909998",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;coho"
+    "subcategory": "salmon;coho",
+    "win": "50712348"
   },
   {
     "sku": "1T2K8IRZK93W",
@@ -417,7 +451,8 @@
     "url": "https://www.walmart.ca/en/ip/our-promise-lamb-loin-chops/1T2K8IRZK93W",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "lamb;loin"
+    "subcategory": "lamb;loin",
+    "win": "50988032"
   },
   {
     "sku": "6000191981720",
@@ -429,7 +464,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-boneless-smoked-ham/6000191981720",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ham;smoked"
+    "subcategory": "ham;smoked",
+    "win": "30085829"
   },
   {
     "sku": "6KDM779N8KMD",
@@ -441,7 +477,8 @@
     "url": "https://www.walmart.ca/en/ip/aa-beef-boneless-blade-steak-023-063kg/6KDM779N8KMD",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50772504"
   },
   {
     "sku": "6000197817763",
@@ -453,7 +490,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-red-hots-original-hot-dogs-party-size/6000197817763",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "31495510"
   },
   {
     "sku": "6000189368543",
@@ -465,7 +503,8 @@
     "url": "https://www.walmart.ca/en/ip/harvest-meats-all-beef-wieners-gluten-free-naturally-smoked/6000189368543",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "9707014"
   },
   {
     "sku": "51S95NEK115W",
@@ -477,7 +516,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-boneless-skinless-chicken-breasts/51S95NEK115W",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053310"
   },
   {
     "sku": "1IAG5RL6IM9H",
@@ -489,7 +529,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-mild-jerk-chicken-breast-skewers/1IAG5RL6IM9H",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;kebab;skewer"
+    "subcategory": "marinated;breast;kebab;skewer",
+    "win": "50984244"
   },
   {
     "sku": "10221932",
@@ -501,7 +542,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-original-pork-breakfast-sausage/10221932",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30010550"
   },
   {
     "sku": "10211078",
@@ -513,7 +555,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-original-chicken-wieners/10211078",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "9710535"
   },
   {
     "sku": "5ZNK7UZUJBXG",
@@ -525,7 +568,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-sliced-boneless-skinless-chicken-breasts-raised-without-antibiotics/5ZNK7UZUJBXG",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053331"
   },
   {
     "sku": "2RVKHO8YV9ND",
@@ -537,7 +581,8 @@
     "url": "https://www.walmart.ca/en/ip/springvale-grass-fed-striploin-beef-steak/2RVKHO8YV9ND",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;striploin"
+    "subcategory": "steak;striploin",
+    "win": "51022074"
   },
   {
     "sku": "6000191270178",
@@ -549,7 +594,8 @@
     "url": "https://www.walmart.ca/en/ip/butterball-turkey-franks/6000191270178",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "9709394"
   },
   {
     "sku": "4O6SUBLCLWBL",
@@ -561,7 +607,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-basil-chicken-breast-marinated-fresh-meat/4O6SUBLCLWBL",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;kebab"
+    "subcategory": "marinated;breast;kebab",
+    "win": "51038487"
   },
   {
     "sku": "7KWTRPM7RY4G",
@@ -573,7 +620,8 @@
     "url": "https://www.walmart.ca/en/ip/our-promise-lamb-shoulder-chops/7KWTRPM7RY4G",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "lamb"
+    "subcategory": "lamb",
+    "win": "50988033"
   },
   {
     "sku": "6000206120119",
@@ -585,7 +633,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-boneless-pork-chops-center-and-rib-end/6000206120119",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50177842"
   },
   {
     "sku": "6000191270121",
@@ -597,7 +646,8 @@
     "url": "https://www.walmart.ca/en/ip/butterball-bacon-style-turkey/6000191270121",
     "food_condition": null,
     "category": "Raw Poultry",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "9709023"
   },
   {
     "sku": "6000202889396",
@@ -609,7 +659,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-fully-cooked-classic-italian-chicken-sausages/6000202889396",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31223924"
   },
   {
     "sku": "5E9NR0Y7RSBM",
@@ -621,7 +672,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-cajun-chicken-quarters-marinated-fresh-meat/5E9NR0Y7RSBM",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "50851156"
   },
   {
     "sku": "6000191276877",
@@ -633,7 +685,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-bone-in-pork-chops-sirloin-and-center-combo-pack/6000191276877",
     "food_condition": "Other",
     "category": "Raw Pork",
-    "subcategory": "sirloin;ribend;chops"
+    "subcategory": "sirloin;ribend;chops",
+    "win": "31105646"
   },
   {
     "sku": "4WGOHFGOI56D",
@@ -645,7 +698,8 @@
     "url": "https://www.walmart.ca/en/ip/springvale-grass-fed-lean-ground-beef/4WGOHFGOI56D",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "51044433"
   },
   {
     "sku": "5CGUJXIOO37A",
@@ -657,7 +711,8 @@
     "url": "https://www.walmart.ca/en/ip/our-promise-lean-ground-lamb/5CGUJXIOO37A",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "lamb;ground"
+    "subcategory": "lamb;ground",
+    "win": "50988035"
   },
   {
     "sku": "6000191275723",
@@ -669,7 +724,8 @@
     "url": "https://www.walmart.ca/en/ip/sirloin-tip-beef-steak-value-pack-your-fresh-market/6000191275723",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;sirloin"
+    "subcategory": "steak;sirloin",
+    "win": "31105635"
   },
   {
     "sku": "6000192230979",
@@ -681,7 +737,8 @@
     "url": "https://www.walmart.ca/en/ip/gv-fully-cooked-smked-bacon/6000192230979",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30193459"
   },
   {
     "sku": "6000197829469",
@@ -693,7 +750,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-juicy-supreme-frankfurters/6000197829469",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "frankfurters"
+    "subcategory": "frankfurters",
+    "win": "30146208"
   },
   {
     "sku": "6000200218222",
@@ -705,7 +763,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-bone-in-chicken-thighs/6000200218222",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "30096200"
   },
   {
     "sku": "6000207312855",
@@ -717,7 +776,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-chicken-wieners-value-size/6000207312855",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "50401260"
   },
   {
     "sku": "10O9DUKDLD7V",
@@ -729,7 +789,8 @@
     "url": "https://www.walmart.ca/en/ip/our-promise-striploin-steaks/10O9DUKDLD7V",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;striploin"
+    "subcategory": "steak;striploin",
+    "win": "50987588"
   },
   {
     "sku": "7CSWMML935Z5",
@@ -741,7 +802,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-boneless-skinless-chicken-breasts/7CSWMML935Z5",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053311"
   },
   {
     "sku": "6000196383923",
@@ -753,7 +815,8 @@
     "url": "https://www.walmart.ca/en/ip/aquamar-classic-leg-style-surimi-340g/6000196383923",
     "food_condition": "Refrigerate",
     "category": "Raw Fish",
-    "subcategory": "salmon"
+    "subcategory": "salmon",
+    "win": "30953525"
   },
   {
     "sku": "6000197999724",
@@ -765,7 +828,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-boneless-skinless-chicken-thighs-value-pack/6000197999724",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "31570025"
   },
   {
     "sku": "6000200224668",
@@ -777,7 +841,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-chicken-drumsticks-value-pack/6000200224668",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "drumstick"
+    "subcategory": "drumstick",
+    "win": "30148810"
   },
   {
     "sku": "6000193606707",
@@ -789,7 +854,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-hickory-smoked-classic-cut-bacon/6000193606707",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30897892"
   },
   {
     "sku": "5Z3F16VOOJC6",
@@ -801,7 +867,8 @@
     "url": "https://www.walmart.ca/en/ip/aa-boneless-rib-steak-015-0425kg/5Z3F16VOOJC6",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50772513"
   },
   {
     "sku": "6000198497376",
@@ -813,7 +880,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-sweet-sour-fresh-pork-side-ribs/6000198497376",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "31574470"
   },
   {
     "sku": "6000200885001",
@@ -825,7 +893,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-boneless-smoked-ham/6000200885001",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ham;smoked"
+    "subcategory": "ham;smoked",
+    "win": "30196061"
   },
   {
     "sku": "6000204161165",
@@ -837,7 +906,8 @@
     "url": "https://www.walmart.ca/en/ip/inside-round-sandwich-beef-steak-your-fresh-market/6000204161165",
     "food_condition": null,
     "category": "Raw Beef",
-    "subcategory": "steak;round"
+    "subcategory": "steak;round",
+    "win": "30220450"
   },
   {
     "sku": "49KMCT89PGBQ",
@@ -849,7 +919,8 @@
     "url": "https://www.walmart.ca/en/ip/aa-eye-of-round-025-058kg/49KMCT89PGBQ",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;round"
+    "subcategory": "steak;round",
+    "win": "50772523"
   },
   {
     "sku": "3M9S5XAB6E6C",
@@ -861,7 +932,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-mild-chicken-shawarma-marinated-fresh-meat/3M9S5XAB6E6C",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "50851149"
   },
   {
     "sku": "6000204638833",
@@ -873,7 +945,8 @@
     "url": "https://www.walmart.ca/en/ip/stewing-beef-cubes-your-fresh-market/6000204638833",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "cubes"
+    "subcategory": "cubes",
+    "win": "31304670"
   },
   {
     "sku": "17JMAKX0UFVZ",
@@ -885,7 +958,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-smokies-honey-garlic-smoked-sausage/17JMAKX0UFVZ",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31392052"
   },
   {
     "sku": "6000202798671",
@@ -897,7 +971,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-bacon-wrapped-beef-medallions/6000202798671",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "bacon;medallions"
+    "subcategory": "bacon;medallions",
+    "win": "31193105"
   },
   {
     "sku": "6000199127364",
@@ -909,7 +984,8 @@
     "url": "https://www.walmart.ca/en/ip/ground-beef-regular-tube-your-fresh-market/6000199127364",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball;tube"
+    "subcategory": "ground;meatball;tube",
+    "win": "31637355"
   },
   {
     "sku": "10065487",
@@ -921,7 +997,8 @@
     "url": "https://www.walmart.ca/en/ip/Schneiders-Hot-Rod-Sausage-Snacks-Original-Flavour-8-Gram-Stics/10065487",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "9292422"
   },
   {
     "sku": "6000206120975",
@@ -933,7 +1010,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-fast-fry-pork-chops-raised-without-antibiotics/6000206120975",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50177806"
   },
   {
     "sku": "6000187086112",
@@ -945,7 +1023,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-ready-crisp-fully-cooked-less-salt-natural-bacon-slices/6000187086112",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30491661"
   },
   {
     "sku": "34FZV9GRU6O1",
@@ -957,7 +1036,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-frankfurter/34FZV9GRU6O1",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "frankfurter"
+    "subcategory": "frankfurter",
+    "win": "50850307"
   },
   {
     "sku": "6000198331070",
@@ -969,7 +1049,8 @@
     "url": "https://www.walmart.ca/en/ip/lean-ground-beef-your-fresh-market/6000198331070",
     "food_condition": "Frozen",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30053574"
   },
   {
     "sku": "6000201828724",
@@ -981,7 +1062,8 @@
     "url": "https://www.walmart.ca/en/ip/extra-lean-ground-beef-your-fresh-market/6000201828724",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30910241"
   },
   {
     "sku": "6000191275822",
@@ -993,7 +1075,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-pork-back-ribs/6000191275822",
     "food_condition": "Other",
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "30351005"
   },
   {
     "sku": "10221248",
@@ -1005,7 +1088,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-honey-garlic-pork-dinner-sausage/10221248",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31319686"
   },
   {
     "sku": "10061048",
@@ -1017,7 +1101,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-ready-crisp-fully-cooked-natural-bacon-bits/10061048",
     "food_condition": "Shelf",
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "9708631"
   },
   {
     "sku": "1S6UN8B3ANOD",
@@ -1029,7 +1114,8 @@
     "url": "https://www.walmart.ca/en/ip/aa-striploin-steak-013-04kg/1S6UN8B3ANOD",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;striploin"
+    "subcategory": "steak;striploin",
+    "win": "50772502"
   },
   {
     "sku": "6000206120144",
@@ -1041,7 +1127,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-bone-in-pork-chops-and-center-combo-raised-without-antibiotics/6000206120144",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50177826"
   },
   {
     "sku": "6000206120666",
@@ -1053,7 +1140,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-lean-ground-pork-raised-without-antibiotics/6000206120666",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "50177917"
   },
   {
     "sku": "6000200224411",
@@ -1065,7 +1153,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-pork-chop-with-montreal-steak-spice/6000200224411",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "30147129"
   },
   {
     "sku": "6000202798748",
@@ -1077,7 +1166,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-bacon-style-turkey/6000202798748",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31193242"
   },
   {
     "sku": "1099056",
@@ -1089,7 +1179,8 @@
     "url": "https://www.walmart.ca/en/ip/strip-loin-beef-steak-your-fresh-market/1099056",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;loin"
+    "subcategory": "steak;loin",
+    "win": "31105632"
   },
   {
     "sku": "1TB91037LJFD",
@@ -1101,7 +1192,8 @@
     "url": "https://www.walmart.ca/en/ip/springvale-grass-fed-boneless-blade-roast/1TB91037LJFD",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast"
+    "subcategory": "roast",
+    "win": "51022077"
   },
   {
     "sku": "6000203875505",
@@ -1113,7 +1205,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-basa-fillets/6000203875505",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;basa"
+    "subcategory": "salmon;basa",
+    "win": "31237250"
   },
   {
     "sku": "6000200920626",
@@ -1125,7 +1218,8 @@
     "url": "https://www.walmart.ca/en/ip/High-Liner-Signature-Cuts-Wild-Caught-Pacific-Frozen-Salmon-Fillets/6000200920626",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon"
+    "subcategory": "salmon",
+    "win": "31442225"
   },
   {
     "sku": "5EZ10OX8HYSN",
@@ -1137,7 +1231,8 @@
     "url": "https://www.walmart.ca/en/ip/KYJ-Chinese-style-sausage-pork/5EZ10OX8HYSN",
     "food_condition": "Fresh",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31314851"
   },
   {
     "sku": "6000205266243",
@@ -1149,7 +1244,8 @@
     "url": "https://www.walmart.ca/en/ip/halal-beef-sirloin-tip-roast-your-fresh-market/6000205266243",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast;sirloin"
+    "subcategory": "roast;sirloin",
+    "win": "30944942"
   },
   {
     "sku": "10211987",
@@ -1161,7 +1257,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-lodge-farms-ultimate-chicken-frankfurters/10211987",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "frankfurters"
+    "subcategory": "frankfurters",
+    "win": "9708694"
   },
   {
     "sku": "6000199125461",
@@ -1173,7 +1270,8 @@
     "url": "https://www.walmart.ca/en/ip/swiss-chalet-honey-garlic-ribs/6000199125461",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "31637367"
   },
   {
     "sku": "6000201562249",
@@ -1185,7 +1283,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-bbq-pork-back-ribs/6000201562249",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "30814711"
   },
   {
     "sku": "4O2NTRUPZOW9",
@@ -1197,7 +1296,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-split-wings/4O2NTRUPZOW9",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "51004543"
   },
   {
     "sku": "1WMOSOC0ABMV",
@@ -1209,7 +1309,8 @@
     "url": "https://www.walmart.ca/en/ip/Great-Value-Frozen-Honey-Garlic-Pork-Back-Ribs-680-g/1WMOSOC0ABMV",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "30769172"
   },
   {
     "sku": "6000200098691",
@@ -1221,7 +1322,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-maple-flavoured-bacon/6000200098691",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31069099"
   },
   {
     "sku": "6000187085392",
@@ -1233,7 +1335,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-original-natural-bacon/6000187085392",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30207856"
   },
   {
     "sku": "10243879",
@@ -1245,7 +1348,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-extra-lean-ground-turkey/10243879",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground"
+    "subcategory": "ground",
+    "win": "30648492"
   },
   {
     "sku": "6000197398943",
@@ -1257,7 +1361,8 @@
     "url": "https://www.walmart.ca/en/ip/Great-Value-Real-Bacon-Crumble/6000197398943",
     "food_condition": "Shelf-Stable",
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31415166"
   },
   {
     "sku": "6000201648566",
@@ -1269,7 +1374,8 @@
     "url": "https://www.walmart.ca/en/ip/butchers-selection-stampede-hotdog/6000201648566",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "30726658"
   },
   {
     "sku": "1PSI3U51HD7I",
@@ -1281,7 +1387,8 @@
     "url": "https://www.walmart.ca/en/ip/springvale-boneless-beef-rib-steak/1PSI3U51HD7I",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "51022075"
   },
   {
     "sku": "61DNATKQJBTS",
@@ -1293,7 +1400,8 @@
     "url": "https://www.walmart.ca/en/ip/Siwin-Frozen-Taiwanese-Style-Garlic-Pork-Sausage/61DNATKQJBTS",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50293367"
   },
   {
     "sku": "45VPJFQ2GS1T",
@@ -1305,19 +1413,21 @@
     "url": "https://www.walmart.ca/en/ip/barakah-meadows-bottom-blade-roast/45VPJFQ2GS1T",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast"
+    "subcategory": "roast",
+    "win": "50987587"
   },
   {
     "sku": "5B5DPACA3TTW",
     "upc": "69401005175",
     "name": "Knackwurst Sausage, High Protein, Smoked German‑Style Sausage",
     "brand": "piller's",
-    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—ncluding sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Enjoy the bold, traditional flavour of Piller's Knackwurst—plump, finely ground sausages seasoned with garlic and crafted in the classic northern‑German style. Naturally wood‑smoked and fully cooked, these juicy sausages deliver a satisfying “snap” when heated, staying true to their namesake. High in protein and made from a blend of pork and beef, they're free from all major food allergens, gluten‑free, and MSG‑free for a delicious, worry‑free meal option. Perfect served on a bun, grilled, or added to your favourite hearty dishes.",
+    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—including sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Enjoy the bold, traditional flavour of Piller's Knackwurst—plump, finely ground sausages seasoned with garlic and crafted in the classic northern‑German style. Naturally wood‑smoked and fully cooked, these juicy sausages deliver a satisfying “snap” when heated, staying true to their namesake. High in protein and made from a blend of pork and beef, they're free from all major food allergens, gluten‑free, and MSG‑free for a delicious, worry‑free meal option. Perfect served on a bun, grilled, or added to your favourite hearty dishes.",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/707/670/6000209707670.jpg",
     "url": "https://www.walmart.ca/en/ip/knackwurst-sausage-high-protein/5B5DPACA3TTW",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50842592"
   },
   {
     "sku": "48AKIQH04YJM",
@@ -1329,7 +1439,8 @@
     "url": "https://www.walmart.ca/en/ip/barakah-meadows-sirloin-tip-steak/48AKIQH04YJM",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;sirloin"
+    "subcategory": "steak;sirloin",
+    "win": "50987584"
   },
   {
     "sku": "6000208735007",
@@ -1341,7 +1452,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-kansas-city-style-bbq-flattened-whole-chicken/6000208735007",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "whole"
+    "subcategory": "whole",
+    "win": "50674119"
   },
   {
     "sku": "6000206718144",
@@ -1353,7 +1465,8 @@
     "url": "https://www.walmart.ca/en/ip/greenfield-natural-meat-co-no-sugar-added-thick-cut-bacon/6000206718144",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "50286851"
   },
   {
     "sku": "6000191272199",
@@ -1365,7 +1478,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-reduced-sodium-naturally-smoked-bacon/6000191272199",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30942801"
   },
   {
     "sku": "6000187092296",
@@ -1377,7 +1491,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-lazy-maple-natural-bacon/6000187092296",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30897890"
   },
   {
     "sku": "10221878",
@@ -1389,7 +1504,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-hot-italian-pork-dinner-sausage/10221878",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31319691"
   },
   {
     "sku": "6000197917343",
@@ -1401,7 +1517,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-applewood-flavoured-naturally-smoked-bacon/6000197917343",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30565397"
   },
   {
     "sku": "2BYTUXZW2GAG",
@@ -1413,7 +1530,8 @@
     "url": "https://www.walmart.ca/en/ip/Lamb-Kebabs/2BYTUXZW2GAG",
     "food_condition": "Frozen",
     "category": "Raw Beef",
-    "subcategory": "lamb"
+    "subcategory": "lamb",
+    "win": "50827712"
   },
   {
     "sku": "6000204638841",
@@ -1425,7 +1543,8 @@
     "url": "https://www.walmart.ca/en/ip/Marcangelo-Chicken-Sausages-with-Spinach-and-Feta-Cheese/6000204638841",
     "food_condition": "Frozen",
     "category": "Raw Poultry",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31304676"
   },
   {
     "sku": "581TWYR4VDRD",
@@ -1437,7 +1556,8 @@
     "url": "https://www.walmart.ca/en/ip/butterflied-pork-tenderloin/581TWYR4VDRD",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "tenderloin"
+    "subcategory": "tenderloin",
+    "win": "51003388"
   },
   {
     "sku": "3CWVX52RRVN8",
@@ -1449,7 +1569,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-turkey-sausage/3CWVX52RRVN8",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50850278"
   },
   {
     "sku": "6000201895457",
@@ -1461,7 +1582,8 @@
     "url": "https://www.walmart.ca/en/ip/ground-beef-and-pork-lean-tube-your-fresh-market/6000201895457",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball;tube"
+    "subcategory": "ground;meatball;tube",
+    "win": "30700923"
   },
   {
     "sku": "6000191270601",
@@ -1473,7 +1595,8 @@
     "url": "https://www.walmart.ca/en/ip/aquamar-classic-flake-style-surimi-340g/6000191270601",
     "food_condition": "Refrigerate",
     "category": "Raw Fish",
-    "subcategory": "salmon;crab"
+    "subcategory": "salmon;crab",
+    "win": "30953524"
   },
   {
     "sku": "6000199127143",
@@ -1485,7 +1608,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-hickory-smoked-50-less-salt-bacon/6000199127143",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31637428"
   },
   {
     "sku": "1S72821O18BL",
@@ -1497,7 +1621,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-hot-honey-flavoured-breakfast-links/1S72821O18BL",
     "food_condition": "Refrigerate",
     "category": "Raw Porl",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "51018551"
   },
   {
     "sku": "6000203876260",
@@ -1509,7 +1634,8 @@
     "url": "https://www.walmart.ca/en/ip/coho-salmon-portion-your-fresh-market/6000203876260",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;coho"
+    "subcategory": "salmon;coho",
+    "win": "31237716"
   },
   {
     "sku": "6000203959332",
@@ -1521,7 +1647,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-atlantic-salmon-portion/6000203959332",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;atlantic"
+    "subcategory": "salmon;atlantic",
+    "win": "30133763"
   },
   {
     "sku": "6000208909721",
@@ -1533,7 +1660,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-souvlaki-chicken-breast-skewers/6000208909721",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast;souvlaki;skewer"
+    "subcategory": "breast;souvlaki;skewer",
+    "win": "50712261"
   },
   {
     "sku": "6000208884649",
@@ -1545,7 +1673,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-butchers-style-montreal-steak-spice-pork-sausages/6000208884649",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "sausage;steak"
+    "subcategory": "sausage;steak",
+    "win": "50704946"
   },
   {
     "sku": "6000204673838",
@@ -1557,7 +1686,8 @@
     "url": "https://www.walmart.ca/en/ip/inside-round-beef-steak-your-fresh-market/6000204673838",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;round"
+    "subcategory": "steak;round",
+    "win": "31742688"
   },
   {
     "sku": "10221264",
@@ -1569,7 +1699,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-mild-italian-pork-dinner-sausage/10221264",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30014427"
   },
   {
     "sku": "6000201049805",
@@ -1581,7 +1712,8 @@
     "url": "https://www.walmart.ca/en/ip/mina-halal-boneless-skinless-chicken-thighs/6000201049805",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "30433243"
   },
   {
     "sku": "2KQ38A0UI9KU",
@@ -1593,7 +1725,8 @@
     "url": "https://www.walmart.ca/en/ip/barakah-meadows-lean-ground-beef/2KQ38A0UI9KU",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "50987552"
   },
   {
     "sku": "3QMM67EFBA6F",
@@ -1605,7 +1738,8 @@
     "url": "https://www.walmart.ca/en/ip/Schneiders-Juicy-Jumbos-Loaded-Cheddar-Hot-Dogs/3QMM67EFBA6F",
     "food_condition": "Refrigerated",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "50713232"
   },
   {
     "sku": "6000198496229",
@@ -1617,7 +1751,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-pork-belly-slices/6000198496229",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "belly"
+    "subcategory": "belly",
+    "win": "31574471"
   },
   {
     "sku": "3HXYEDU9I8MX",
@@ -1629,7 +1764,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-mild-jerk-chicken-breast-portions/3HXYEDU9I8MX",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;kebab"
+    "subcategory": "marinated;breast;kebab",
+    "win": "50984246"
   },
   {
     "sku": "6000187082625",
@@ -1641,7 +1777,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-ready-crisp-fully-cooked-natural-bacon-slices/6000187082625",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "9708624"
   },
   {
     "sku": "6000191268858",
@@ -1653,7 +1790,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-all-beef-hot-dogs/6000191268858",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "30897897"
   },
   {
     "sku": "6000200940829",
@@ -1665,7 +1803,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-montreal-spice-beef-strip-loin-steaks/6000200940829",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;loin"
+    "subcategory": "steak;loin",
+    "win": "30011372"
   },
   {
     "sku": "6000206120176",
@@ -1677,7 +1816,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-bone-in-pork-chops-and-center-combo/6000206120176",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50177817"
   },
   {
     "sku": "6000193605418",
@@ -1689,7 +1829,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-honey-garlic-pork-dinner-sausage/6000193605418",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30012068"
   },
   {
     "sku": "6000198391559",
@@ -1701,7 +1842,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-hot-italian-dinner-sausages/6000198391559",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31556382"
   },
   {
     "sku": "6000202751581",
@@ -1713,7 +1855,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-chicken-leg-quarters/6000202751581",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "leg;wing;drumstick;thigh"
+    "subcategory": "leg;wing;drumstick;thigh",
+    "win": "31181017"
   },
   {
     "sku": "6000192233216",
@@ -1725,7 +1868,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-thick-sliced-naturally-smoked-bacon/6000192233216",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30942802"
   },
   {
     "sku": "6000196572109",
@@ -1737,7 +1881,8 @@
     "url": "https://www.walmart.ca/en/ip/medium-ground-beef-your-fresh-market/6000196572109",
     "food_condition": null,
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30054386"
   },
   {
     "sku": "6000191270606",
@@ -1749,7 +1894,8 @@
     "url": "https://www.walmart.ca/en/ip/aquamar-classic-flake-style-surimi-1kg/6000191270606",
     "food_condition": "Refrigerate",
     "category": "Raw Fish",
-    "subcategory": "salmon"
+    "subcategory": "salmon",
+    "win": "30423042"
   },
   {
     "sku": "5HEK3WELKEZO",
@@ -1761,7 +1907,8 @@
     "url": "https://www.walmart.ca/en/ip/alpha-burgers-4pk-in-tray/5HEK3WELKEZO",
     "food_condition": null,
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "51042668"
   },
   {
     "sku": "6000196786965",
@@ -1773,7 +1920,8 @@
     "url": "https://www.walmart.ca/en/ip/fletchers-fresh-pork-tenderloin/6000196786965",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "tenderloin"
+    "subcategory": "tenderloin",
+    "win": "31330154"
   },
   {
     "sku": "6000200397588",
@@ -1785,7 +1933,8 @@
     "url": "https://www.walmart.ca/en/ip/sirloin-tip-beef-roast-your-fresh-market/6000200397588",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast;sirloin"
+    "subcategory": "roast;sirloin",
+    "win": "30512788"
   },
   {
     "sku": "4Y65LMMGKHNQ",
@@ -1797,7 +1946,8 @@
     "url": "https://www.walmart.ca/en/ip/BLACK-RIVER-Pork-Carnita-Pork-Shoulder-Portion-nbsp-2pieces-x-600g-1-2kg-per-unit-frozen-box-6-units-in-a-case/4Y65LMMGKHNQ",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "shoulder"
+    "subcategory": "shoulder",
+    "win": "50986300"
   },
   {
     "sku": "6000203729363",
@@ -1809,7 +1959,8 @@
     "url": "https://www.walmart.ca/en/ip/pillers-tuscan-style-salami-high-protein/6000203729363",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "sausage;salami"
+    "subcategory": "sausage;salami",
+    "win": "31739304"
   },
   {
     "sku": "42VFPKP2ZQZL",
@@ -1821,7 +1972,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-bbq-debreziner-sausage/42VFPKP2ZQZL",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50850277"
   },
   {
     "sku": "10221734",
@@ -1833,7 +1985,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-maple-pork-breakfast-sausage/10221734",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30010521"
   },
   {
     "sku": "462BMFJRZQWP",
@@ -1845,7 +1998,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-boneless-skinless-chicken-thighs-raised-without-antibiotics/462BMFJRZQWP",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "51053326"
   },
   {
     "sku": "6000200201722",
@@ -1857,7 +2011,8 @@
     "url": "https://www.walmart.ca/en/ip/butcher-style-sweet-italian-pork-dinner-sausages-your-fresh-market/6000200201722",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31053518"
   },
   {
     "sku": "5WAGEQ4RL90L",
@@ -1869,7 +2024,8 @@
     "url": "https://www.walmart.ca/en/ip/Black-River-Philly-Steaks/5WAGEQ4RL90L",
     "food_condition": "Frozen",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50567798"
   },
   {
     "sku": "6000201927243",
@@ -1881,7 +2037,8 @@
     "url": "https://www.walmart.ca/en/ip/greenfield-natural-meat-co-bacon-family-size/6000201927243",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30935906"
   },
   {
     "sku": "6000198390738",
@@ -1893,7 +2050,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-bratwurst-dinner-sausages/6000198390738",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31556380"
   },
   {
     "sku": "1BBBG69ZP2Z9",
@@ -1905,7 +2063,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-italian-style-chicken-breast-strips/1BBBG69ZP2Z9",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "breast;strips"
+    "subcategory": "breast;strips",
+    "win": "31063223"
   },
   {
     "sku": "6000195368435",
@@ -1917,7 +2076,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-gluten-free-smoked-bratwurst-sausage/6000195368435",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31097308"
   },
   {
     "sku": "6000191270025",
@@ -1929,7 +2089,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-original-hot-dogs/6000191270025",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "9707938"
   },
   {
     "sku": "6000203917391",
@@ -1941,7 +2102,8 @@
     "url": "https://www.walmart.ca/en/ip/extra-lean-ground-beef-your-fresh-market/6000203917391",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "31544035"
   },
   {
     "sku": "10222013",
@@ -1953,7 +2115,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-hot-italian-pork-dinner-sausage/10222013",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30014436"
   },
   {
     "sku": "6000202890151",
@@ -1965,7 +2128,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-fully-cooked-spicy-italian-chicken-sausages/6000202890151",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31223934"
   },
   {
     "sku": "469UO7EC42J8",
@@ -1977,7 +2141,8 @@
     "url": "https://www.walmart.ca/en/ip/barakah-meadows-stewing-beef/469UO7EC42J8",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "strips;cubes"
+    "subcategory": "strips;cubes",
+    "win": "50987586"
   },
   {
     "sku": "6000205305439",
@@ -1989,7 +2154,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-lean-ground-pork/6000205305439",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30436102"
   },
   {
     "sku": "6000206032828",
@@ -2001,7 +2167,8 @@
     "url": "https://www.walmart.ca/en/ip/aaa-angus-beef-tri-tip-sirloin-steak-your-fresh-market/6000206032828",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "steak;sirloin"
+    "subcategory": "steak;sirloin",
+    "win": "50158151"
   },
   {
     "sku": "2ZCTC57RZW48",
@@ -2013,7 +2180,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-all-star-polish-smoked-sausages/2ZCTC57RZW48",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50751636"
   },
   {
     "sku": "6000208285486",
@@ -2025,7 +2193,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-brown-sugar-and-honey-flavour-breakfast-sausages/6000208285486",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50576372"
   },
   {
     "sku": "6000199409080",
@@ -2037,7 +2206,8 @@
     "url": "https://www.walmart.ca/en/ip/halal-beef-stewing-cubes-your-fresh-market/6000199409080",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "strips;cubes"
+    "subcategory": "strips;cubes",
+    "win": "30254233"
   },
   {
     "sku": "5FUDRUO3SIC4",
@@ -2049,7 +2219,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-spicy-chicken-shawarma-marinated-fresh-meat/5FUDRUO3SIC4",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "50851152"
   },
   {
     "sku": "6000202626227",
@@ -2061,7 +2232,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-original-wieners/6000202626227",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog;wiener"
+    "subcategory": "hot dog;wiener",
+    "win": "30806473"
   },
   {
     "sku": "6000208909750",
@@ -2073,7 +2245,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-sweet-smoky-coho-salmon-portions/6000208909750",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;coho"
+    "subcategory": "salmon;coho",
+    "win": "50712346"
   },
   {
     "sku": "6000198391963",
@@ -2085,7 +2258,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-mild-italian-dinner-sausages/6000198391963",
     "food_condition": "Frozen",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31556381"
   },
   {
     "sku": "6000202626224",
@@ -2097,7 +2271,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-chicken-wieners/6000202626224",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "30806208"
   },
   {
     "sku": "3R881SFAQ61I",
@@ -2109,7 +2284,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-mild-jerk-flattened-whole-chicken/3R881SFAQ61I",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab;whole"
+    "subcategory": "marinated;kebab;whole",
+    "win": "50984245"
   },
   {
     "sku": "6000197396710",
@@ -2121,7 +2297,8 @@
     "url": "https://www.walmart.ca/en/ip/Great-Value-Real-Bacon-Crumble/6000197396710",
     "food_condition": "Shelf-Stable",
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31415167"
   },
   {
     "sku": "6000197817889",
@@ -2133,7 +2310,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-smokies-original-smoked-sausage/6000197817889",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31495512"
   },
   {
     "sku": "6000189368540",
@@ -2145,7 +2323,8 @@
     "url": "https://www.walmart.ca/en/ip/harvest-meats-wieners-gluten-free-naturally-smoked/6000189368540",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "9707007"
   },
   {
     "sku": "2Z50O032MATW",
@@ -2157,19 +2336,21 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-spicy-tandoori-chicken-legs-marinated-fresh-meat/2Z50O032MATW",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;leg;kebab"
+    "subcategory": "marinated;leg;kebab",
+    "win": "50851155"
   },
   {
     "sku": "6000208243910",
     "upc": "69401012197",
     "name": "Piller's Smoked Black Forest Ham, High Protein, 600 g",
     "brand": "piller's",
-    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—ncluding sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Get ready for festive gatherings and cozy family meals with Piller's Smoked Black Forest Ham. Our 600 g whole ham makes a fantastic roast with practically no prep time.<br><br>Our fully cooked ham is ready to pop into the oven as is to bring out its rich, smoky flavours, but if you're feeling fancy, you can baste it with honey or glaze, or even stud it with pineapple slices.<br><br>Our ham is crafted from quality pork and naturally wood smoked for that authentic, European-style Black Forest flavour you know and love. It's also gluten free and MSG to fit your lifestyle. <br><br>Serve it up at your family feast and then enjoy the leftovers in ham sandwiches, subs, omelettes and more.",
+    "description": "Piller's Fine Foods crafts high‑quality European‑style deli meats using traditional methods like natural hardwood smoking and careful aging for rich, authentic flavour. Their products—including sliced meats, sausages, ham, and snacks—are made from premium ingredients and many are gluten‑free with no added MSG. Available in grocery stores across Canada, Piller's offers delicious, dependable options for everyday meals and entertaining.<br><br>Get ready for festive gatherings and cozy family meals with Piller's Smoked Black Forest Ham. Our 600 g whole ham makes a fantastic roast with practically no prep time.<br><br>Our fully cooked ham is ready to pop into the oven as is to bring out its rich, smoky flavours, but if you're feeling fancy, you can baste it with honey or glaze, or even stud it with pineapple slices.<br><br>Our ham is crafted from quality pork and naturally wood smoked for that authentic, European-style Black Forest flavour you know and love. It's also gluten free and MSG to fit your lifestyle. <br><br>Serve it up at your family feast and then enjoy the leftovers in ham sandwiches, subs, omelettes and more.",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/737/912/6000208737912.jpg",
     "url": "https://www.walmart.ca/en/ip/pillers-smoked-black-forest-ham-high-protein/6000208243910",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ham"
+    "subcategory": "ham",
+    "win": "50570471"
   },
   {
     "sku": "3NFCA1DY3190",
@@ -2181,7 +2362,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-chicken-tikka-marinated-fresh-meat/3NFCA1DY3190",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "51028584"
   },
   {
     "sku": "7DX7HHDYG22S",
@@ -2193,7 +2375,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-mild-italian-smoked-sausages/7DX7HHDYG22S",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50751733"
   },
   {
     "sku": "6000200925943",
@@ -2205,7 +2388,8 @@
     "url": "https://www.walmart.ca/en/ip/butcher-style-chorizo-dinner-sausages-your-fresh-market/6000200925943",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30320048"
   },
   {
     "sku": "6000203924594",
@@ -2217,7 +2401,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-original-breakfast-sausage-rounds/6000203924594",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31597726"
   },
   {
     "sku": "6KCVU8O4P04H",
@@ -2229,7 +2414,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-chicken-leg-quarters-raised-without-antibiotics/6KCVU8O4P04H",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "leg;wing;drumstick;thigh"
+    "subcategory": "leg;wing;drumstick;thigh",
+    "win": "51017222"
   },
   {
     "sku": "4EJYAWOQAVBQ",
@@ -2241,7 +2427,8 @@
     "url": "https://www.walmart.ca/en/ip/boneless-top-blade-roast-cut-from-canada-aa/4EJYAWOQAVBQ",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "roast"
+    "subcategory": "roast",
+    "win": "50871777"
   },
   {
     "sku": "6000202984313",
@@ -2253,7 +2440,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-honey-garlic-pork-back-ribs/6000202984313",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "31261184"
   },
   {
     "sku": "6000200146946",
@@ -2265,7 +2453,8 @@
     "url": "https://www.walmart.ca/en/ip/dalisa-6-flavours-combo-dinner-sausage-900g-value-pack/6000200146946",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30343287"
   },
   {
     "sku": "6000189030961",
@@ -2277,7 +2466,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-chicken-kabobs/6000189030961",
     "food_condition": "Other",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab;kabob"
+    "subcategory": "marinated;kebab;kabob",
+    "win": "9310354"
   },
   {
     "sku": "567ZB5KAD949",
@@ -2289,7 +2479,8 @@
     "url": "https://www.walmart.ca/en/ip/Great-Value-Barbecue-Pork-Ribettes/567ZB5KAD949",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "ribette"
+    "subcategory": "ribette",
+    "win": "50179464"
   },
   {
     "sku": "6000199911115",
@@ -2301,7 +2492,8 @@
     "url": "https://www.walmart.ca/en/ip/halal-lean-ground-beef-your-fresh-market/6000199911115",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "31011139"
   },
   {
     "sku": "6000203915486",
@@ -2313,7 +2505,8 @@
     "url": "https://www.walmart.ca/en/ip/medium-ground-beef-your-fresh-market/6000203915486",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "31544054"
   },
   {
     "sku": "54BMPX5CIX7M",
@@ -2325,7 +2518,8 @@
     "url": "https://www.walmart.ca/en/ip/Black-River-Beef-Medallions/54BMPX5CIX7M",
     "food_condition": "Frozen",
     "category": "Raw Beef",
-    "subcategory": "steak;medallions"
+    "subcategory": "steak;medallions",
+    "win": "50570031"
   },
   {
     "sku": "6000201822320",
@@ -2337,7 +2531,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-pork-sirloin-seasoned-roast/6000201822320",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sirloin;kebab"
+    "subcategory": "sirloin;kebab",
+    "win": "30908877"
   },
   {
     "sku": "7J1VBG2FE9XL",
@@ -2349,7 +2544,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-boneless-skinless-chicken-breasts/7J1VBG2FE9XL",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053304"
   },
   {
     "sku": "6000206121243",
@@ -2361,7 +2557,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-fresh-whole-pork-side-ribs/6000206121243",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "50177807"
   },
   {
     "sku": "6000208263243",
@@ -2373,7 +2570,8 @@
     "url": "https://www.walmart.ca/en/ip/value-size-lean-ground-beef-your-fresh-market/6000208263243",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "50572697"
   },
   {
     "sku": "6000196382933",
@@ -2385,7 +2583,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-original-pork-breakfast-sausage/6000196382933",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30348836"
   },
   {
     "sku": "6000208949299",
@@ -2397,7 +2596,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-bbq-seasoned-chicken-thighs/6000208949299",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;thigh;kebab"
+    "subcategory": "marinated;thigh;kebab",
+    "win": "50720347"
   },
   {
     "sku": "3QSS1CMCX42X",
@@ -2409,7 +2609,8 @@
     "url": "https://www.walmart.ca/en/ip/chicken-breast-portions-honey-dijon-flavour/3QSS1CMCX42X",
     "food_condition": null,
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "50846989"
   },
   {
     "sku": "6000197282743",
@@ -2421,7 +2622,8 @@
     "url": "https://www.walmart.ca/en/ip/butterball-salt-reduced-bacon-style-turkey/6000197282743",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31398348"
   },
   {
     "sku": "6000208910450",
@@ -2433,7 +2635,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-atlantic-salmon-portion-with-garlic-herb-butter/6000208910450",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "salmon;atlantic"
+    "subcategory": "salmon;atlantic",
+    "win": "50712336"
   },
   {
     "sku": "5A7MOHMX3VKP",
@@ -2445,7 +2648,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-raised-without-antibiotics-boneless-pork-loin-centre-and-rib-chops/5A7MOHMX3VKP",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak;loin"
+    "subcategory": "steak;loin",
+    "win": "50742149"
   },
   {
     "sku": "10243761",
@@ -2457,7 +2661,8 @@
     "url": "https://www.walmart.ca/en/ip/Hormel-Real-Bacon-Crumble/10243761",
     "food_condition": "Shelf-Stable",
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "9215689"
   },
   {
     "sku": "6000191288138",
@@ -2469,7 +2674,8 @@
     "url": "https://www.walmart.ca/en/ip/lean-ground-beef-your-fresh-market/6000191288138",
     "food_condition": "Other",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30231908"
   },
   {
     "sku": "10243898",
@@ -2481,7 +2687,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-natural-top-dogs-original-hot-dogs-family-size/10243898",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dogs"
+    "subcategory": "hot dogs",
+    "win": "30631244"
   },
   {
     "sku": "6000208910522",
@@ -2493,7 +2700,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-sweet-smoky-shrimp-skewers/6000208910522",
     "food_condition": null,
     "category": "Raw Fish",
-    "subcategory": "shrimp"
+    "subcategory": "shrimp",
+    "win": "50712351"
   },
   {
     "sku": "6000197178564",
@@ -2505,7 +2713,8 @@
     "url": "https://www.walmart.ca/en/ip/deli-express-bacon-pak-of-3/6000197178564",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30140786"
   },
   {
     "sku": "6000191275106",
@@ -2517,7 +2726,8 @@
     "url": "https://www.walmart.ca/en/ip/marcangelo-pork-kabobs/6000191275106",
     "food_condition": "Other",
     "category": "Raw Pork",
-    "subcategory": "kabob;kebab"
+    "subcategory": "kabob;kebab",
+    "win": "9310340"
   },
   {
     "sku": "6VFJR2ULHGTF",
@@ -2529,7 +2739,8 @@
     "url": "https://www.walmart.ca/en/ip/Great-Value-Fully-Cooked-Real-Bacon-Crumble/6VFJR2ULHGTF",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "31033846"
   },
   {
     "sku": "6000203323344",
@@ -2541,7 +2752,8 @@
     "url": "https://www.walmart.ca/en/ip/spicy-ultimate-chicken-frankfurters/6000203323344",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "frankfurters"
+    "subcategory": "frankfurters",
+    "win": "31175012"
   },
   {
     "sku": "226PJRK24U5X",
@@ -2553,7 +2765,8 @@
     "url": "https://www.walmart.ca/en/ip/pork-bone-in-picnic-roast/226PJRK24U5X",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "tenderloin"
+    "subcategory": "tenderloin",
+    "win": "50981589"
   },
   {
     "sku": "3VLCAVLWS55J",
@@ -2565,7 +2778,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-boneless-skinless-chicken-breasts-raised-without-antibiotics/3VLCAVLWS55J",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053320"
   },
   {
     "sku": "47O4DQO61CPA",
@@ -2577,7 +2791,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-boneless-pork-loin-centre-and-rib-chops/47O4DQO61CPA",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "steak;loin"
+    "subcategory": "steak;loin",
+    "win": "50725724"
   },
   {
     "sku": "6000202618655",
@@ -2589,7 +2804,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-original-wieners/6000202618655",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "wiener"
+    "subcategory": "wiener",
+    "win": "30805270"
   },
   {
     "sku": "5DSHJWYBWGAG",
@@ -2601,7 +2817,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-peameal-bacon/5DSHJWYBWGAG",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30450424"
   },
   {
     "sku": "6000208804069",
@@ -2613,7 +2830,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-original-bacon-value-size/6000208804069",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "50687438"
   },
   {
     "sku": "3KIN5V4H3E8Q",
@@ -2625,7 +2843,8 @@
     "url": "https://www.walmart.ca/en/ip/boneless-top-blade-steak-value-pack-cut-from-canada-aa/3KIN5V4H3E8Q",
     "food_condition": "Shelf",
     "category": "Raw Beef",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "50871778"
   },
   {
     "sku": "6000199159740",
@@ -2637,7 +2856,8 @@
     "url": "https://www.walmart.ca/en/ip/Cochinita-Pibil-Seasoned-Shredded-Pork-Meat/6000199159740",
     "food_condition": "Shelf-Stable",
     "category": "Raw Pork",
-    "subcategory": "kebab"
+    "subcategory": "kebab",
+    "win": "31641895"
   },
   {
     "sku": "6000205845669",
@@ -2649,7 +2869,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-secret-recipe-series-hot-honey-flavoured-pork-back-ribs/6000205845669",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "50121842"
   },
   {
     "sku": "6000191288132",
@@ -2661,7 +2882,8 @@
     "url": "https://www.walmart.ca/en/ip/medium-ground-beef-your-fresh-market/6000191288132",
     "food_condition": "Other",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30231907"
   },
   {
     "sku": "6000196982014",
@@ -2673,7 +2895,8 @@
     "url": "https://www.walmart.ca/en/ip/fletchers-fresh-pork-boneless-half-loin/6000196982014",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "loin;tenderloin"
+    "subcategory": "loin;tenderloin",
+    "win": "30426668"
   },
   {
     "sku": "6000198390809",
@@ -2685,7 +2908,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-original-breakfast-sausage-links/6000198390809",
     "food_condition": null,
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31556377"
   },
   {
     "sku": "10221598",
@@ -2697,7 +2921,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-mild-italian-pork-dinner-sausage/10221598",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31319695"
   },
   {
     "sku": "6000191287647",
@@ -2709,7 +2934,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-lean-ground-pork/6000191287647",
     "food_condition": "Other",
     "category": "Raw Pork",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "31034407"
   },
   {
     "sku": "6000191272205",
@@ -2721,7 +2947,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-naturally-smoked-bacon/6000191272205",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "bacon"
+    "subcategory": "bacon",
+    "win": "30942803"
   },
   {
     "sku": "6000208884680",
@@ -2733,7 +2960,8 @@
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-butchers-style-kansas-city-style-bbq-pork-sausages/6000208884680",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50704942"
   },
   {
     "sku": "6000196684910",
@@ -2745,7 +2973,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-original-hot-dogs-family-pack/6000196684910",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "30592818"
   },
   {
     "sku": "6000205273067",
@@ -2757,7 +2986,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-italian-style-beef-meatballs/6000205273067",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "meatball"
+    "subcategory": "meatball",
+    "win": "31050820"
   },
   {
     "sku": "469T9WXIGRHT",
@@ -2769,7 +2999,8 @@
     "url": "https://www.walmart.ca/en/ip/fresh-pork-side-ribs/469T9WXIGRHT",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "rib"
+    "subcategory": "rib",
+    "win": "51106432"
   },
   {
     "sku": "6000191275727",
@@ -2781,7 +3012,8 @@
     "url": "https://www.walmart.ca/en/ip/stir-fry-beef-strips-your-fresh-market/6000191275727",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "strips;cubes"
+    "subcategory": "strips;cubes",
+    "win": "30690187"
   },
   {
     "sku": "6000197510174",
@@ -2793,7 +3025,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-maple-pork-breakfast-sausage/6000197510174",
     "food_condition": "Refrigerate",
     "category": "Raw Pork",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31439398"
   },
   {
     "sku": "361QCN5NAXGZ",
@@ -2805,7 +3038,8 @@
     "url": "https://www.walmart.ca/en/ip/paramount-fine-foods-spicy-shish-tawouk-marinated-fresh-meat/361QCN5NAXGZ",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;kebab"
+    "subcategory": "marinated;kebab",
+    "win": "50851151"
   },
   {
     "sku": "4S9J3JZBLCWX",
@@ -2817,7 +3051,8 @@
     "url": "https://www.walmart.ca/en/ip/Schneiders-Juicy-Jumbos-Loaded-Bacon-Cheddar-Hot-Dogs/4S9J3JZBLCWX",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bacon;hot dog"
+    "subcategory": "bacon;hot dog",
+    "win": "51014192"
   },
   {
     "sku": "6000191288150",
@@ -2829,7 +3064,8 @@
     "url": "https://www.walmart.ca/en/ip/extra-lean-ground-beef-your-fresh-market/6000191288150",
     "food_condition": "Other",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball"
+    "subcategory": "ground;meatball",
+    "win": "30232055"
   },
   {
     "sku": "58L1556PRY9C",
@@ -2841,7 +3077,8 @@
     "url": "https://www.walmart.ca/en/ip/barakah-meadows-stir-fry-beef-strips/58L1556PRY9C",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "strips;cubes"
+    "subcategory": "strips;cubes",
+    "win": "50987585"
   },
   {
     "sku": "3JL25TEW2309",
@@ -2853,7 +3090,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-raised-without-antibiotics-diced-chicken-breast/3JL25TEW2309",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast;wing;drumstick;thigh"
+    "subcategory": "breast;wing;drumstick;thigh",
+    "win": "51053329"
   },
   {
     "sku": "6000199126176",
@@ -2865,7 +3103,8 @@
     "url": "https://www.walmart.ca/en/ip/ground-beef-lean-tube-your-fresh-market/6000199126176",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "ground;meatball;tube"
+    "subcategory": "ground;meatball;tube",
+    "win": "31637357"
   },
   {
     "sku": "6U6AICAXIZC6",
@@ -2877,7 +3116,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-all-star-hot-italian-smoked-sausages/6U6AICAXIZC6",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "50751637"
   },
   {
     "sku": "64MUOBWFO7T0",
@@ -2889,7 +3129,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-sojuk-hot/64MUOBWFO7T0",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog;sojuk"
+    "subcategory": "hot dog;sojuk",
+    "win": "50850275"
   },
   {
     "sku": "6000197817566",
@@ -2901,7 +3142,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-juicy-jumbos-all-beef-hot-dogs-family-pack/6000197817566",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "hot dog"
+    "subcategory": "hot dog",
+    "win": "31495511"
   },
   {
     "sku": "1318QQI1N1KF",
@@ -2913,7 +3155,8 @@
     "url": "https://www.walmart.ca/en/ip/maple-leaf-souvlaki-chicken-breast-skewers/1318QQI1N1KF",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "marinated;breast;souvlaki;kebab;skewer"
+    "subcategory": "marinated;breast;souvlaki;kebab;skewer",
+    "win": "51018164"
   },
   {
     "sku": "6F2MJ19C063R",
@@ -2925,7 +3168,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-bone-in-chicken-thighs-raised-without-antibiotics/6F2MJ19C063R",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "wing;drumstick;thigh"
+    "subcategory": "wing;drumstick;thigh",
+    "win": "51017226"
   },
   {
     "sku": "6R6I4P26OOYP",
@@ -2937,7 +3181,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-boneless-skinless-chicken-breasts-raised-without-antibiotics/6R6I4P26OOYP",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "51053323"
   },
   {
     "sku": "7258KNNMUIA1",
@@ -2949,7 +3194,8 @@
     "url": "https://www.walmart.ca/en/ip/Maple-Leaf-Natural-Smoked-Original-Chicken-Sausage/7258KNNMUIA1",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "51014197"
   },
   {
     "sku": "7CFU21TRBV2H",
@@ -2961,7 +3207,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-tandoori-chicken/7CFU21TRBV2H",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50981291"
   },
   {
     "sku": "6000199806226",
@@ -2973,7 +3220,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-sweet-bbq-chicken-breast-strips/6000199806226",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "breast;strips"
+    "subcategory": "breast;strips",
+    "win": "30712773"
   },
   {
     "sku": "6000199806044",
@@ -2985,7 +3233,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-chicken-breast-strips/6000199806044",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "breast;strips"
+    "subcategory": "breast;strips",
+    "win": "30712706"
   },
   {
     "sku": "3KVLPQJ67L0P",
@@ -2997,7 +3246,8 @@
     "url": "https://www.walmart.ca/en/ip/solmaz-halal-sliced-pepperoni/3KVLPQJ67L0P",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "pepperoni"
+    "subcategory": "pepperoni",
+    "win": "50850273"
   },
   {
     "sku": "6000208533064",
@@ -3009,7 +3259,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-fajita-chicken-breast-strips/6000208533064",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50627304"
   },
   {
     "sku": "6000199805605",
@@ -3021,7 +3272,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-rotisserie-chicken-breast-strips/6000199805605",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30712708"
   },
   {
     "sku": "1MMQY3LP8E98",
@@ -3033,19 +3285,21 @@
     "url": "https://www.walmart.ca/en/ip/great-value-chipotle-mango-pork-back-ribs/1MMQY3LP8E98",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "50979201"
   },
   {
     "sku": "3F40FX0H4LJ8",
     "upc": "69094635956",
     "name": "Pinty's Salt & Pepper Chicken Strips",
     "brand": "pinty's",
-    "description": "Busy weeknight? Pinty's Salt &amp; Pepper Chicken Strips to the rescue!<br><br>Our ready-to-serve breaded chicken strips add flavour, crunch and protein to all your fave dishes—n record time! Top your salads, pizza, pasta, poutine or nachos with a pile of our savoury salt and pepper chicken strips. <br><br>They're fully seasoned and cooked so you can eat them straight from the package, cold or hot. Pair them with a sauce or enjoy their light salt and pepper seasoning on its own.<br><br>Our chicken strips are halal and made with quality Canadian white breast chicken meat. They're an excellent source of protein, low in saturated fat and free from artificial flavours and colours.<br><br>Made with Canadian chicken.",
+    "description": "Busy weeknight? Pinty's Salt &amp; Pepper Chicken Strips to the rescue!<br><br>Our ready-to-serve breaded chicken strips add flavour, crunch and protein to all your fave dishes—in record time! Top your salads, pizza, pasta, poutine or nachos with a pile of our savoury salt and pepper chicken strips. <br><br>They're fully seasoned and cooked so you can eat them straight from the package, cold or hot. Pair them with a sauce or enjoy their light salt and pepper seasoning on its own.<br><br>Our chicken strips are halal and made with quality Canadian white breast chicken meat. They're an excellent source of protein, low in saturated fat and free from artificial flavours and colours.<br><br>Made with Canadian chicken.",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/521/120/6000209521120.jpg",
     "url": "https://www.walmart.ca/en/ip/pintys-salt-pepper-chicken-strips/3F40FX0H4LJ8",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50817635"
   },
   {
     "sku": "6000207158774",
@@ -3057,7 +3311,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-thick-sliced-bologna/6000207158774",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bologna"
+    "subcategory": "bologna",
+    "win": "50373220"
   },
   {
     "sku": "10065215",
@@ -3069,7 +3324,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-hot-dogs-lunch-kit/10065215",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "9708442"
   },
   {
     "sku": "2K7KW4XWPKYI",
@@ -3081,7 +3337,8 @@
     "url": "https://www.walmart.ca/en/ip/Greenfield-Natural-Meat-Co-Pepperoni-Provolone-Lunch-Kit/2K7KW4XWPKYI",
     "food_condition": "Refrigerated",
     "category": "Ready to eat",
-    "subcategory": "pepperoni"
+    "subcategory": "pepperoni",
+    "win": "50729751"
   },
   {
     "sku": "6000191268894",
@@ -3093,7 +3350,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-kielbassa-lunch-kit/6000191268894",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934747"
   },
   {
     "sku": "6000191269330",
@@ -3105,7 +3363,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-turkey-lunch-kit/6000191269330",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934736"
   },
   {
     "sku": "6000200593705",
@@ -3117,7 +3376,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-pizza-pepperoni-lunch-kit/6000200593705",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30269081"
   },
   {
     "sku": "6000200594529",
@@ -3129,7 +3389,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-two-cheese-pizza-lunch-kit/6000200594529",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30269174"
   },
   {
     "sku": "6000201927960",
@@ -3141,7 +3402,8 @@
     "url": "https://www.walmart.ca/en/ip/greenfield-natural-meat-co-natural-turkey-cheese-lunch-kit/6000201927960",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934771"
   },
   {
     "sku": "6000201929184",
@@ -3153,7 +3415,8 @@
     "url": "https://www.walmart.ca/en/ip/greenfield-natural-meat-co-natural-ham-cheese-lunch-kit/6000201929184",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934775"
   },
   {
     "sku": "6000191268881",
@@ -3165,7 +3428,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-bologna-lunch-kit/6000191268881",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934738"
   },
   {
     "sku": "6000197873278",
@@ -3177,7 +3441,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-nachos-with-cheddar-cheese-salsa-lunch-kit/6000197873278",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30595328"
   },
   {
     "sku": "6000197873387",
@@ -3189,7 +3454,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-mini-burgers-lunch-kit/6000197873387",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30595327"
   },
   {
     "sku": "TBF3FAMVKCD",
@@ -3201,7 +3467,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-korean-style-bbq-chicken/0TBF3FAMVKCD",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50981288"
   },
   {
     "sku": "10065412",
@@ -3213,7 +3480,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-smoked-sausage-classic-cheddar/10065412",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "9708036"
   },
   {
     "sku": "10065520",
@@ -3225,7 +3493,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-smoked-sausage-classic-recipe/10065520",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "9708029"
   },
   {
     "sku": "10211656",
@@ -3237,7 +3506,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-original-chicken-bologna/10211656",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "bologna"
+    "subcategory": "bologna",
+    "win": "9710521"
   },
   {
     "sku": "10212073",
@@ -3249,7 +3519,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-breakfast-chicken-strips/10212073",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "9710507"
   },
   {
     "sku": "10274613",
@@ -3261,7 +3532,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-cheese-smoked-sausages-fully-cooked/10274613",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30056877"
   },
   {
     "sku": "10316573",
@@ -3273,7 +3545,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-homestyle-shaved-beef-au-jus/10316573",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30630511"
   },
   {
     "sku": "10317054",
@@ -3285,7 +3558,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-homestyle-beef-pot-roast-au-jus/10317054",
     "food_condition": "Other",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30630510"
   },
   {
     "sku": "1PMXEPLUW9S4",
@@ -3297,7 +3571,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-butter-chicken-with-rice/1PMXEPLUW9S4",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50981284"
   },
   {
     "sku": "1Y750ATYPJWX",
@@ -3309,7 +3584,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-chicken-drumsticks-raised-without-antibiotics-value-pack/1Y750ATYPJWX",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "drumstick"
+    "subcategory": "drumstick",
+    "win": "51017228"
   },
   {
     "sku": "207405",
@@ -3321,7 +3597,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-original-smoked-sausages/207405",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30056876"
   },
   {
     "sku": "2W4F7POYUYUA",
@@ -3333,7 +3610,8 @@
     "url": "https://www.walmart.ca/en/ip/prime-whole-chicken-raised-without-antibiotics/2W4F7POYUYUA",
     "food_condition": "Refrigerate",
     "category": "Raw Poultry",
-    "subcategory": "whole"
+    "subcategory": "whole",
+    "win": "51053333"
   },
   {
     "sku": "3BIENOY7TPTW",
@@ -3345,19 +3623,21 @@
     "url": "https://www.walmart.ca/en/ip/great-value-hawaiian-barbeque-pork-rib-singles/3BIENOY7TPTW",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50979295"
   },
   {
     "sku": "3PNNJ4C0AJR6",
     "upc": "773220108336",
     "name": "Lou's Kitchen Jerk Chicken",
     "brand": "lou's kitchen",
-    "description": "Add spice to your busy life with Lou's Kitchen Jerk Chicken! Our heat-and-eat chicken delivers the smoky, spicy and aromatic experience Jamaican cuisine is known for so you can get your island-cuisine fix any time the craving hits—n as little as 4 minutes.  <br><br>Our jerk chicken pairs fully cooked boneless chicken thigh meat with bold jerk seasoning, with an additional sauce sachet so you can crank up the heat if you so choose.<br><br>Serve it up with rice and peas, or with a side of roti. Dig in anytime you want to feel those island vibes in the convenience of your own home.",
+    "description": "Add spice to your busy life with Lou's Kitchen Jerk Chicken! Our heat-and-eat chicken delivers the smoky, spicy and aromatic experience Jamaican cuisine is known for so you can get your island-cuisine fix any time the craving hits—in as little as 4 minutes.  <br><br>Our jerk chicken pairs fully cooked boneless chicken thigh meat with bold jerk seasoning, with an additional sauce sachet so you can crank up the heat if you so choose.<br><br>Serve it up with rice and peas, or with a side of roti. Dig in anytime you want to feel those island vibes in the convenience of your own home.",
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/830/370/6000209830370.jpg",
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-jerk-chicken/3PNNJ4C0AJR6",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50981290"
   },
   {
     "sku": "5N5NX8IHX1Z6",
@@ -3369,7 +3649,8 @@
     "url": "https://www.walmart.ca/en/ip/Maple-Leaf-Italian-Mozzarella-Chicken-Sausage/5N5NX8IHX1Z6",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "51014196"
   },
   {
     "sku": "6000191268654",
@@ -3381,7 +3662,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-honey-garlic-smoked-sausages-900g/6000191268654",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "30884544"
   },
   {
     "sku": "6000191269001",
@@ -3393,7 +3675,8 @@
     "url": "https://www.walmart.ca/en/ip/lunchmate-summer-sausage-lunch-kit/6000191269001",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30934748"
   },
   {
     "sku": "6000193605427",
@@ -3405,7 +3688,8 @@
     "url": "https://www.walmart.ca/en/ip/stewing-beef-cubes-your-fresh-market/6000193605427",
     "food_condition": "Refrigerate",
     "category": "Raw Beef",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30317459"
   },
   {
     "sku": "6000195945341",
@@ -3417,7 +3701,8 @@
     "url": "https://www.walmart.ca/en/ip/johnsonville-gluten-free-cheddar-smoked-sausage/6000195945341",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31097309"
   },
   {
     "sku": "6000195945549",
@@ -3429,7 +3714,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-smoked-chicken-breast-roast/6000195945549",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "breast"
+    "subcategory": "breast",
+    "win": "30247560"
   },
   {
     "sku": "6000197818476",
@@ -3441,7 +3727,8 @@
     "url": "https://www.walmart.ca/en/ip/schneiders-smokies-sharp-cheddar-smoked-sausage/6000197818476",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "sausage"
+    "subcategory": "sausage",
+    "win": "31495513"
   },
   {
     "sku": "6000197977827",
@@ -3453,7 +3740,8 @@
     "url": "https://www.walmart.ca/en/ip/swiss-chalet-smoky-bbq-pork-back-ribs-600g/6000197977827",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "30334279"
   },
   {
     "sku": "6000198992447",
@@ -3465,7 +3753,8 @@
     "url": "https://www.walmart.ca/en/ip/philly-style-shaved-steak/6000198992447",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "30545230"
   },
   {
     "sku": "6000199804999",
@@ -3477,7 +3766,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-beef-sirloin-strips/6000199804999",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "steak"
+    "subcategory": "steak",
+    "win": "30712772"
   },
   {
     "sku": "6000199805446",
@@ -3489,7 +3779,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-italian-style-chicken-breast-strips/6000199805446",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30712707"
   },
   {
     "sku": "6000200205367",
@@ -3501,7 +3792,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-chicken-breast-strips/6000200205367",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "31106778"
   },
   {
     "sku": "6000201948562",
@@ -3513,7 +3805,8 @@
     "url": "https://www.walmart.ca/en/ip/zabiha-halal-cajun-chicken-breast-roast/6000201948562",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "30942905"
   },
   {
     "sku": "6000204573478",
@@ -3525,7 +3818,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-whisky-bbq-back-ribs/6000204573478",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "31393306"
   },
   {
     "sku": "6000204574647",
@@ -3537,7 +3831,8 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-original-bbq-back-ribs/6000204574647",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "ribs"
+    "subcategory": "ribs",
+    "win": "31393305"
   },
   {
     "sku": "6000208524868",
@@ -3549,7 +3844,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-sweet-smoky-barbecue-pork-rib-singles/6000208524868",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50645421"
   },
   {
     "sku": "6000208530900",
@@ -3561,7 +3857,8 @@
     "url": "https://www.walmart.ca/en/ip/great-value-fully-cooked-fajita-sirloin-beef-strips/6000208530900",
     "food_condition": null,
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50627305"
   },
   {
     "sku": "61B374HUPILF",
@@ -3573,6 +3870,7 @@
     "url": "https://www.walmart.ca/en/ip/lous-kitchen-chicken-tikka-masala-with-rice/61B374HUPILF",
     "food_condition": "Refrigerate",
     "category": "Ready to eat",
-    "subcategory": "Other"
+    "subcategory": "Other",
+    "win": "50981285"
   }
 ]

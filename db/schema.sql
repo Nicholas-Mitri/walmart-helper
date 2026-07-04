@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     sku VARCHAR(50) NOT NULL,
     upc VARCHAR(50) NOT NULL,
+    win VARCHAR(50) NOT NULL,
     name VARCHAR(255) NOT NULL,
     brand VARCHAR(100) NULL,
     description TEXT NULL,
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS products (
 
     UNIQUE KEY idx_products_sku (sku),
     UNIQUE KEY idx_products_upc (upc),
+    UNIQUE KEY idx_products_win (win),
     INDEX idx_ui_filter (category, is_discontinued)
 
 );

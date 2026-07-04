@@ -3,6 +3,7 @@ import time
 import subprocess
 import json, random
 from bs4 import BeautifulSoup
+import re
 
 
 # Function to send a hotkey combination using AppleScript and subprocess
@@ -37,7 +38,7 @@ def fetch_html(url):
     time.sleep(1)
 
     # send_hotkey("esc", modifier="")
-    send_hotkey("t")  # Open new tab
+    send_hotkey("l")  # Open new tab
     time.sleep(0.3)
     send_hotkey("v")  # Paste URL
     time.sleep(0.3)
@@ -45,7 +46,7 @@ def fetch_html(url):
     time.sleep(3)
     send_hotkey("a")  # Select all
     send_hotkey("c")  # Copy
-    send_hotkey("w")  # Close tab
+    # send_hotkey("w")  # Close tab
     time.sleep(0.05)
 
     return subprocess.run(["pbpaste"], capture_output=True, text=True).stdout
@@ -139,14 +140,22 @@ def extract_product_info(html: str) -> dict:
     # --- Additional properties ---
     extra = {p["name"]: p["value"] for p in product_data.get("additionalProperty", [])}
 
+    ## Extract WIN
+
+    match = re.search(r'{"name":"Walmart Item #","value":"(\d+)"', html)
+    win = None
+    if match:
+        win = str(match.group(1))
+
     return {
         "name": product_data.get("name"),
         "brand": product_data.get("brand", {}).get("name"),
         "sku": product_data.get("sku"),
-        "UPC": product_data.get("gtin13"),
+        "upc": product_data.get("gtin13"),
         "description": product_data.get("description"),
         "model": product_data.get("model"),
         "image_url": product_data.get("image"),
+        "win": win,
         # "price": offer.get("price"),
         # "currency": offer.get("priceCurrency"),
         # "availability": offer.get("availability"),
@@ -306,11 +315,52 @@ def populate_walmart_db(batch_size=5, url_file="./scraper/unprocessed_urls.txt")
             f.write(url + "\n")
 
 
+def add_win_to_records(start_item_upc=None):
+    with open("./data/walmart_meats_clean_final.json", "r") as f:
+        products = json.load(f)
+    print(f"Older version of DB has {len(products)} records")
+    with open("./data/walmart_meats_clean_final_w_WIN.json", "r") as f:
+        products_with_win = json.load(f)
+    print(f"New version of DB has {len(products_with_win)} records")
+
+    last_pulled_upc = "xxx"
+    start_idx = (
+        next((i + 1 for i, d in enumerate(products) if d["upc"] == start_item_upc))
+        if start_item_upc
+        else 0
+    )
+    subprocess.run(["osascript", "-e", 'tell application "Arc" to activate'])
+    for item in products[start_idx:]:
+        time.sleep(5)
+        item_info = extract_product_info(fetch_html(item["url"]))
+        win = item_info.get("win", None)
+        if not win:
+            print(
+                f"Failed. Last extracted WIN is for record with upc: {last_pulled_upc}."
+            )
+            if products_with_win:
+                with open("./data/walmart_meats_clean_final_w_WIN.json", "w") as fw:
+                    json.dump(products_with_win, fw, indent=2)
+            return
+        else:
+            new_item = dict(item)
+            new_item["win"] = win
+            last_pulled_upc = item_info["upc"]
+            products_with_win.append(new_item)
+            print(
+                f"Success. Last extracted WIN is for record with upc: {last_pulled_upc} with win: {win}."
+            )
+            if products_with_win:
+                with open("./data/walmart_meats_clean_final_w_WIN.json", "w") as fw:
+                    json.dump(products_with_win, fw, indent=2)
+
+
 if __name__ == "__main__":
 
     # upc_to_url(start_index=104, n_scrapes=7)
     # add_newly_scanned_urls()
     # filter_unprocessed_urls()
-    for _ in range(10):
-        populate_walmart_db(batch_size=5)
-        time.sleep(30)
+    # for _ in range(10):
+    #     populate_walmart_db(batch_size=5)
+    #     time.sleep(30)
+    add_win_to_records(start_item_upc="773220108343")
