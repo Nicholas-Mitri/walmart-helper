@@ -1230,7 +1230,7 @@
     "image_url": "https://i5.walmartimages.com/asr/9762166b-1644-401b-a8a7-7cf0de7a6e60.a6606398364fb17afc8fb08b02d22f55.jpeg",
     "url": "https://www.walmart.ca/en/ip/KYJ-Chinese-style-sausage-pork/5EZ10OX8HYSN",
     "food_condition": "Fresh",
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "sausage",
     "win": "31314851"
   },
@@ -1308,7 +1308,7 @@
     "image_url": "https://i5.walmartimages.com/asr/03ba0641-840e-44d2-8de0-1177639a5568.2300b157b34059f2df555fef97ebcfc9.jpeg",
     "url": "https://www.walmart.ca/en/ip/Great-Value-Frozen-Honey-Garlic-Pork-Back-Ribs-680-g/1WMOSOC0ABMV",
     "food_condition": null,
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "rib",
     "win": "30769172"
   },
@@ -1347,7 +1347,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/032/768/6000202032768.jpg",
     "url": "https://www.walmart.ca/en/ip/prime-extra-lean-ground-turkey/10243879",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Poultry",
     "subcategory": "ground",
     "win": "30648492"
   },
@@ -1620,7 +1620,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/842/334/6000209842334.jpg",
     "url": "https://www.walmart.ca/en/ip/johnsonville-hot-honey-flavoured-breakfast-links/1S72821O18BL",
     "food_condition": "Refrigerate",
-    "category": "Raw Porl",
+    "category": "Raw Pork",
     "subcategory": "sausage",
     "win": "51018551"
   },
@@ -1672,7 +1672,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/226/059/6000209226059.jpg",
     "url": "https://www.walmart.ca/en/ip/your-fresh-market-butchers-style-montreal-steak-spice-pork-sausages/6000208884649",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Pork",
     "subcategory": "sausage;steak",
     "win": "50704946"
   },
@@ -2478,7 +2478,7 @@
     "image_url": "https://i5.walmartimages.com/asr/34f01445-2523-4c7c-8596-8b924fb9d533.e53fac97d15a4e25216df8e7a185bd0b.jpeg",
     "url": "https://www.walmart.ca/en/ip/Great-Value-Barbecue-Pork-Ribettes/567ZB5KAD949",
     "food_condition": null,
-    "category": "Raw Pork",
+    "category": "Ready to eat",
     "subcategory": "ribette",
     "win": "50179464"
   },
