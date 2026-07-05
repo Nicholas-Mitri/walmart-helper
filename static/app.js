@@ -1122,7 +1122,9 @@ function closePickScanner() {
 }
 
 function showPickScanResult(upc) {
-  const match = findPickByUpc(upc);
+  const match = upc.startsWith("400")
+    ? findProductByWin(upc)
+    : findProductByUpc(upc);
   const toast = document.getElementById("pick-scan-toast");
   document.getElementById("pick-scan-verdict").textContent = match
     ? "✓ Pick this item"
@@ -1216,7 +1218,9 @@ function closePickAddScanner() {
 }
 
 function handlePickAddScan(upc) {
-  const productEntry = findProductByUpc(upc);
+  const productEntry = upc.startsWith("400")
+    ? findProductByWin(upc)
+    : findProductByUpc(upc);
 
   if (!productEntry) {
     closePickAddScanner();
