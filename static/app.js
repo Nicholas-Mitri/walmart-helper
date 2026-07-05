@@ -947,7 +947,8 @@ function hideOverlay(id) {
 function normalizeUpc(upc) {
   // Handles certain UPC formats (including WIN codes, or possibly for codes starting with 7)
   if (upc.startsWith("400")) return upc.slice(3).replace(/^0/, "").slice(0, -1); // Remove 400 prefix and final check digit
-  if (upc.startsWith("6") || upc.startsWith("7")) return upc.slice(0, 11); // Remove last digit for '6' or '7' prefixed codes
+  if (upc.startsWith("6") || upc.startsWith("7") || upc.startsWith("5"))
+    return upc.slice(0, 11); // Remove last digit for '6' or '7' prefixed codes
   if (upc.startsWith("2")) return upc.slice(0, 6);
   return upc.replace(/^1/, "").replace(/^0/, "").substring(0, 11);
 }

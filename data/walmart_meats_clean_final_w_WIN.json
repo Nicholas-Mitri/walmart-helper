@@ -229,7 +229,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/461/093/6000199461093.jpg",
     "url": "https://www.walmart.ca/en/ip/mina-halal-lean-ground-chicken/6000191272122",
     "food_condition": "Refrigerate",
-    "category": "Raw Chicken",
+    "category": "Raw Poultry",
     "subcategory": "ground",
     "win": "30648493"
   },
@@ -320,7 +320,7 @@
     "image_url": "https://i5.walmartimages.ca/images/Enlarge/817/599/6000208817599.jpg",
     "url": "https://www.walmart.ca/en/ip/extra-lean-ground-chicken-raised-on-canadian-farms/6000208678165",
     "food_condition": "Refrigerate",
-    "category": "Raw Beef",
+    "category": "Raw Poultry",
     "subcategory": "ground",
     "win": "50659810"
   },
@@ -3872,5 +3872,47 @@
     "category": "Ready to eat",
     "subcategory": "Other",
     "win": "50981285"
+  },
+  {
+    "name": "AAA Angus Beef Top Sirloin and Cap Steak, Your Fresh Market, 1\u20132 steaks, 0.35 - 0.60 KG",
+    "brand": "Your Fresh Market",
+    "sku": "1BDBIJOHQQ46",
+    "upc": "220546000009",
+    "description": "We may be biased, but we think we\u2019ve found the official steak of summer: AAA Angus Beef Top Sirloin and Cap Steak from Your Fresh Market.<br><br>Top sirloin is a versatile cut that\u2019ll quickly make it onto your summer meal rotation (fall, winter and spring, too!). That\u2019s because our sirloin steaks are cut from Canada AAA Angus Beef for quality you can savour.<br><br>Sirloin is lean, rich and packed with bold, beefy flavour. It offers excellent value and is a versatile cut of beef that can be grilled or pan fried. <br><br>Enjoy it as a classic steak with all your fave side dishes, cube it for kabobs, or slice it and saut\u00e9 it in a stir-fry with veggies. It\u2019s a go-to the whole family will love!",
+    "model": null,
+    "image_url": "https://i5.walmartimages.ca/images/Enlarge/330/381/6000209330381.jpg",
+    "win": "50729518",
+    "url": "https://www.walmart.ca/en/ip/aaa-angus-beef-top-sirloin-and-cap-steak-your-fresh-market/1BDBIJOHQQ46",
+    "food_condition": "Refrigerate",
+    "category": "Raw Beef",
+    "subcategory": "steak"
+  },
+  {
+    "name": "Maple Leaf Boneless Skinless Chicken Breasts, 6-7 pc, 1.23 - 1.66 KG",
+    "brand": "Maple Leaf",
+    "sku": "3Z4HSOD28G07",
+    "upc": "222868000002",
+    "description": "Serve your family and friends Maple Leaf\u00ae boneless skinless chicken breasts that have been proudly raised on Canadian farms. These fresh boneless skinless chicken breasts have no added hormones, like all chicken in Canada, and are a high-quality source of protein you can trust. Boneless chicken breasts are a versatile and delicious addition to many home-cooked lunches and dinners, including soups, BBQ, salads, casseroles, and more. Dedicated to providing wholesome, real food for Canadians for generations to come, Maple Leaf Foods is the first major food company in the world to become carbon neutral. Join them in their efforts for a more sustainable planet.",
+    "model": null,
+    "image_url": "https://i5.walmartimages.ca/images/Enlarge/842/723/6000209842723.jpg",
+    "win": "51053308",
+    "url": "https://www.walmart.ca/en/ip/maple-leaf-boneless-skinless-chicken-breasts/3Z4HSOD28G07",
+    "category": "Raw Poultry",
+    "subcategory": "breast",
+    "food_condition": "Refrigerate"
+  },
+  {
+    "name": "Grimm's Honey & Garlic Pepperoni, 600g",
+    "brand": "Grimm's",
+    "sku": "6000196927665",
+    "upc": "55898114469",
+    "description": "Ready to eat meat snack. Grimm\u2019s Honey Garlic Pepperoni Sticks are a high-protein choice with absolutely no fuss; a quick and easy way to get protein no matter how busy your schedule. A sweet and savoury snack, naturally smoked and bursting with flavour! Made with real honey. A great addition to any packed lunch and an easy choice for snacks, bursting with flavour. Made with our quality cuts of pork & beef. Great for all occasions, a quick snack, a great addition to kids\u2019 lunches and after-school snacks, party trays and everything in between!",
+    "model": "055898114469",
+    "image_url": "https://i5.walmartimages.ca/images/Enlarge/521/161/6000204521161.jpg?skipOpt=1",
+    "win": "31035891",
+    "url": "https://www.walmart.ca/en/ip/grimms-honey-garlic-pepperoni/6000196927665",
+    "category": "Ready to eat",
+    "subcategory": "pepperoni",
+    "food_condition": "Refrigerate"
   }
 ]

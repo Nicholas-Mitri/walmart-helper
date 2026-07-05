@@ -292,7 +292,7 @@ def populate_walmart_db(batch_size=5, url_file="./scraper/unprocessed_urls.txt")
         sku = url.split("/")[-1]
         product_html = fetch_html(url)
         product_info = extract_product_info(product_html)
-        if not product_info.get("UPC"):
+        if not product_info.get("upc"):
             print(f"Scraping failed, skipping URL: {url}")
             continue
         new_meats_records.append(product_info)
@@ -358,9 +358,9 @@ def add_win_to_records(start_item_upc=None):
 if __name__ == "__main__":
 
     # upc_to_url(start_index=104, n_scrapes=7)
-    # add_newly_scanned_urls()
-    # filter_unprocessed_urls()
-    # for _ in range(10):
-    #     populate_walmart_db(batch_size=5)
-    #     time.sleep(30)
-    add_win_to_records(start_item_upc="773220108343")
+    add_newly_scanned_urls()
+    filter_unprocessed_urls()
+    for _ in range(1):
+        populate_walmart_db(batch_size=5)
+        time.sleep(30)
+    # add_win_to_records(start_item_upc="773220108343")
