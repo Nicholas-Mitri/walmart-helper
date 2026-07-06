@@ -980,6 +980,15 @@ function findPickByUpc(upc) {
   );
 }
 
+function findPickByWin(upc) {
+  const normalized = normalizeUpc(upc);
+  return (
+    [...picksMap.values()].find(
+      (p) => p.win && normalizeUpc(p.win) === normalized,
+    ) || null
+  );
+}
+
 // ─── Barcode scanner ──────────────────────────────────────────────────────────
 
 const _detectionCounts = {};
@@ -1103,7 +1112,7 @@ function openPickScanner() {
       showPickScanResult(raw);
       setTimeout(() => {
         _pickScanCooldown = false;
-      }, 5000);
+      }, 2000);
     }
   };
   Quagga.onDetected(_pickScannerDetectedHandler);
@@ -1123,9 +1132,7 @@ function closePickScanner() {
 }
 
 function showPickScanResult(upc) {
-  const match = upc.startsWith("400")
-    ? findProductByWin(upc)
-    : findProductByUpc(upc);
+  const match = upc.startsWith("400") ? findPickByWin(upc) : findPickByUpc(upc);
   const toast = document.getElementById("pick-scan-toast");
   document.getElementById("pick-scan-verdict").textContent = match
     ? "✓ Pick this item"
@@ -1142,7 +1149,7 @@ function showPickScanResult(upc) {
     setTimeout(() => {
       toast.style.display = "none";
     }, 300);
-  }, 3000);
+  }, 1500);
 }
 
 document
