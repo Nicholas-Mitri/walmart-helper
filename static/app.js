@@ -246,6 +246,7 @@ async function addPick(productId, sku, qty, triggerBtn) {
       brand: productInfo.brand || "",
       image_url: productInfo.image_url || "",
       upc: productInfo.upc || "",
+      win: productInfo.win || "",
       category: productInfo.category || "Other",
       quantity: data.quantity,
     });
