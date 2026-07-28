@@ -372,7 +372,7 @@ function renderPicksView() {
             <p class="text-[14px] font-semibold" style="color:#6b7a92;">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
             ${
               pick.upc
-                ? `<div class="flex items-center gap-2"><span class="upc-label">UPC</span><span class="upc-value" style="font-size:15px;">${escHtml(pick.upc)}</span></div>`
+                ? `<div class="flex items-center gap-2"><span class="upc-label">UPC</span><span class="upc-value">${escHtml(pick.upc)}</span></div>`
                 : ""
             }
           </div>
@@ -922,7 +922,7 @@ function updatePickBadge() {
 }
 
 function setBookmarkFilled(btn) {
-  btn.style.color = "#e8a900";
+  btn.style.color = "#ffc220";
   btn.innerHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor">
       <path d="M6 2a2 2 0 00-2 2v18l8-4 8 4V4a2 2 0 00-2-2H6z"/>

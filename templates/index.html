@@ -40,7 +40,7 @@
       <!-- Bookmark (top-right) -->
       <button
         class="pick-btn absolute top-1.5 right-1.5 w-11 h-11 flex items-center justify-center transition-colors"
-        style="color:{{ '#e8a900' if product.sku in picked_skus else '#a9b6c9' }};"
+        style="color:{{ '#ffc220' if product.sku in picked_skus else '#a9b6c9' }};"
         data-sku="{{ product.sku }}"
         data-product-id="{{ product.id }}"
         data-display-name="{{ product.name }}"
@@ -59,7 +59,7 @@
 
       <!-- External link (bottom-right) -->
       {% if product.url %}
-      <a href="{{ product.url }}" target="_blank" class="absolute bottom-2.5 right-3 transition-colors" style="color:#a9b6c9;" aria-label="View product page">
+      <a href="{{ product.url }}" target="_blank" class="absolute bottom-1.5 right-1.5 w-11 h-11 flex items-center justify-center transition-colors" style="color:#a9b6c9;" aria-label="View product page">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
