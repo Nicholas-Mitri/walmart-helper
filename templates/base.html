@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Meats at Walmart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
   <script>
@@ -11,92 +14,163 @@
       theme: {
         extend: {
           colors: {
-            accent: '#ffc220', // Walmart yellow
+            accent: '#ffc220',
             accentDark: '#f7b500',
-            surface: '#004c91', // Walmart blue
-            card: '#f5f5f5',   // Light card background
-            border: '#e0e6ef', // Light blue/gray border
-            muted: '#7b8ba5',  // Brighter muted blue-gray
-            textDark: '#1a2233', // custom added for dark readable text
+            surface: '#004c91',
+            surfaceDeep: '#003b71',
+            card: '#ffffff',
+            border: '#eef1f6',
+            muted: '#8fb4d9',
+            textDark: '#101a2b',
             textLight: '#ffffff'
+          },
+          fontFamily: {
+            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'monospace']
           }
         }
       }
     }
   </script>
   <style>
+    /* ── Base ─────────────────────────────────────────────────────────────── */
     * { touch-action: manipulation; }
-    body { background-color: #004c91; color: #fff; }
-    .filter-tab.active { background-color: #ffc220 !important; color: #004c91 !important; border-color: #ffc220 !important;}
-    .action-btn.selected { background-color: #ffc220; color: #004c91; }
-    .floor-btn.selected { background-color: #ffc220; color: #004c91; }
-    .product-card { -webkit-user-select: none; user-select: none; }
+    body {
+      background-color: #004c91;
+      color: #fff;
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #ffc220; text-decoration: none; }
+    a:hover { color: #ffd45e; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+    /* ── Surfaces: solid cards, soft elevation (replaces frosted glass) ───── */
+    .bg-card {
+      background-color: #ffffff !important;
+      color: #101a2b !important;
+      box-shadow: 0 2px 4px rgba(0,15,35,.16), 0 10px 22px rgba(0,15,35,.14);
+    }
+    .bg-border {
+      background-color: #eef1f6 !important;
+      color: #1a2233 !important;
+    }
+    .bg-card .text-white, .bg-border .text-white { color: #101a2b !important; }
+    .bg-card .text-muted, .bg-border .text-muted { color: #6b7a92 !important; }
+    .bg-card h1, .bg-card p, .bg-card span, .bg-card button,
+    .bg-border h1, .bg-border p, .bg-border span, .bg-border button { color: #101a2b; }
+    #pick-modal-product-name, #partial-product-name, #action-product-name { color: #101a2b !important; }
+    #pick-count-badge { color: #004c91 !important; }
+
+    /* ── Typography helpers ───────────────────────────────────────────────── */
+    .upc-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      font-variant-numeric: tabular-nums;
+      color: #1a2233;
+    }
+    .upc-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #8b9bb4;
+    }
+    .product-title { font-size: 17px; line-height: 1.25; font-weight: 600; letter-spacing: -.01em; }
+
+    /* ── Controls ─────────────────────────────────────────────────────────── */
+    .field {
+      height: 52px; border-radius: 14px; border: 2px solid transparent;
+      background: #fff; color: #101a2b; font-size: 17px; font-weight: 500;
+    }
+    .field::placeholder { color: #8b9bb4; }
+    .field:focus { outline: none; border-color: #ffc220; }
+    .textarea-field {
+      border-radius: 14px; border: 2px solid #e2e7f0; background: #f6f8fb;
+      color: #101a2b; font-size: 16px; padding: 12px;
+    }
+    .textarea-field:focus { outline: none; border-color: #ffc220; background: #fff; }
+
+    .btn-primary {
+      height: 56px; border-radius: 16px; background: #ffc220; color: #00366a;
+      font-size: 17px; font-weight: 700; box-shadow: 0 6px 16px rgba(255,194,32,.35);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    .btn-primary:active { transform: scale(.97); filter: brightness(.96); }
+    .btn-secondary {
+      height: 56px; border-radius: 16px; background: #eef1f6; color: #1a2233;
+      font-size: 17px; font-weight: 600; transition: transform .12s ease;
+    }
+    .btn-secondary:active { transform: scale(.97); }
+    .icon-btn {
+      width: 46px; height: 46px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.12); color: #cfe0f2; transition: background .15s ease;
+    }
+    .icon-btn:active { background: rgba(255,255,255,.22); }
+    .icon-btn-accent { background: #ffc220; color: #00366a; }
+    .stepper-btn {
+      width: 56px; height: 56px; border-radius: 50%; background: #eef1f6; color: #1a2233;
+      font-size: 28px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .stepper-btn:active { transform: scale(.93); background: #e2e7f0; }
+    .qty-value { font-size: 40px; font-weight: 700; line-height: 1; color: #101a2b; font-variant-numeric: tabular-nums; }
+
+    /* ── Filter chips ─────────────────────────────────────────────────────── */
+    .filter-tab {
+      height: 40px; padding: 0 18px; border-radius: 999px; border: 0;
+      background: rgba(255,255,255,.13); color: #dce8f5;
+      font-size: 15px; font-weight: 600; white-space: nowrap; flex-shrink: 0;
+      transition: background .15s ease, color .15s ease;
+    }
+    .filter-tab.active { background-color: #ffc220 !important; color: #00366a !important; }
+
+    /* ── Product cards ────────────────────────────────────────────────────── */
+    .product-card {
+      -webkit-user-select: none; user-select: none;
+      border-radius: 18px; transition: transform .12s ease;
+    }
+    .product-card:active { transform: scale(.985); }
+
+    /* ── Bottom nav ───────────────────────────────────────────────────────── */
+    .nav-tab { transition: color .15s ease; }
+    .nav-tab .nav-icon, .nav-tab .nav-label { transition: color .15s ease; }
     .nav-tab.active .nav-icon { color: #ffc220; }
     .nav-tab.active .nav-label { color: #ffc220; }
 
-    /* Translucent cards and buttons */
-    .bg-card {
-      background-color: rgba(245, 245, 245, 0.82) !important;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      color: #1a2233 !important;
+    /* ── Pick list sections ───────────────────────────────────────────────── */
+    .pick-section-header {
+      border-radius: 14px; background: rgba(255,255,255,.07);
+      transition: background .15s ease;
     }
-    .bg-border {
-      background-color: rgba(224, 230, 239, 0.70) !important;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      color: #1a2233 !important;
+    .pick-section-header.open { background: rgba(255,255,255,.14); }
+    .pick-section-body { animation: fadeIn .18s ease; }
+    .pick-action-btn {
+      height: 48px; border-radius: 13px; font-size: 15px; font-weight: 700;
+      transition: transform .12s ease;
     }
-    .bg-card .text-white, .bg-border .text-white {
-      color: #1a2233 !important;
+    .pick-action-btn:active { transform: scale(.96); }
+    .pick-action-picked { background: #dcf5e6; color: #0b6b3a; }
+    .pick-action-failed { background: #fde8e8; color: #991b1b; }
+    .pick-action-remove { background: #eef1f6; color: #5b6b85; font-weight: 600; }
+
+    /* ── Action / floor buttons (same hues, larger targets) ───────────────── */
+    .action-btn, .floor-btn {
+      height: 54px; border-radius: 14px; font-size: 16px; font-weight: 600;
+      transition: transform .12s ease, background .14s ease, color .14s ease, box-shadow .14s ease;
     }
-    .bg-card .text-muted, .bg-border .text-muted {
-      color: #7b8ba5 !important;
-    }
-    /* Always ensure pick-modal product name is dark if on light card */
-    #pick-modal-product-name,
-    #partial-product-name,
-    #action-product-name {
-      color: #1a2233 !important;
-    }
-    /* Ensure headings in cards/modals are readable */
-    .bg-card h1,
-    .bg-card p,
-    .bg-card span,
-    .bg-card button,
-    .bg-border h1,
-    .bg-border p,
-    .bg-border span,
-    .bg-border button {
-      color: #1a2233 !important;
-    }
-    /* Override badge text color if placed on accent background */
-    #pick-count-badge {
-      color: #004c91 !important;
-    }
-    /* Contain Quagga's injected video/canvas inside the scanner div */
-    #scanner-video, #pick-scanner-video, #pick-add-scanner-video { position: relative; overflow: hidden; }
-    #scanner-video video, #scanner-video canvas,
-    #pick-scanner-video video, #pick-scanner-video canvas,
-    #pick-add-scanner-video video, #pick-add-scanner-video canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
-    #scanner-video canvas.drawingBuffer,
-    #pick-scanner-video canvas.drawingBuffer,
-    #pick-add-scanner-video canvas.drawingBuffer { display: none; }
-    /* Hide scrollbar for filter tabs */
-    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    .scrollbar-hide::-webkit-scrollbar { display: none; }
-    /* Action button colors matching badge colors */
-    .action-btn[data-action="throw"]        { background-color: #fde8e8 !important; color: #b91c1c !important; }
+    .action-btn:active, .floor-btn:active { transform: scale(.96); }
+    .action-btn.selected, .floor-btn.selected { box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+    .action-btn[data-action="throw"]        { background-color: #fde8e8 !important; color: #991b1b !important; }
     .action-btn[data-action="throw"].selected { background-color: #b91c1c !important; color: #fff !important; }
-    .action-btn[data-action="cvp"]          { background-color: #e0f2fe !important; color: #0369a1 !important; }
+    .action-btn[data-action="cvp"]          { background-color: #e0f2fe !important; color: #075985 !important; }
     .action-btn[data-action="cvp"].selected { background-color: #0369a1 !important; color: #fff !important; }
-    .action-btn[data-action="vizpik"]       { background-color: #ede9fe !important; color: #6d28d9 !important; }
+    .action-btn[data-action="vizpik"]       { background-color: #ede9fe !important; color: #5b21b6 !important; }
     .action-btn[data-action="vizpik"].selected { background-color: #6d28d9 !important; color: #fff !important; }
-    .action-btn[data-action="donate"]       { background-color: #fef9c3 !important; color: #a16207 !important; }
+    .action-btn[data-action="donate"]       { background-color: #fef9c3 !important; color: #854d0e !important; }
     .action-btn[data-action="donate"].selected { background-color: #a16207 !important; color: #fff !important; }
-    .action-btn[data-action="product_note"] { background-color: #ffedd5 !important; color: #c2410c !important; }
+    .action-btn[data-action="product_note"] { background-color: #ffedd5 !important; color: #9a3412 !important; }
     .action-btn[data-action="product_note"].selected { background-color: #c2410c !important; color: #fff !important; }
-    /* Floor sheet button colors */
     .floor-btn[data-action="clean_daily"]   { background-color: #cffafe !important; color: #0e7490 !important; }
     .floor-btn[data-action="clean_daily"].selected { background-color: #0e7490 !important; color: #fff !important; }
     .floor-btn[data-action="clean_pm"]      { background-color: #e0e7ff !important; color: #3730a3 !important; }
@@ -107,93 +181,141 @@
     .floor-btn[data-action="floor_sweep"].selected { background-color: #065f46 !important; color: #fff !important; }
     .floor-btn[data-action="recovery"]      { background-color: #fef3c7 !important; color: #92400e !important; }
     .floor-btn[data-action="recovery"].selected { background-color: #92400e !important; color: #fff !important; }
-    .floor-btn[data-action="general_note"]  { background-color: rgba(249,115,22,0.18) !important; color: #c2410c !important; }
+    .floor-btn[data-action="general_note"]  { background-color: #ffe6d5 !important; color: #9a3412 !important; }
     .floor-btn[data-action="general_note"].selected { background-color: #ea580c !important; color: #fff !important; }
-    @keyframes slideDown {
-      from { transform: translateY(100%); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+
+    /* ── Sheets & overlays ────────────────────────────────────────────────── */
+    .sheet-surface {
+      background: #fff; border-radius: 24px 24px 0 0; color: #101a2b;
+      box-shadow: 0 -10px 40px rgba(0,0,0,.35);
+      animation: sheetUp .26s cubic-bezier(.22,1,.36,1);
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    .sheet-grabber { width: 42px; height: 5px; border-radius: 3px; background: #d7dee9; margin: 0 auto 14px; }
+    .overlay-backdrop { background: rgba(0,10,25,.62); animation: fadeIn .18s ease; }
+    .modal-surface { animation: popIn .22s cubic-bezier(.22,1,.36,1); border-radius: 24px; }
+
+    /* ── Scanner ──────────────────────────────────────────────────────────── */
+    #scanner-video, #pick-scanner-video, #pick-add-scanner-video { position: relative; overflow: hidden; }
+    #scanner-video video, #scanner-video canvas,
+    #pick-scanner-video video, #pick-scanner-video canvas,
+    #pick-add-scanner-video video, #pick-add-scanner-video canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; object-fit: cover; }
+    #scanner-video canvas.drawingBuffer,
+    #pick-scanner-video canvas.drawingBuffer,
+    #pick-add-scanner-video canvas.drawingBuffer { display: none; }
+    .scan-frame {
+      position: absolute; left: 32px; right: 32px; top: 50%; transform: translateY(-50%);
+      height: 170px; border: 3px solid #ffc220; border-radius: 16px;
+      box-shadow: 0 0 0 9999px rgba(0,0,0,.45); pointer-events: none;
+    }
+    .scan-line {
+      position: absolute; left: 44px; right: 44px; height: 3px; background: #ffc220;
+      box-shadow: 0 0 14px 2px rgba(255,194,32,.8);
+      animation: scanLine 2.2s ease-in-out infinite; pointer-events: none;
+    }
+
+    /* ── Toast ────────────────────────────────────────────────────────────── */
+    .app-toast {
+      background: #101a2b; color: #fff; font-size: 16px; font-weight: 600;
+      border-radius: 16px; padding: 15px 20px; text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,.4); animation: toastIn .22s ease;
+    }
+
+    /* ── Motion ───────────────────────────────────────────────────────────── */
+    @keyframes slideDown { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes sheetUp   { from { transform: translateY(101%); } to { transform: translateY(0); } }
+    @keyframes fadeIn    { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popIn     { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes toastIn   { from { transform: translate(-50%, 14px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+    @keyframes scanLine  { 0% { top: 8%; } 50% { top: 92%; } 100% { top: 8%; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
   </style>
 </head>
-<body class="min-h-screen font-sans pb-16">
+<body class="min-h-screen font-sans pb-20">
 
   <!-- Top bar -->
-  <header class="sticky top-0 z-30 bg-surface border-b border-border px-4 pt-3 pb-0 flex flex-col gap-3 min-h-[57px]">
+  <header class="sticky top-0 z-30 bg-surface" style="box-shadow: 0 6px 20px rgba(0,20,45,.35);">
     <!-- Persistent title -->
-    <div class="flex items-center justify-center gap-2">
-      <img src="/static/walmart.svg" alt="Walmart" class="w-7 h-7 flex-shrink-0">
-      <p class="text-accent font-bold text-base tracking-wide">Meats at Walmart</p>
+    <div class="flex items-center gap-2.5 px-4 pt-3.5 pb-2.5">
+      <img src="/static/walmart.svg" alt="" class="w-[30px] h-[30px] flex-shrink-0">
+      <p class="text-white font-bold text-[17px] tracking-tight">Meat and Seafood Department</p>
+      <span class="ml-auto text-[13px] font-semibold text-muted">Store 3160</span>
     </div>
+
     <!-- Per-tab content -->
-    <div id="header-catalog" class="flex flex-col gap-3">
-      <div class="flex items-center gap-2">
-        <span class="text-white text-sm font-semibold whitespace-nowrap">Search:</span>
+    <div id="header-catalog" class="flex flex-col gap-3 px-4 pb-3">
+      <div class="flex items-center gap-2.5">
         <div class="relative flex-1">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[color:#8b9bb4] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="7"/><line x1="20" y1="20" x2="16.5" y2="16.5"/>
+          </svg>
           <input
             id="search-input"
             type="search"
-            placeholder="Name or UPC…"
-            class="w-full bg-card text-[color:#1a2233] placeholder-muted rounded-lg pl-3 pr-8 py-2 text-sm border border-border focus:outline-none focus:border-accent"
+            placeholder="Name or UPC"
+            class="field w-full pl-11 pr-12"
           >
           <button
             id="search-clear"
-            class="hidden absolute right-1 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-[color:#1a2233]"
+            class="hidden absolute right-1.5 top-1/2 -translate-y-1/2 w-[38px] h-[38px] rounded-full bg-[color:#eef1f6] text-[color:#5b6b85] flex items-center justify-center"
             aria-label="Clear search"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
-        <button id="scan-btn" class="text-accent flex-shrink-0" aria-label="Scan barcode">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <button id="scan-btn" class="w-[52px] h-[52px] flex-shrink-0 rounded-[14px] bg-accent text-[color:#00366a] flex items-center justify-center shadow-lg" aria-label="Scan barcode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[26px] h-[26px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
             <line x1="7" y1="12" x2="17" y2="12"/>
           </svg>
         </button>
       </div>
-      <div id="filter-tabs-row" class="flex gap-1 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-2"></div>
+      <div id="filter-tabs-row" class="flex gap-2 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-1"></div>
     </div>
-    <div id="header-picks" class="hidden pb-3 flex items-center justify-between">
-      <h1 class="text-white font-semibold text-base">Pick List</h1>
-      <div class="flex items-center gap-3">
-        <button id="pick-add-scan-btn" class="text-accent" aria-label="Add product to pick list by scan">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+    <div id="header-picks" class="hidden flex px-4 pb-3.5 items-center justify-between">
+      <div class="flex items-baseline gap-2">
+        <h1 class="text-white font-bold text-[22px] tracking-tight">Pick List</h1>
+        <span id="pick-open-count" class="text-sm font-semibold text-muted"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="pick-add-scan-btn" class="icon-btn" style="color:#ffc220" aria-label="Add product to pick list by scan">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[23px] h-[23px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
-            <line x1="7" y1="12" x2="17" y2="12"/>
-            <line x1="12" y1="9" x2="12" y2="15"/>
-            <line x1="9" y1="12" x2="15" y2="12"/>
+            <line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/>
           </svg>
         </button>
-        <button id="pick-scan-btn" class="text-accent" aria-label="Scan item barcode">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <button id="pick-scan-btn" class="icon-btn icon-btn-accent" aria-label="Scan item barcode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[23px] h-[23px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
             <line x1="7" y1="12" x2="17" y2="12"/>
           </svg>
         </button>
       </div>
     </div>
-    <div id="header-log" class="hidden pb-3 flex items-center justify-between">
-      <h1 class="text-white font-semibold text-base">Activity Log</h1>
-      <div class="flex items-center gap-3">
-        <!-- Delete last log -->
-        <button id="delete-last-log-btn" class="text-muted hover:text-red-400 transition-colors" aria-label="Delete last log">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+
+    <div id="header-log" class="hidden flex px-4 pb-3.5 items-center justify-between">
+      <h1 class="text-white font-bold text-[22px] tracking-tight">Activity</h1>
+      <div class="flex items-center gap-2">
+        <button id="delete-last-log-btn" class="icon-btn" aria-label="Delete last log">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/>
           </svg>
         </button>
-        <!-- Export icon (dummy) -->
-        <button class="text-muted hover:text-white transition-colors" aria-label="Export">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <button class="icon-btn" aria-label="Export">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
             <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
           </svg>
         </button>
-        <!-- Add floor activity icon -->
-        <button id="log-activity-btn" class="text-accent hover:text-accentDark transition-colors" aria-label="Log floor activity">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="9"/>
-            <path d="M12 8v8M8 12h8"/>
+        <button id="log-activity-btn" class="h-[46px] px-4 rounded-[13px] bg-accent text-[color:#00366a] text-[15px] font-bold flex items-center gap-1.5" aria-label="Log floor activity">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-[19px] h-[19px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.8">
+            <path d="M12 5v14M5 12h14"/>
           </svg>
+          Log
         </button>
       </div>
     </div>
@@ -202,234 +324,239 @@
   {% block content %}{% endblock %}
 
   <!-- Safety Sweeps Banner -->
-  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-2 font-semibold shadow-lg" style="display:none; bottom:60px; animation: slideDown 0.4s ease-out;">
-    Safety Sweeps due!
+  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-3 text-[16px] font-bold" style="display:none; bottom:76px; animation: slideDown 0.4s ease-out;">
+    Safety Sweeps due
   </div>
 
   <!-- Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 inset-x-0 z-30 bg-surface border-t border-border flex">
-    <button class="nav-tab active flex-1 flex flex-col items-center justify-center py-2 gap-0.5" data-tab="catalog" aria-label="Catalog">
-      <svg class="nav-icon w-6 h-6 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-surfaceDeep flex px-2 pt-1.5" style="border-top:1px solid rgba(255,255,255,.12); padding-bottom: max(12px, env(safe-area-inset-bottom));">
+    <button class="nav-tab active flex-1 flex flex-col items-center justify-center py-2.5 gap-1" data-tab="catalog" aria-label="Catalog">
+      <svg class="nav-icon w-[26px] h-[26px] text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
         <path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
       </svg>
-      <span class="nav-label text-xs text-accent">Catalog</span>
+      <span class="nav-label text-[12px] font-semibold text-accent">Catalog</span>
     </button>
 
-    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2 gap-0.5 relative" data-tab="picks" aria-label="Pick List">
+    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2.5 gap-1 relative" data-tab="picks" aria-label="Pick List">
       <div class="relative">
-        <svg class="nav-icon w-6 h-6 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <svg class="nav-icon w-[26px] h-[26px] text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
           <rect x="9" y="3" width="6" height="4" rx="1"/>
           <path d="M9 12l2 2 4-4"/>
         </svg>
-        <span id="pick-count-badge" class="hidden absolute -top-1.5 -right-2.5 bg-accent text-[color:#004c91] text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none"></span>
+        <span id="pick-count-badge" class="hidden absolute -top-1.5 -right-3 bg-accent text-[color:#00366a] text-[12px] font-bold rounded-full min-w-[20px] h-5 px-1.5 flex items-center justify-center leading-none"></span>
       </div>
-      <span class="nav-label text-xs text-muted">Picks</span>
+      <span class="nav-label text-[12px] font-semibold text-muted">Picks</span>
     </button>
 
-    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2 gap-0.5" data-tab="log" aria-label="Activity Log">
-      <svg class="nav-icon w-6 h-6 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 7v5l3 3"/>
+    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2.5 gap-1" data-tab="log" aria-label="Activity Log">
+      <svg class="nav-icon w-[26px] h-[26px] text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
       </svg>
-      <span class="nav-label text-xs text-muted">Log</span>
+      <span class="nav-label text-[12px] font-semibold text-muted">Log</span>
     </button>
   </nav>
 
   <!-- ── ADD TO PICK MODAL ─────────────────────────────────────────────────── -->
-  <div id="pick-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-6" style="display:none">
-    <div id="pick-modal-backdrop" class="absolute inset-0 bg-black/80"></div>
-    <div class="relative w-full max-w-sm bg-card rounded-2xl p-6 shadow-2xl">
-      <p id="pick-modal-product-name" class="font-semibold text-sm mb-1 truncate" style="color:#1a2233;">Product Name</p>
-      <p class="text-muted text-xs mb-5" style="color:#7b8ba5;">How many cases to pick?</p>
-      <div class="flex items-center justify-center gap-6 mb-6">
-        <button id="pick-modal-dec" class="w-11 h-11 rounded-full bg-border font-bold text-2xl flex items-center justify-center" style="color:#1a2233;">−</button>
-        <span id="pick-modal-qty" class="text-3xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
-        <button id="pick-modal-inc" class="w-11 h-11 rounded-full bg-border font-bold text-2xl flex items-center justify-center" style="color:#1a2233;">+</button>
+  <div id="pick-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-5" style="display:none">
+    <div id="pick-modal-backdrop" class="absolute inset-0 overlay-backdrop"></div>
+    <div class="modal-surface relative w-full max-w-sm bg-card p-6">
+      <p id="pick-modal-product-name" class="text-[18px] font-semibold leading-snug mb-1">Product Name</p>
+      <p class="text-[15px] mb-6" style="color:#6b7a92;">How many cases to pick?</p>
+      <div class="flex items-center justify-center gap-6 mb-7">
+        <button id="pick-modal-dec" class="stepper-btn" aria-label="Decrease">&minus;</button>
+        <span id="pick-modal-qty" class="qty-value w-[70px] text-center">1</span>
+        <button id="pick-modal-inc" class="stepper-btn" aria-label="Increase">+</button>
       </div>
       <div class="flex gap-3">
-        <button id="pick-modal-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
-        <button id="pick-modal-add" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Add to Picks</button>
+        <button id="pick-modal-cancel" class="btn-secondary flex-1">Cancel</button>
+        <button id="pick-modal-add" class="btn-primary flex-[1.4]">Add to picks</button>
       </div>
     </div>
   </div>
 
   <!-- ── ACTION SHEET (long-press log) ────────────────────────────────────── -->
-  <div id="action-sheet" class="fixed inset-0 z-50 hidden flex flex-col" style="display:none">    <!-- floats above the sheet -->
-    <div id="sheet-backdrop" class="absolute inset-0 bg-black/80 z-0"></div>
+  <div id="action-sheet" class="fixed inset-0 z-50 hidden flex-col" style="display:none">
+    <div id="sheet-backdrop" class="absolute inset-0 overlay-backdrop z-0"></div>
     <div
-    id="action-product-image-wrap"
-    class="relative z-10 hidden flex-1 min-h-0 w-full flex items-center justify-center px-4 py-4 cursor-pointer"
-    onclick="closeActionSheet()"
-  >    <img
+      id="action-product-image-wrap"
+      class="relative z-10 hidden flex-1 min-h-0 w-full flex items-center justify-center px-5 py-5 cursor-pointer"
+      onclick="closeActionSheet()"
+    >
+      <img
         id="action-product-image"
         src=""
         alt=""
-        class="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl"
-        >
+        class="max-h-full max-w-full w-auto h-auto object-contain rounded-[20px]"
+        style="animation: popIn .24s cubic-bezier(.22,1,.36,1); box-shadow: 0 18px 50px rgba(0,0,0,.5);"
+      >
     </div>
-    <div class="relative z-10 w-full flex-shrink-0 bg-card rounded-t-2xl p-5 shadow-2xl">
+    <div class="sheet-surface relative z-10 w-full flex-shrink-0 px-[18px] pt-2">
+      <div class="sheet-grabber"></div>
       <input type="hidden" id="action-product-id">
-      <p id="action-product-name" class="text-sm font-semibold leading-snug line-clamp-2" style="color:#1a2233;">Product Name</p>
-      <p id="action-product-upc" class="text-xs mb-4 mt-0.5" style="color:#7b8ba5;"></p>
-      <div class="grid grid-cols-5 gap-2 mb-5">
-        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="vizpik">Vizpik</button>
-        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="throw">Throw</button>
-        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="cvp">CVP</button>
-        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="donate">Donate</button>
-        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="product_note">Note</button>
+      <p id="action-product-name" class="text-[18px] font-semibold leading-snug line-clamp-2">Product Name</p>
+      <p id="action-product-upc" class="upc-value mt-1 mb-4"></p>
+      <div class="grid grid-cols-3 gap-2.5 mb-4">
+        <button class="action-btn" data-action="vizpik">Vizpik</button>
+        <button class="action-btn" data-action="throw">Throw</button>
+        <button class="action-btn" data-action="cvp">CVP</button>
+        <button class="action-btn" data-action="donate">Donate</button>
+        <button class="action-btn" data-action="product_note">Note</button>
       </div>
-      <div id="qty-row" class="flex items-center justify-center gap-5 mb-5">
-        <button id="qty-dec" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">−</button>
-        <div class="flex flex-col items-center">
-          <span id="qty-display" class="text-2xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
-          <span id="qty-unit-label" class="text-xs text-muted mt-0.5" style="color:#7b8ba5;">Unit(s)</span>
+      <div id="qty-row" class="flex items-center justify-center gap-6 mb-4">
+        <button id="qty-dec" class="stepper-btn" aria-label="Decrease">&minus;</button>
+        <div class="flex flex-col items-center min-w-[72px]">
+          <span id="qty-display" class="qty-value">1</span>
+          <span id="qty-unit-label" class="text-[13px] font-semibold mt-1" style="color:#8b9bb4;">Unit(s)</span>
         </div>
-        <button id="qty-inc" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">+</button>
+        <button id="qty-inc" class="stepper-btn" aria-label="Increase">+</button>
       </div>
       <textarea
         id="action-note-input"
         rows="3"
         placeholder="Enter note…"
-        class="hidden w-full rounded-lg px-3 py-2 text-sm border border-border bg-border mb-5 resize-none focus:outline-none focus:border-accent"
-        style="color:#1a2233;"
+        class="textarea-field hidden w-full mb-4 resize-none"
       ></textarea>
       <div class="flex gap-3">
-        <button id="sheet-cancel-btn" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
-        <button id="sheet-log-btn" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Log</button>
+        <button id="sheet-cancel-btn" class="btn-secondary flex-1">Cancel</button>
+        <button id="sheet-log-btn" class="btn-primary flex-[1.4]">Log it</button>
       </div>
     </div>
   </div>
 
   <!-- ── PICK ITEM PREVIEW MODAL ────────────────────────────────────────────── -->
-  <div id="pick-item-preview" class="fixed inset-0 z-50 hidden flex flex-col items-center justify-center px-4" style="display:none">
-    <div id="pick-preview-backdrop" class="absolute inset-0 bg-black/80"></div>
-    <div class="relative flex flex-col items-center gap-4 w-full max-h-[80vh]">
-      <img id="pick-preview-image" src="" alt="" class="max-w-xs max-h-96 w-auto h-auto object-contain rounded-2xl shadow-lg">
-      <div class="bg-card rounded-2xl p-4 text-center shadow-lg max-w-xs">
-        <p id="pick-preview-name" class="text-sm font-semibold leading-snug line-clamp-2 mb-2" style="color:#1a2233;"></p>
-        <p id="pick-preview-upc" class="text-xs" style="color:#7b8ba5;"></p>
+  <div id="pick-item-preview" class="fixed inset-0 z-50 hidden flex-col items-center justify-center px-5" style="display:none">
+    <div id="pick-preview-backdrop" class="absolute inset-0 overlay-backdrop"></div>
+    <div class="relative flex flex-col items-center gap-4 w-full max-h-[82vh]" style="animation: popIn .22s cubic-bezier(.22,1,.36,1);">
+      <img id="pick-preview-image" src="" alt="" class="max-w-xs max-h-96 w-auto h-auto object-contain rounded-[20px]" style="box-shadow: 0 18px 50px rgba(0,0,0,.5);">
+      <div class="bg-card rounded-[20px] p-4 text-center max-w-xs">
+        <p id="pick-preview-name" class="text-[17px] font-semibold leading-snug line-clamp-2 mb-2"></p>
+        <p id="pick-preview-upc" class="upc-value"></p>
       </div>
     </div>
   </div>
 
   <!-- ── PARTIAL PICK SHEET ────────────────────────────────────────────────── -->
   <div id="partial-sheet" class="fixed inset-0 z-50 hidden items-end" style="display:none">
-    <div id="partial-backdrop" class="absolute inset-0 bg-black/60"></div>
-    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
+    <div id="partial-backdrop" class="absolute inset-0 overlay-backdrop"></div>
+    <div class="sheet-surface relative w-full px-[18px] pt-2">
+      <div class="sheet-grabber"></div>
       <input type="hidden" id="partial-pick-id">
       <input type="hidden" id="partial-product-id">
-      <p id="partial-product-name" class="text-sm font-semibold mb-1 truncate" style="color:#1a2233;">Product Name</p>
-      <p class="text-muted text-xs mb-4" style="color:#7b8ba5;">How many units did you pick?</p>
-      <div class="flex items-center justify-center gap-5 mb-5">
-        <button id="partial-dec" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">−</button>
-        <span id="partial-qty-display" class="text-2xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
-        <button id="partial-inc" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">+</button>
+      <p id="partial-product-name" class="text-[18px] font-semibold leading-snug mb-1">Product Name</p>
+      <p class="text-[15px] mb-5" style="color:#6b7a92;">How many units did you pick?</p>
+      <div class="flex items-center justify-center gap-6 mb-5">
+        <button id="partial-dec" class="stepper-btn" aria-label="Decrease">&minus;</button>
+        <span id="partial-qty-display" class="qty-value w-[70px] text-center">1</span>
+        <button id="partial-inc" class="stepper-btn" aria-label="Increase">+</button>
       </div>
       <div class="flex gap-3">
-        <button id="partial-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
-        <button id="partial-confirm" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Confirm Pick</button>
+        <button id="partial-cancel" class="btn-secondary flex-1">Cancel</button>
+        <button id="partial-confirm" class="btn-primary flex-[1.4]">Confirm pick</button>
       </div>
     </div>
   </div>
 
   <!-- ── FLOOR ACTIVITY SHEET ─────────────────────────────────────────────── -->
   <div id="floor-sheet" class="fixed inset-0 z-50 hidden items-end" style="display:none">
-    <div id="floor-backdrop" class="absolute inset-0 bg-black/60"></div>
-    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
-      <p class="text-sm font-semibold mb-4" style="color:#1a2233;">Log Floor Activity</p>
-      <div class="grid grid-cols-3 gap-2 mb-4">
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="clean_daily">Daily Clean</button>
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="clean_pm">PM Clean</button>
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="temp_check">Temp Check</button>
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="floor_sweep">Safety Sweep</button>
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="recovery">Recovery</button>
-        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="general_note">General Note</button>
+    <div id="floor-backdrop" class="absolute inset-0 overlay-backdrop"></div>
+    <div class="sheet-surface relative w-full px-[18px] pt-2">
+      <div class="sheet-grabber"></div>
+      <p class="text-[18px] font-semibold mb-4">Log floor activity</p>
+      <div class="grid grid-cols-2 gap-2.5 mb-4">
+        <button class="floor-btn" data-action="clean_daily">Daily Clean</button>
+        <button class="floor-btn" data-action="clean_pm">PM Clean</button>
+        <button class="floor-btn" data-action="temp_check">Temp Check</button>
+        <button class="floor-btn" data-action="floor_sweep">Safety Sweep</button>
+        <button class="floor-btn" data-action="recovery">Recovery</button>
+        <button class="floor-btn" data-action="general_note">General Note</button>
       </div>
       <textarea
         id="floor-notes"
         rows="2"
         placeholder="Notes (optional)…"
-        class="w-full rounded-lg px-3 py-2 text-sm border border-border bg-border mb-4 resize-none focus:outline-none focus:border-accent"
-        style="color:#1a2233;"
+        class="textarea-field w-full mb-4 resize-none"
       ></textarea>
       <div class="flex gap-3">
-        <button id="floor-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
-        <button id="floor-log" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Log</button>
+        <button id="floor-cancel" class="btn-secondary flex-1">Cancel</button>
+        <button id="floor-log" class="btn-primary flex-[1.4]">Log it</button>
       </div>
     </div>
   </div>
 
   <!-- ── BARCODE SCANNER OVERLAY ───────────────────────────────────────────── -->
-  <div id="scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
-    <div class="flex items-center justify-between px-4 py-3">
-      <p class="text-white font-semibold">Scan Barcode</p>
-      <button id="scanner-close" class="text-white text-2xl leading-none">&times;</button>
+  <div id="scanner-overlay" class="fixed inset-0 z-50 flex-col" style="display:none; background:#05080d;">
+    <div class="flex items-center justify-between px-[18px] py-4">
+      <p class="text-white text-[18px] font-semibold">Scan barcode</p>
+      <button id="scanner-close" class="w-11 h-11 rounded-full flex items-center justify-center text-white" style="background:rgba(255,255,255,.12)" aria-label="Close scanner">
+        <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    <div class="flex-1 relative">
+    <div class="flex-1 relative mx-[18px] rounded-[20px] overflow-hidden" style="background:#0b1016">
       <div id="scanner-video" class="w-full h-full"></div>
-      <!-- Aim guide -->
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
-      </div>
+      <div class="scan-frame"></div>
+      <div class="scan-line"></div>
     </div>
-    <p id="scanner-status" class="text-center text-muted text-sm py-3">Point camera at a barcode…</p>
+    <p id="scanner-status" class="text-center text-[16px] py-5" style="color:#9fb3c9;">Point camera at a barcode…</p>
   </div>
 
   <!-- ── PICK SCANNER RESULT TOAST ────────────────────────────────────────── -->
-  <div id="pick-scan-toast" class="fixed inset-x-4 z-[110] rounded-2xl p-5 shadow-2xl text-center transition-opacity duration-300" style="display:none; bottom: 5rem;">
-    <p id="pick-scan-verdict" class="text-white font-bold text-lg mb-0.5"></p>
-    <p id="pick-scan-product-name" class="text-white text-sm font-medium truncate"></p>
-    <p id="pick-scan-upc" class="text-white/70 text-xs mt-0.5"></p>
+  <div id="pick-scan-toast" class="fixed inset-x-4 z-[110] rounded-[18px] p-5 text-center transition-opacity duration-300" style="display:none; bottom: 6rem; box-shadow: 0 12px 30px rgba(0,0,0,.4);">
+    <p id="pick-scan-verdict" class="text-white font-bold text-[22px] mb-1"></p>
+    <p id="pick-scan-product-name" class="text-white text-[16px] font-semibold truncate"></p>
+    <p id="pick-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'IBM Plex Mono',monospace;"></p>
   </div>
 
   <!-- ── PICK SCANNER OVERLAY ───────────────────────────────────────────────── -->
-  <div id="pick-scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
-    <div class="flex items-center justify-between px-4 py-3">
-      <p class="text-white font-semibold">Scan Item</p>
-      <button id="pick-scanner-close" class="text-white text-2xl leading-none">&times;</button>
+  <div id="pick-scanner-overlay" class="fixed inset-0 z-50 flex-col" style="display:none; background:#05080d;">
+    <div class="flex items-center justify-between px-[18px] py-4">
+      <p class="text-white text-[18px] font-semibold">Scan item</p>
+      <button id="pick-scanner-close" class="w-11 h-11 rounded-full flex items-center justify-center text-white" style="background:rgba(255,255,255,.12)" aria-label="Close scanner">
+        <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    <div class="flex-1 relative">
+    <div class="flex-1 relative mx-[18px] rounded-[20px] overflow-hidden" style="background:#0b1016">
       <div id="pick-scanner-video" class="w-full h-full"></div>
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
-      </div>
+      <div class="scan-frame"></div>
+      <div class="scan-line"></div>
     </div>
-    <p id="pick-scanner-status" class="text-center text-muted text-sm py-3">Point camera at item barcode…</p>
+    <p id="pick-scanner-status" class="text-center text-[16px] py-5" style="color:#9fb3c9;">Point camera at item barcode…</p>
   </div>
 
   <!-- ── ADD-TO-PICKS SCAN RESULT TOAST ────────────────────────────────────── -->
-  <div id="pick-add-scan-toast" class="fixed inset-x-4 z-[110] rounded-2xl p-5 shadow-2xl text-center transition-opacity duration-300" style="display:none; bottom: 5rem;">
-    <p id="pick-add-scan-verdict" class="text-white font-bold text-lg mb-0.5"></p>
-    <p id="pick-add-scan-product-name" class="text-white text-sm font-medium truncate"></p>
-    <p id="pick-add-scan-upc" class="text-white/70 text-xs mt-0.5"></p>
+  <div id="pick-add-scan-toast" class="fixed inset-x-4 z-[110] rounded-[18px] p-5 text-center transition-opacity duration-300" style="display:none; bottom: 6rem; box-shadow: 0 12px 30px rgba(0,0,0,.4);">
+    <p id="pick-add-scan-verdict" class="text-white font-bold text-[22px] mb-1"></p>
+    <p id="pick-add-scan-product-name" class="text-white text-[16px] font-semibold truncate"></p>
+    <p id="pick-add-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'IBM Plex Mono',monospace;"></p>
   </div>
 
   <!-- ── ADD-TO-PICKS SCANNER OVERLAY ──────────────────────────────────────── -->
-  <div id="pick-add-scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
-    <div class="flex items-center justify-between px-4 py-3">
-      <p class="text-white font-semibold">Add to Pick List</p>
-      <button id="pick-add-scanner-close" class="text-white text-2xl leading-none">&times;</button>
+  <div id="pick-add-scanner-overlay" class="fixed inset-0 z-50 flex-col" style="display:none; background:#05080d;">
+    <div class="flex items-center justify-between px-[18px] py-4">
+      <p class="text-white text-[18px] font-semibold">Add to pick list</p>
+      <button id="pick-add-scanner-close" class="w-11 h-11 rounded-full flex items-center justify-center text-white" style="background:rgba(255,255,255,.12)" aria-label="Close scanner">
+        <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    <div class="flex-1 relative">
+    <div class="flex-1 relative mx-[18px] rounded-[20px] overflow-hidden" style="background:#0b1016">
       <div id="pick-add-scanner-video" class="w-full h-full"></div>
-      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
-      </div>
+      <div class="scan-frame"></div>
+      <div class="scan-line"></div>
     </div>
-    <p id="pick-add-scanner-status" class="text-center text-muted text-sm py-3">Scan barcode to add to pick list…</p>
+    <p id="pick-add-scanner-status" class="text-center text-[16px] py-5" style="color:#9fb3c9;">Scan barcode to add to pick list…</p>
   </div>
 
   <!-- ── UNKNOWN UPC MODAL ─────────────────────────────────────────────────── -->
   <div id="unknown-upc-modal" class="fixed inset-0 z-[120] hidden items-end" style="display:none">
-    <div class="absolute inset-0 bg-black/60" id="unknown-upc-backdrop"></div>
-    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
-      <p class="text-sm font-semibold mb-1" style="color:#1a2233;">Unknown Barcode</p>
-      <p id="unknown-upc-value" class="text-xs mb-1" style="color:#7b8ba5;"></p>
-      <p class="text-xs mb-5" style="color:#7b8ba5;">No product matched this UPC. Submit it for review?</p>
+    <div class="absolute inset-0 overlay-backdrop" id="unknown-upc-backdrop"></div>
+    <div class="sheet-surface relative w-full px-[18px] pt-2">
+      <div class="sheet-grabber"></div>
+      <p class="text-[18px] font-semibold mb-2">Unknown barcode</p>
+      <p id="unknown-upc-value" class="upc-value mb-2"></p>
+      <p class="text-[15px] mb-5" style="color:#6b7a92;">No product matched this UPC. Submit it for review?</p>
       <div class="flex gap-3">
-        <button id="unknown-upc-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
-        <button id="unknown-upc-submit" class="flex-1 py-3 rounded-xl bg-accent font-semibold text-sm" style="color:#004c91;">Submit UPC</button>
+        <button id="unknown-upc-cancel" class="btn-secondary flex-1">Cancel</button>
+        <button id="unknown-upc-submit" class="btn-primary flex-[1.4]">Submit UPC</button>
       </div>
     </div>
   </div>

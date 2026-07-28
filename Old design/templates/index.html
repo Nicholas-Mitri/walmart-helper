@@ -5,10 +5,10 @@
 <!-- ── VIEW: CATALOG ─────────────────────────────────────────────────────── -->
 <div id="view-catalog">
   <!-- Product grid -->
-  <main class="px-3.5 py-3.5 space-y-3" id="product-list">
+  <main class="px-3 py-3 space-y-3" id="product-list">
     {% for product in products %}
     <div
-      class="product-card bg-card flex gap-3.5 p-3 relative"
+      class="product-card bg-card rounded-xl border border-border flex gap-3 p-3 relative"
       data-sku="{{ product.sku }}"
       data-brand="{{ product.brand }}"
       data-product-id="{{ product.id }}"
@@ -19,39 +19,35 @@
       data-display-name="{{ product.name }}"
     >
       <!-- Product image -->
-      <div class="w-[104px] h-[104px] flex-shrink-0 rounded-[14px] overflow-hidden bg-border">
+      <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden bg-border">
         {% if product.image_url %}
         <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-full object-cover" loading="lazy">
         {% else %}
-        <div class="w-full h-full flex items-center justify-center text-[13px]" style="color:#8b9bb4;">No img</div>
+        <div class="w-full h-full flex items-center justify-center text-muted text-xs">No img</div>
         {% endif %}
       </div>
 
       <!-- Product info -->
-      <div class="flex-1 min-w-0 flex flex-col gap-1.5 pr-9">
-        <p class="product-title line-clamp-2" style="color:#101a2b;">{{ product.name }}</p>
-        <p class="text-[14px] font-medium" style="color:#6b7a92;">{{ product.brand|title if product.brand else '' }}</p>
-        <div class="mt-auto flex items-center gap-2">
-          <span class="upc-label">UPC</span>
-          <span class="upc-value">{{ product.upc or '—' }}</span>
-        </div>
+      <div class="flex-1 min-w-0 pr-7">
+        <p class="text-white text-sm font-semibold leading-snug line-clamp-2">{{ product.name }}</p>
+        <p class="text-muted text-xs mt-0.5">{{ product.brand|title if product.brand else '' }}</p>
+        <p class="text-muted text-xs mt-1">UPC: {{ product.upc or '—' }}</p>
       </div>
 
       <!-- Bookmark (top-right) -->
       <button
-        class="pick-btn absolute top-1.5 right-1.5 w-11 h-11 flex items-center justify-center transition-colors"
-        style="color:{{ '#e8a900' if product.sku in picked_skus else '#a9b6c9' }};"
+        class="pick-btn absolute top-2 right-2 text-muted hover:text-accent transition-colors"
         data-sku="{{ product.sku }}"
         data-product-id="{{ product.id }}"
         data-display-name="{{ product.name }}"
         aria-label="Toggle pick"
       >
         {% if product.sku in picked_skus %}
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
           <path d="M6 2a2 2 0 00-2 2v18l8-4 8 4V4a2 2 0 00-2-2H6z"/>
         </svg>
         {% else %}
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
         </svg>
         {% endif %}
@@ -59,8 +55,8 @@
 
       <!-- External link (bottom-right) -->
       {% if product.url %}
-      <a href="{{ product.url }}" target="_blank" class="absolute bottom-2.5 right-3 transition-colors" style="color:#a9b6c9;" aria-label="View product page">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <a href="{{ product.url }}" target="_blank" class="absolute bottom-2 right-2 text-muted hover:text-white transition-colors" aria-label="View on Walmart">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
           <polyline points="15 3 21 3 21 9"/>
           <line x1="10" y1="14" x2="21" y2="3"/>
@@ -71,15 +67,15 @@
     {% endfor %}
   </main>
 
-  <p id="no-results" class="hidden text-center text-[16px] py-14" style="color:#8fb4d9;">No products match your search.</p>
+  <p id="no-results" class="hidden text-center text-muted text-sm py-12">No products match your search.</p>
 </div>
 
 <!-- ── VIEW: PICK LIST ───────────────────────────────────────────────────── -->
-<div id="view-picks" class="hidden px-3.5 py-3.5 space-y-2.5 pb-24"></div>
+<div id="view-picks" class="hidden px-3 py-3 space-y-2 pb-20"></div>
 
 <!-- ── VIEW: ACTIVITY LOG ────────────────────────────────────────────────── -->
-<div id="view-log" class="hidden pb-24">
-  <div id="log-feed" class="px-3.5 pt-3.5 space-y-2.5"></div>
+<div id="view-log" class="hidden pb-20">
+  <div id="log-feed" class="px-3 pt-3 space-y-2"></div>
 </div>
 
 <!-- Server data for JS -->
@@ -111,7 +107,7 @@
   const filterRow = document.getElementById("filter-tabs-row");
   CATEGORIES.forEach(([label, value], i) => {
     const btn = document.createElement("button");
-    btn.className = "filter-tab" + (i === 0 ? " active" : "");
+    btn.className = "filter-tab whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium bg-card text-muted border border-border transition-colors flex-shrink-0" + (i === 0 ? " active" : "");
     btn.dataset.category = value;
     btn.textContent = label;
     filterRow.appendChild(btn);

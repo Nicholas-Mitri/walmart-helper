@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Meats at Walmart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#ffc220', // Walmart yellow
+            accentDark: '#f7b500',
+            surface: '#004c91', // Walmart blue
+            card: '#f5f5f5',   // Light card background
+            border: '#e0e6ef', // Light blue/gray border
+            muted: '#7b8ba5',  // Brighter muted blue-gray
+            textDark: '#1a2233', // custom added for dark readable text
+            textLight: '#ffffff'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { touch-action: manipulation; }
+    body { background-color: #004c91; color: #fff; }
+    .filter-tab.active { background-color: #ffc220 !important; color: #004c91 !important; border-color: #ffc220 !important;}
+    .action-btn.selected { background-color: #ffc220; color: #004c91; }
+    .floor-btn.selected { background-color: #ffc220; color: #004c91; }
+    .product-card { -webkit-user-select: none; user-select: none; }
+    .nav-tab.active .nav-icon { color: #ffc220; }
+    .nav-tab.active .nav-label { color: #ffc220; }
+
+    /* Translucent cards and buttons */
+    .bg-card {
+      background-color: rgba(245, 245, 245, 0.82) !important;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #1a2233 !important;
+    }
+    .bg-border {
+      background-color: rgba(224, 230, 239, 0.70) !important;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #1a2233 !important;
+    }
+    .bg-card .text-white, .bg-border .text-white {
+      color: #1a2233 !important;
+    }
+    .bg-card .text-muted, .bg-border .text-muted {
+      color: #7b8ba5 !important;
+    }
+    /* Always ensure pick-modal product name is dark if on light card */
+    #pick-modal-product-name,
+    #partial-product-name,
+    #action-product-name {
+      color: #1a2233 !important;
+    }
+    /* Ensure headings in cards/modals are readable */
+    .bg-card h1,
+    .bg-card p,
+    .bg-card span,
+    .bg-card button,
+    .bg-border h1,
+    .bg-border p,
+    .bg-border span,
+    .bg-border button {
+      color: #1a2233 !important;
+    }
+    /* Override badge text color if placed on accent background */
+    #pick-count-badge {
+      color: #004c91 !important;
+    }
+    /* Contain Quagga's injected video/canvas inside the scanner div */
+    #scanner-video, #pick-scanner-video, #pick-add-scanner-video { position: relative; overflow: hidden; }
+    #scanner-video video, #scanner-video canvas,
+    #pick-scanner-video video, #pick-scanner-video canvas,
+    #pick-add-scanner-video video, #pick-add-scanner-video canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
+    #scanner-video canvas.drawingBuffer,
+    #pick-scanner-video canvas.drawingBuffer,
+    #pick-add-scanner-video canvas.drawingBuffer { display: none; }
+    /* Hide scrollbar for filter tabs */
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    /* Action button colors matching badge colors */
+    .action-btn[data-action="throw"]        { background-color: #fde8e8 !important; color: #b91c1c !important; }
+    .action-btn[data-action="throw"].selected { background-color: #b91c1c !important; color: #fff !important; }
+    .action-btn[data-action="cvp"]          { background-color: #e0f2fe !important; color: #0369a1 !important; }
+    .action-btn[data-action="cvp"].selected { background-color: #0369a1 !important; color: #fff !important; }
+    .action-btn[data-action="vizpik"]       { background-color: #ede9fe !important; color: #6d28d9 !important; }
+    .action-btn[data-action="vizpik"].selected { background-color: #6d28d9 !important; color: #fff !important; }
+    .action-btn[data-action="donate"]       { background-color: #fef9c3 !important; color: #a16207 !important; }
+    .action-btn[data-action="donate"].selected { background-color: #a16207 !important; color: #fff !important; }
+    .action-btn[data-action="product_note"] { background-color: #ffedd5 !important; color: #c2410c !important; }
+    .action-btn[data-action="product_note"].selected { background-color: #c2410c !important; color: #fff !important; }
+    /* Floor sheet button colors */
+    .floor-btn[data-action="clean_daily"]   { background-color: #cffafe !important; color: #0e7490 !important; }
+    .floor-btn[data-action="clean_daily"].selected { background-color: #0e7490 !important; color: #fff !important; }
+    .floor-btn[data-action="clean_pm"]      { background-color: #e0e7ff !important; color: #3730a3 !important; }
+    .floor-btn[data-action="clean_pm"].selected { background-color: #3730a3 !important; color: #fff !important; }
+    .floor-btn[data-action="temp_check"]    { background-color: #fce7f3 !important; color: #9d174d !important; }
+    .floor-btn[data-action="temp_check"].selected { background-color: #9d174d !important; color: #fff !important; }
+    .floor-btn[data-action="floor_sweep"]   { background-color: #d1fae5 !important; color: #065f46 !important; }
+    .floor-btn[data-action="floor_sweep"].selected { background-color: #065f46 !important; color: #fff !important; }
+    .floor-btn[data-action="recovery"]      { background-color: #fef3c7 !important; color: #92400e !important; }
+    .floor-btn[data-action="recovery"].selected { background-color: #92400e !important; color: #fff !important; }
+    .floor-btn[data-action="general_note"]  { background-color: rgba(249,115,22,0.18) !important; color: #c2410c !important; }
+    .floor-btn[data-action="general_note"].selected { background-color: #ea580c !important; color: #fff !important; }
+    @keyframes slideDown {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans pb-16">
+
+  <!-- Top bar -->
+  <header class="sticky top-0 z-30 bg-surface border-b border-border px-4 pt-3 pb-0 flex flex-col gap-3 min-h-[57px]">
+    <!-- Persistent title -->
+    <div class="flex items-center justify-center gap-2">
+      <img src="/static/walmart.svg" alt="Walmart" class="w-7 h-7 flex-shrink-0">
+      <p class="text-accent font-bold text-base tracking-wide">Meats at Walmart</p>
+    </div>
+    <!-- Per-tab content -->
+    <div id="header-catalog" class="flex flex-col gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-white text-sm font-semibold whitespace-nowrap">Search:</span>
+        <div class="relative flex-1">
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Name or UPC…"
+            class="w-full bg-card text-[color:#1a2233] placeholder-muted rounded-lg pl-3 pr-8 py-2 text-sm border border-border focus:outline-none focus:border-accent"
+          >
+          <button
+            id="search-clear"
+            class="hidden absolute right-1 top-1/2 -translate-y-1/2 p-1 text-muted hover:text-[color:#1a2233]"
+            aria-label="Clear search"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <button id="scan-btn" class="text-accent flex-shrink-0" aria-label="Scan barcode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
+            <line x1="7" y1="12" x2="17" y2="12"/>
+          </svg>
+        </button>
+      </div>
+      <div id="filter-tabs-row" class="flex gap-1 overflow-x-auto scrollbar-hide -mx-4 px-4 pb-2"></div>
+    </div>
+    <div id="header-picks" class="hidden pb-3 flex items-center justify-between">
+      <h1 class="text-white font-semibold text-base">Pick List</h1>
+      <div class="flex items-center gap-3">
+        <button id="pick-add-scan-btn" class="text-accent" aria-label="Add product to pick list by scan">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
+            <line x1="7" y1="12" x2="17" y2="12"/>
+            <line x1="12" y1="9" x2="12" y2="15"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+          </svg>
+        </button>
+        <button id="pick-scan-btn" class="text-accent" aria-label="Scan item barcode">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/>
+            <line x1="7" y1="12" x2="17" y2="12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="header-log" class="hidden pb-3 flex items-center justify-between">
+      <h1 class="text-white font-semibold text-base">Activity Log</h1>
+      <div class="flex items-center gap-3">
+        <!-- Delete last log -->
+        <button id="delete-last-log-btn" class="text-muted hover:text-red-400 transition-colors" aria-label="Delete last log">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/>
+          </svg>
+        </button>
+        <!-- Export icon (dummy) -->
+        <button class="text-muted hover:text-white transition-colors" aria-label="Export">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+        </button>
+        <!-- Add floor activity icon -->
+        <button id="log-activity-btn" class="text-accent hover:text-accentDark transition-colors" aria-label="Log floor activity">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 8v8M8 12h8"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <!-- Safety Sweeps Banner -->
+  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-2 font-semibold shadow-lg" style="display:none; bottom:60px; animation: slideDown 0.4s ease-out;">
+    Safety Sweeps due!
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-surface border-t border-border flex">
+    <button class="nav-tab active flex-1 flex flex-col items-center justify-center py-2 gap-0.5" data-tab="catalog" aria-label="Catalog">
+      <svg class="nav-icon w-6 h-6 text-accent" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>
+      </svg>
+      <span class="nav-label text-xs text-accent">Catalog</span>
+    </button>
+
+    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2 gap-0.5 relative" data-tab="picks" aria-label="Pick List">
+      <div class="relative">
+        <svg class="nav-icon w-6 h-6 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span id="pick-count-badge" class="hidden absolute -top-1.5 -right-2.5 bg-accent text-[color:#004c91] text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center leading-none"></span>
+      </div>
+      <span class="nav-label text-xs text-muted">Picks</span>
+    </button>
+
+    <button class="nav-tab flex-1 flex flex-col items-center justify-center py-2 gap-0.5" data-tab="log" aria-label="Activity Log">
+      <svg class="nav-icon w-6 h-6 text-muted" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 7v5l3 3"/>
+      </svg>
+      <span class="nav-label text-xs text-muted">Log</span>
+    </button>
+  </nav>
+
+  <!-- ── ADD TO PICK MODAL ─────────────────────────────────────────────────── -->
+  <div id="pick-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-6" style="display:none">
+    <div id="pick-modal-backdrop" class="absolute inset-0 bg-black/80"></div>
+    <div class="relative w-full max-w-sm bg-card rounded-2xl p-6 shadow-2xl">
+      <p id="pick-modal-product-name" class="font-semibold text-sm mb-1 truncate" style="color:#1a2233;">Product Name</p>
+      <p class="text-muted text-xs mb-5" style="color:#7b8ba5;">How many cases to pick?</p>
+      <div class="flex items-center justify-center gap-6 mb-6">
+        <button id="pick-modal-dec" class="w-11 h-11 rounded-full bg-border font-bold text-2xl flex items-center justify-center" style="color:#1a2233;">−</button>
+        <span id="pick-modal-qty" class="text-3xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
+        <button id="pick-modal-inc" class="w-11 h-11 rounded-full bg-border font-bold text-2xl flex items-center justify-center" style="color:#1a2233;">+</button>
+      </div>
+      <div class="flex gap-3">
+        <button id="pick-modal-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="pick-modal-add" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Add to Picks</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ACTION SHEET (long-press log) ────────────────────────────────────── -->
+  <div id="action-sheet" class="fixed inset-0 z-50 hidden flex flex-col" style="display:none">    <!-- floats above the sheet -->
+    <div id="sheet-backdrop" class="absolute inset-0 bg-black/80 z-0"></div>
+    <div
+    id="action-product-image-wrap"
+    class="relative z-10 hidden flex-1 min-h-0 w-full flex items-center justify-center px-4 py-4 cursor-pointer"
+    onclick="closeActionSheet()"
+  >    <img
+        id="action-product-image"
+        src=""
+        alt=""
+        class="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl"
+        >
+    </div>
+    <div class="relative z-10 w-full flex-shrink-0 bg-card rounded-t-2xl p-5 shadow-2xl">
+      <input type="hidden" id="action-product-id">
+      <p id="action-product-name" class="text-sm font-semibold leading-snug line-clamp-2" style="color:#1a2233;">Product Name</p>
+      <p id="action-product-upc" class="text-xs mb-4 mt-0.5" style="color:#7b8ba5;"></p>
+      <div class="grid grid-cols-5 gap-2 mb-5">
+        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="vizpik">Vizpik</button>
+        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="throw">Throw</button>
+        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="cvp">CVP</button>
+        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="donate">Donate</button>
+        <button class="action-btn rounded-lg py-3 text-sm font-semibold" data-action="product_note">Note</button>
+      </div>
+      <div id="qty-row" class="flex items-center justify-center gap-5 mb-5">
+        <button id="qty-dec" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">−</button>
+        <div class="flex flex-col items-center">
+          <span id="qty-display" class="text-2xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
+          <span id="qty-unit-label" class="text-xs text-muted mt-0.5" style="color:#7b8ba5;">Unit(s)</span>
+        </div>
+        <button id="qty-inc" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">+</button>
+      </div>
+      <textarea
+        id="action-note-input"
+        rows="3"
+        placeholder="Enter note…"
+        class="hidden w-full rounded-lg px-3 py-2 text-sm border border-border bg-border mb-5 resize-none focus:outline-none focus:border-accent"
+        style="color:#1a2233;"
+      ></textarea>
+      <div class="flex gap-3">
+        <button id="sheet-cancel-btn" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="sheet-log-btn" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Log</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PICK ITEM PREVIEW MODAL ────────────────────────────────────────────── -->
+  <div id="pick-item-preview" class="fixed inset-0 z-50 hidden flex flex-col items-center justify-center px-4" style="display:none">
+    <div id="pick-preview-backdrop" class="absolute inset-0 bg-black/80"></div>
+    <div class="relative flex flex-col items-center gap-4 w-full max-h-[80vh]">
+      <img id="pick-preview-image" src="" alt="" class="max-w-xs max-h-96 w-auto h-auto object-contain rounded-2xl shadow-lg">
+      <div class="bg-card rounded-2xl p-4 text-center shadow-lg max-w-xs">
+        <p id="pick-preview-name" class="text-sm font-semibold leading-snug line-clamp-2 mb-2" style="color:#1a2233;"></p>
+        <p id="pick-preview-upc" class="text-xs" style="color:#7b8ba5;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PARTIAL PICK SHEET ────────────────────────────────────────────────── -->
+  <div id="partial-sheet" class="fixed inset-0 z-50 hidden items-end" style="display:none">
+    <div id="partial-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
+      <input type="hidden" id="partial-pick-id">
+      <input type="hidden" id="partial-product-id">
+      <p id="partial-product-name" class="text-sm font-semibold mb-1 truncate" style="color:#1a2233;">Product Name</p>
+      <p class="text-muted text-xs mb-4" style="color:#7b8ba5;">How many units did you pick?</p>
+      <div class="flex items-center justify-center gap-5 mb-5">
+        <button id="partial-dec" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">−</button>
+        <span id="partial-qty-display" class="text-2xl font-bold w-10 text-center" style="color:#1a2233;">1</span>
+        <button id="partial-inc" class="w-10 h-10 rounded-full bg-border font-bold text-xl flex items-center justify-center" style="color:#1a2233;">+</button>
+      </div>
+      <div class="flex gap-3">
+        <button id="partial-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="partial-confirm" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Confirm Pick</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FLOOR ACTIVITY SHEET ─────────────────────────────────────────────── -->
+  <div id="floor-sheet" class="fixed inset-0 z-50 hidden items-end" style="display:none">
+    <div id="floor-backdrop" class="absolute inset-0 bg-black/60"></div>
+    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
+      <p class="text-sm font-semibold mb-4" style="color:#1a2233;">Log Floor Activity</p>
+      <div class="grid grid-cols-3 gap-2 mb-4">
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="clean_daily">Daily Clean</button>
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="clean_pm">PM Clean</button>
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="temp_check">Temp Check</button>
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="floor_sweep">Safety Sweep</button>
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="recovery">Recovery</button>
+        <button class="floor-btn rounded-lg py-3 text-xs font-semibold bg-border" style="color:#1a2233;" data-action="general_note">General Note</button>
+      </div>
+      <textarea
+        id="floor-notes"
+        rows="2"
+        placeholder="Notes (optional)…"
+        class="w-full rounded-lg px-3 py-2 text-sm border border-border bg-border mb-4 resize-none focus:outline-none focus:border-accent"
+        style="color:#1a2233;"
+      ></textarea>
+      <div class="flex gap-3">
+        <button id="floor-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="floor-log" class="flex-1 py-3 rounded-xl bg-accent text-white font-semibold text-sm">Log</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BARCODE SCANNER OVERLAY ───────────────────────────────────────────── -->
+  <div id="scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
+    <div class="flex items-center justify-between px-4 py-3">
+      <p class="text-white font-semibold">Scan Barcode</p>
+      <button id="scanner-close" class="text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div class="flex-1 relative">
+      <div id="scanner-video" class="w-full h-full"></div>
+      <!-- Aim guide -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
+      </div>
+    </div>
+    <p id="scanner-status" class="text-center text-muted text-sm py-3">Point camera at a barcode…</p>
+  </div>
+
+  <!-- ── PICK SCANNER RESULT TOAST ────────────────────────────────────────── -->
+  <div id="pick-scan-toast" class="fixed inset-x-4 z-[110] rounded-2xl p-5 shadow-2xl text-center transition-opacity duration-300" style="display:none; bottom: 5rem;">
+    <p id="pick-scan-verdict" class="text-white font-bold text-lg mb-0.5"></p>
+    <p id="pick-scan-product-name" class="text-white text-sm font-medium truncate"></p>
+    <p id="pick-scan-upc" class="text-white/70 text-xs mt-0.5"></p>
+  </div>
+
+  <!-- ── PICK SCANNER OVERLAY ───────────────────────────────────────────────── -->
+  <div id="pick-scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
+    <div class="flex items-center justify-between px-4 py-3">
+      <p class="text-white font-semibold">Scan Item</p>
+      <button id="pick-scanner-close" class="text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div class="flex-1 relative">
+      <div id="pick-scanner-video" class="w-full h-full"></div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
+      </div>
+    </div>
+    <p id="pick-scanner-status" class="text-center text-muted text-sm py-3">Point camera at item barcode…</p>
+  </div>
+
+  <!-- ── ADD-TO-PICKS SCAN RESULT TOAST ────────────────────────────────────── -->
+  <div id="pick-add-scan-toast" class="fixed inset-x-4 z-[110] rounded-2xl p-5 shadow-2xl text-center transition-opacity duration-300" style="display:none; bottom: 5rem;">
+    <p id="pick-add-scan-verdict" class="text-white font-bold text-lg mb-0.5"></p>
+    <p id="pick-add-scan-product-name" class="text-white text-sm font-medium truncate"></p>
+    <p id="pick-add-scan-upc" class="text-white/70 text-xs mt-0.5"></p>
+  </div>
+
+  <!-- ── ADD-TO-PICKS SCANNER OVERLAY ──────────────────────────────────────── -->
+  <div id="pick-add-scanner-overlay" class="fixed inset-0 z-50 bg-black flex flex-col" style="display:none">
+    <div class="flex items-center justify-between px-4 py-3">
+      <p class="text-white font-semibold">Add to Pick List</p>
+      <button id="pick-add-scanner-close" class="text-white text-2xl leading-none">&times;</button>
+    </div>
+    <div class="flex-1 relative">
+      <div id="pick-add-scanner-video" class="w-full h-full"></div>
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-64 h-32 border-2 border-accent rounded-lg opacity-80"></div>
+      </div>
+    </div>
+    <p id="pick-add-scanner-status" class="text-center text-muted text-sm py-3">Scan barcode to add to pick list…</p>
+  </div>
+
+  <!-- ── UNKNOWN UPC MODAL ─────────────────────────────────────────────────── -->
+  <div id="unknown-upc-modal" class="fixed inset-0 z-[120] hidden items-end" style="display:none">
+    <div class="absolute inset-0 bg-black/60" id="unknown-upc-backdrop"></div>
+    <div class="relative w-full bg-card rounded-t-2xl p-5 shadow-2xl">
+      <p class="text-sm font-semibold mb-1" style="color:#1a2233;">Unknown Barcode</p>
+      <p id="unknown-upc-value" class="text-xs mb-1" style="color:#7b8ba5;"></p>
+      <p class="text-xs mb-5" style="color:#7b8ba5;">No product matched this UPC. Submit it for review?</p>
+      <div class="flex gap-3">
+        <button id="unknown-upc-cancel" class="flex-1 py-3 rounded-xl bg-border font-semibold text-sm" style="color:#1a2233;">Cancel</button>
+        <button id="unknown-upc-submit" class="flex-1 py-3 rounded-xl bg-accent font-semibold text-sm" style="color:#004c91;">Submit UPC</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

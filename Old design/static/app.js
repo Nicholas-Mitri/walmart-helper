@@ -311,11 +311,7 @@ function renderPicksView() {
   container.innerHTML = "";
 
   if (picksMap.size === 0) {
-    container.innerHTML = `
-      <div class="text-center py-16 px-6">
-        <p class="text-white text-[17px] font-semibold mb-1.5">Nothing to pick</p>
-        <p class="text-[15px]" style="color:#8fb4d9;">Bookmark items in the catalog to build a run.</p>
-      </div>`;
+    container.innerHTML = `<p class="text-center text-muted text-sm py-12">No items on the pick list.</p>`;
     return;
   }
 
@@ -339,54 +335,51 @@ function renderPicksView() {
     const count = picks.length;
 
     const section = document.createElement("div");
-    section.className = "space-y-2.5 mb-2.5";
+    section.className = "mb-2";
 
     // Header row
     const header = document.createElement("button");
-    header.className =
-      "pick-section-header w-full flex items-center gap-2.5 px-3.5 py-3";
+    header.className = "w-full flex items-center justify-between px-1 py-2";
     header.innerHTML = `
-      <span class="text-white font-bold text-[18px] tracking-tight">${escHtml(label)}</span>
-      <span class="bg-accent text-[color:#00366a] text-[14px] font-bold rounded-full px-2.5 py-0.5">${count}</span>
-      <svg class="chevron w-5 h-5 ml-auto flex-shrink-0" style="color:#8fb4d9; transition: transform .2s ease;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.6">
+      <div class="flex-1 flex items-center justify-center gap-2">
+        <span class="text-white font-bold text-base">${escHtml(label)}</span>
+        <span class="bg-accent text-surface text-sm font-bold rounded-full px-2.5 py-0.5">${count}</span>
+      </div>
+      <svg class="chevron w-4 h-4 text-muted transition-transform flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path d="M19 9l-7 7-7-7"/>
       </svg>
     `;
 
     const body = document.createElement("div");
-    body.className = "pick-section-body space-y-3";
+    body.className = "pick-section-body space-y-2";
 
     picks.forEach((pick) => {
       const div = document.createElement("div");
-      div.className = "bg-card rounded-[18px] p-3";
+      div.className = "bg-card rounded-xl border border-border p-3";
       div.style.userSelect = "none";
       div.innerHTML = `
         <div class="flex items-center gap-3 mb-3">
           ${
             pick.image_url
-              ? `<img src="${escHtml(pick.image_url)}" class="w-[84px] h-[84px] rounded-[12px] object-cover flex-shrink-0" loading="lazy">`
-              : `<div class="w-[84px] h-[84px] rounded-[12px] bg-border flex-shrink-0"></div>`
+              ? `<img src="${escHtml(pick.image_url)}" class="w-12 h-12 rounded-lg object-cover flex-shrink-0" loading="lazy">`
+              : `<div class="w-12 h-12 rounded-lg bg-border flex-shrink-0"></div>`
           }
-          <div class="flex-1 min-w-0 flex flex-col gap-1.5">
-            <p class="text-[16px] font-semibold leading-snug line-clamp-2" style="color:#101a2b;">${escHtml(pick.name)}</p>
-            <p class="text-[14px] font-semibold" style="color:#6b7a92;">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
-            ${
-              pick.upc
-                ? `<div class="flex items-center gap-2"><span class="upc-label">UPC</span><span class="upc-value" style="font-size:15px;">${escHtml(pick.upc)}</span></div>`
-                : ""
-            }
+          <div class="flex-1 min-w-0">
+            <p class="text-white text-sm font-semibold leading-snug line-clamp-2">${escHtml(pick.name)}</p>
+            <p class="text-muted text-xs">Target: ${pick.quantity} case${pick.quantity !== 1 ? "s" : ""}</p>
+            ${pick.upc ? `<p class="text-muted text-xs">UPC: ${escHtml(pick.upc)}</p>` : ""}
           </div>
         </div>
-        <div class="grid gap-2" style="grid-template-columns:1.2fr 1fr 1fr;">
-          <button class="picked-btn pick-action-btn pick-action-picked"
+        <div class="grid grid-cols-3 gap-1.5">
+          <button class="picked-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
             data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}" data-name="${escHtml(pick.name)}">
-            Picked
+            Picked ✓
           </button>
-          <button class="failed-btn pick-action-btn pick-action-failed"
+          <button class="failed-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
             data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}" data-product-id="${pick.product_id}">
-            Failed
+            Failed ✗
           </button>
-          <button class="remove-btn pick-action-btn pick-action-remove"
+          <button class="remove-btn rounded-lg py-2 text-xs font-semibold bg-border text-white"
             data-pick-id="${pick.id}" data-sku="${escHtml(pick.sku)}">
             Remove
           </button>
@@ -407,7 +400,7 @@ function renderPicksView() {
           });
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           await removePick(pick.id, pick.sku);
-          showToast("Picked & logged");
+          showToast("Picked & logged ✓");
         } catch (err) {
           console.error(err);
           showToast("Error logging pick");
@@ -443,13 +436,9 @@ function renderPicksView() {
       container.querySelectorAll(".chevron").forEach((c) => {
         c.style.transform = "rotate(-90deg)";
       });
-      container
-        .querySelectorAll(".pick-section-header")
-        .forEach((h) => h.classList.remove("open"));
       if (isCollapsed) {
         body.classList.remove("hidden");
         header.querySelector(".chevron").style.transform = "";
-        header.classList.add("open");
         _activePickCategory = cat;
       } else {
         _activePickCategory = null;
@@ -462,12 +451,11 @@ function renderPicksView() {
   });
   if (_activePickCategory) {
     const sections = [...container.querySelectorAll(".pick-section-body")];
-    const headers = [...container.querySelectorAll(".pick-section-header")];
+    const headers = [...container.querySelectorAll("button")];
     ordered.forEach((c, i) => {
       if (c === _activePickCategory) {
         sections[i].classList.remove("hidden");
         headers[i].querySelector(".chevron").style.transform = "";
-        headers[i].classList.add("open");
       }
     });
   }
@@ -762,7 +750,7 @@ const ACTION_COLORS = {
 
 async function renderLogView() {
   const container = document.getElementById("log-feed");
-  container.innerHTML = `<p class="text-center text-[15px] py-10" style="color:#8fb4d9;">Loading…</p>`;
+  container.innerHTML = `<p class="text-center text-muted text-sm py-8">Loading…</p>`;
 
   try {
     const res = await fetch("/activity_log/feed");
@@ -770,7 +758,7 @@ async function renderLogView() {
     const logs = await res.json();
 
     if (logs.length === 0) {
-      container.innerHTML = `<p class="text-center text-[16px] py-12" style="color:#8fb4d9;">No activity logged yet.</p>`;
+      container.innerHTML = `<p class="text-center text-muted text-sm py-8">No activity logged yet.</p>`;
       return;
     }
 
@@ -778,7 +766,7 @@ async function renderLogView() {
     _lastLogId = logs[logs.length - 1].id;
     logs.forEach((log) => {
       const div = document.createElement("div");
-      div.className = "bg-card rounded-[16px] p-3.5 flex gap-3 items-start";
+      div.className = "bg-card rounded-xl border border-border p-3";
 
       const label = ACTION_LABELS[log.action] || log.action;
       const color = ACTION_COLORS[log.action] || {
@@ -801,20 +789,21 @@ async function renderLogView() {
         : "";
 
       div.innerHTML = `
-        <span class="flex-shrink-0 flex items-center justify-center rounded-[13px] text-[13px] font-bold"
-              style="width:42px;height:42px;background:${color.bg};color:${color.text};">${escHtml(label.slice(0, 2).toUpperCase())}</span>
-        <div class="flex-1 min-w-0 flex flex-col gap-1">
-          <p class="text-[16px] font-semibold leading-snug" style="color:#101a2b;">${escHtml(label)}${qtyStr && log.action !== "restock" ? ` · ${escHtml(qtyStr)}` : ""}</p>
-          ${log.product_name ? `<p class="text-[14px] leading-snug line-clamp-2" style="color:#6b7a92;">${escHtml(log.product_name)}</p>` : ""}
-          ${log.notes ? `<p class="text-[14px] italic leading-snug" style="color:#6b7a92;">${escHtml(log.notes)}</p>` : ""}
+        <div class="flex items-start justify-between gap-2">
+          <div class="flex-1 min-w-0">
+            <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full mb-1" style="background:${color.bg};color:${color.text}">${escHtml(label)}</span>
+            ${log.product_name ? `<p class="text-white text-sm font-medium leading-snug line-clamp-2">${escHtml(log.product_name)}</p>` : ""}
+            ${qtyStr && log.action !== "restock" ? `<p class="text-muted text-xs mt-0.5">${escHtml(qtyStr)}</p>` : ""}
+            ${log.notes ? `<p class="text-muted text-xs mt-0.5 italic">${escHtml(log.notes)}</p>` : ""}
+          </div>
+          <p class="text-muted text-xs flex-shrink-0 mt-0.5">${escHtml(timeStr)}</p>
         </div>
-        <p class="text-[13px] font-semibold flex-shrink-0" style="color:#8b9bb4;">${escHtml(timeStr)}</p>
       `;
       container.appendChild(div);
     });
   } catch (err) {
     console.error(err);
-    container.innerHTML = `<p class="text-center text-[16px] py-12" style="color:#8fb4d9;">Failed to load activity log.</p>`;
+    container.innerHTML = `<p class="text-center text-muted text-sm py-12">Failed to load activity log.</p>`;
   }
 }
 
@@ -917,22 +906,18 @@ function updatePickBadge() {
   const badge = document.getElementById("pick-count-badge");
   badge.textContent = count;
   badge.classList.toggle("hidden", count === 0);
-  const openCount = document.getElementById("pick-open-count");
-  if (openCount) openCount.textContent = count ? `${count} open` : "";
 }
 
 function setBookmarkFilled(btn) {
-  btn.style.color = "#e8a900";
   btn.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="currentColor">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="currentColor">
       <path d="M6 2a2 2 0 00-2 2v18l8-4 8 4V4a2 2 0 00-2-2H6z"/>
     </svg>`;
 }
 
 function setBookmarkOutline(btn) {
-  btn.style.color = "#a9b6c9";
   btn.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M19 21l-7-4-7 4V5a2 2 0 012-2h10a2 2 0 012 2v16z"/>
     </svg>`;
 }
@@ -1151,8 +1136,8 @@ function showPickScanResult(upc) {
   const match = upc.startsWith("400") ? findPickByWin(upc) : findPickByUpc(upc);
   const toast = document.getElementById("pick-scan-toast");
   document.getElementById("pick-scan-verdict").textContent = match
-    ? "Pick this item"
-    : "Do not pick";
+    ? "✓ Pick this item"
+    : "✗ Do not pick";
   document.getElementById("pick-scan-product-name").textContent = match
     ? match.name
     : "Not on pick list";
@@ -1387,9 +1372,7 @@ function setupSafetyBanner() {
 function showToast(message) {
   const toast = document.createElement("div");
   toast.className =
-    "app-toast fixed left-1/2 -translate-x-1/2 z-[100] transition-opacity duration-300";
-  toast.style.bottom = "6rem";
-  toast.style.maxWidth = "calc(100% - 2rem)";
+    "fixed bottom-20 left-1/2 -translate-x-1/2 bg-accent text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg z-[100] transition-opacity duration-300";
   toast.textContent = message;
   document.body.appendChild(toast);
   setTimeout(() => {
