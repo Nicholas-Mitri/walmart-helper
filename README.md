@@ -2,7 +2,7 @@
 
 A FastAPI web application designed to accelerate onboarding and streamline daily operations for new Walmart associates in the meat department. This tool addresses critical pain points that emerge during the first weeks and months of employment, turning complex floor procedures into intuitive, guided workflows.
 
-## 🎯 The Problem
+## The Problem
 
 Onboarding in a Walmart meat department is challenging:
 
@@ -14,7 +14,7 @@ Onboarding in a Walmart meat department is challenging:
 
 New hires often feel overwhelmed, make mistakes, and take weeks to reach baseline productivity. This tool closes that gap.
 
-## ✨ What It Does
+## What It Does
 
 ### For New Associates
 
@@ -31,7 +31,7 @@ New hires often feel overwhelmed, make mistakes, and take weeks to reach baselin
 - **Reduced Errors** — Structured workflows prevent common mistakes (wrong products, skipped steps)
 - **Lower Turnover** — Better onboarding → faster ramp-up → higher job satisfaction
 
-## 📸 Screenshots
+## Screenshots
 
 ### Catalog View
 Browse products by category or search by name, SKU, UPC, or WIN. Tap the bookmark icon to add items to your pick list, or tap the external link to view the product on Walmart's website.
@@ -53,7 +53,7 @@ Long-press on catalog items to trigger an action sheet for quick operations, and
 
 ![Action Sheet](docs/screenshots/2-Long%20Press%20in%20Catalog%20Action%20Sheet.PNG) ![Log Action](docs/screenshots/5-Activity%20Log%20Task%20Add%20Action%20Sheet.PNG)
 
-## 🚀 Key Features
+## Key Features
 
 ### Three-Tab UI
 
@@ -91,7 +91,7 @@ Valid actions include:
 - `floor_sweep` — maintenance
 - `recovery` — customer service recovery
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -144,7 +144,7 @@ source db/seed.sql;
 
 Then run the population script.
 
-## 📱 Usage
+## Usage
 
 ### For Associates
 
@@ -161,7 +161,7 @@ Then run the population script.
 - Use product lookup to answer customer questions faster
 - Verify compliance (temperature checks, cleaning schedules) via timestamped logs
 
-## 🏗️ Architecture
+## Architecture
 
 **Backend:** FastAPI with SQLAlchemy ORM and MySQL  
 **Frontend:** Jinja2 templates with vanilla JavaScript (no build step)  
@@ -183,7 +183,7 @@ Then run the population script.
 
 See [CLAUDE.md](CLAUDE.md) for full router documentation.
 
-## 📊 Data Model
+## Data Model
 
 ### Product
 - SKU, UPC, WIN (Walmart Item Number) — multiple ways to identify a product
@@ -206,7 +206,7 @@ See [CLAUDE.md](CLAUDE.md) for full router documentation.
 ### User
 - Simple staff member model with username and password hash
 
-## 🔄 Workflow Example: New Associate's First Shift
+## Workflow Example: New Associate's First Shift
 
 1. **Manager shows app** — "Use this to find products and log your work"
 2. **Associate scans a barcode** — App shows product name, image, category, Walmart link
@@ -217,7 +217,7 @@ See [CLAUDE.md](CLAUDE.md) for full router documentation.
 
 **Result:** Faster onboarding, fewer mistakes, better morale.
 
-## 🚧 Development
+## Development
 
 ### Project Structure
 ```
@@ -243,17 +243,7 @@ See [CLAUDE.md](CLAUDE.md) for full router documentation.
     └── walmart_meats_clean_final.json  # Product database
 ```
 
-### Running Tests
-
-```bash
-pytest
-```
-
-### Code Style
-
-Follow PEP 8. Use type hints where practical.
-
-## 🎓 Pain Points Addressed
+## Pain Points Addressed
 
 | Pain Point | How This Tool Helps |
 |------------|-------------------|
@@ -266,21 +256,19 @@ Follow PEP 8. Use type hints where practical.
 | **High turnover** | Faster competence = higher job satisfaction |
 | **Manager visibility** | Real-time activity logs for performance tracking |
 
-## 📝 Notes for Contributors
+## Notes for Contributors
 
 - The `get_db()` dependency is duplicated across routers (minor inconsistency; refactor if consolidating routers)
 - Product data is versioned in JSON; updates require re-running `populate_products.py`
 - UI is deliberately simple (no heavy frameworks) for fast load times on mobile devices
 - Scanner logic normalizes UPC formats intelligently; see [static/app.js](static/app.js) for details
 
-## 📄 License
+## License
 
-(Add your license here)
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
-## 👥 Contributing
-
-Contributions are welcome! Please submit a pull request or open an issue for bugs and feature requests.
+This is an independent, non-commercial portfolio project and is not affiliated with, endorsed by, or sponsored by Walmart Inc. The Walmart name, logo, and product data referenced in this repository are the property of their respective owners and are used here for demonstration purposes only.
 
 ---
 
-**Built with ❤️ to make the first few months at Walmart feel less overwhelming.**
+**Built to make the first few months at Walmart feel less overwhelming.**
