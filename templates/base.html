@@ -324,12 +324,12 @@
   {% block content %}{% endblock %}
 
   <!-- Safety Sweeps Banner -->
-  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-3 text-[16px] font-bold" style="display:none; bottom:76px; animation: slideDown 0.4s ease-out;">
+  <div id="safety-banner" class="fixed inset-x-0 z-[35] bg-red-600 text-white text-center py-3 text-[16px] font-bold" style="display:none; bottom: var(--nav-height, 76px); animation: slideDown 0.4s ease-out;">
     Safety Sweeps due
   </div>
 
   <!-- Bottom Navigation Bar -->
-  <nav class="fixed bottom-0 inset-x-0 z-30 bg-surfaceDeep flex px-2 pt-1.5" style="border-top:1px solid rgba(255,255,255,.12); padding-bottom: max(12px, env(safe-area-inset-bottom));">
+  <nav id="bottom-nav" class="fixed bottom-0 inset-x-0 z-30 bg-surfaceDeep flex px-2 pt-1.5" style="border-top:1px solid rgba(255,255,255,.12); padding-bottom: max(12px, env(safe-area-inset-bottom));">
     <button class="nav-tab active flex-1 flex flex-col items-center justify-center py-2.5 gap-1" data-tab="catalog" aria-label="Catalog">
       <svg class="nav-icon w-[26px] h-[26px] text-accent" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
         <path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"/>

@@ -39,6 +39,7 @@ function init() {
   setupActionSheet();
   setupPartialSheet();
   setupFloorSheet();
+  setupNavHeightSync();
   setupSafetyBanner();
 }
 
@@ -1349,6 +1350,26 @@ function closePickItemPreview() {
 document
   .getElementById("pick-preview-backdrop")
   .addEventListener("click", closePickItemPreview);
+
+// ─── Nav bar height sync ────────────────────────────────────────────────────
+
+function syncNavHeightVar() {
+  const nav = document.getElementById("bottom-nav");
+  if (!nav) return;
+  document.documentElement.style.setProperty(
+    "--nav-height",
+    `${nav.offsetHeight}px`,
+  );
+}
+
+function setupNavHeightSync() {
+  const nav = document.getElementById("bottom-nav");
+  if (!nav) return;
+  syncNavHeightVar();
+  new ResizeObserver(syncNavHeightVar).observe(nav);
+  window.addEventListener("resize", syncNavHeightVar);
+  window.addEventListener("orientationchange", syncNavHeightVar);
+}
 
 // ─── Safety Sweeps banner ─────────────────────────────────────────────────────
 
