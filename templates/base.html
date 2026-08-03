@@ -6,7 +6,7 @@
   <title>Meats at Walmart</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
   <script>
@@ -25,8 +25,8 @@
             textLight: '#ffffff'
           },
           fontFamily: {
-            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
-            mono: ['"IBM Plex Mono"', 'monospace']
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
           }
         }
       }
@@ -38,7 +38,7 @@
     body {
       background-color: #004c91;
       color: #fff;
-      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
     a { color: #ffc220; text-decoration: none; }
@@ -65,7 +65,7 @@
 
     /* ── Typography helpers ───────────────────────────────────────────────── */
     .upc-value {
-      font-family: 'IBM Plex Mono', monospace;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       font-size: 15px;
       font-weight: 600;
       letter-spacing: .02em;
@@ -114,7 +114,7 @@
       transition: transform .12s ease, background .12s ease;
     }
     .stepper-btn:active { transform: scale(.93); background: #e2e7f0; }
-    .qty-value { font-size: 40px; font-weight: 700; line-height: 1; color: #101a2b; font-variant-numeric: tabular-nums; }
+    .qty-value { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-size: 32px; font-weight: 600; line-height: 1; color: #101a2b; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 
     /* ── Filter chips ─────────────────────────────────────────────────────── */
     .filter-tab {
@@ -504,7 +504,7 @@
   <div id="pick-scan-toast" class="fixed inset-x-4 z-[110] rounded-[18px] p-5 text-center transition-opacity duration-300" style="display:none; bottom: 6rem; box-shadow: 0 12px 30px rgba(0,0,0,.4);">
     <p id="pick-scan-verdict" class="text-white font-bold text-[22px] mb-1"></p>
     <p id="pick-scan-product-name" class="text-white text-[16px] font-semibold truncate"></p>
-    <p id="pick-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'IBM Plex Mono',monospace;"></p>
+    <p id="pick-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;"></p>
   </div>
 
   <!-- ── PICK SCANNER OVERLAY ───────────────────────────────────────────────── -->
@@ -527,7 +527,7 @@
   <div id="pick-add-scan-toast" class="fixed inset-x-4 z-[110] rounded-[18px] p-5 text-center transition-opacity duration-300" style="display:none; bottom: 6rem; box-shadow: 0 12px 30px rgba(0,0,0,.4);">
     <p id="pick-add-scan-verdict" class="text-white font-bold text-[22px] mb-1"></p>
     <p id="pick-add-scan-product-name" class="text-white text-[16px] font-semibold truncate"></p>
-    <p id="pick-add-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'IBM Plex Mono',monospace;"></p>
+    <p id="pick-add-scan-upc" class="text-white/75 text-[14px] mt-1" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif;"></p>
   </div>
 
   <!-- ── ADD-TO-PICKS SCANNER OVERLAY ──────────────────────────────────────── -->
